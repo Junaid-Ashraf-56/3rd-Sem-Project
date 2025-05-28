@@ -1,0 +1,36 @@
+ .button {
+        -fx-background-color: #2a2a2a;
+        -fx-text-fill: white;
+        -fx-font-weight: bold;
+        -fx-text-alignment: center;
+        -fx-border-radius: 20px;
+    }
+    .button:hover {
+        -fx-background-color: #FE9F46;
+        -fx-text-fill: black;
+    }
+
+ .button:focused {
+            -fx-background-color: #F63838; /* Purple */
+            -fx-text-fill: white;
+            -fx-font-weight: bold;
+        }
+
+.text-field {
+    -fx-prompt-text-fill: white;
+    -fx-text-fill: white;
+}
+.walletbutton{
+    -fx-text-alignment: center;
+}
+.portfoliobutton{
+    -fx-text-alignment: center;
+}
+.searchbar{
+    -fx-text-fill: white;
+    -fx-background-radius: 10px;
+}
+.label{
+    -fx-background-radius: 10px;
+}
+

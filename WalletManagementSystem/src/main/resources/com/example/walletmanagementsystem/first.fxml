@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1363.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox layoutX="394.0" layoutY="22.0" prefHeight="36.0" prefWidth="600.0">
+         <children>
+            <AnchorPane prefHeight="36.0" prefWidth="605.0" />
+         </children>
+      </HBox>
+      <VBox prefHeight="801.0" prefWidth="250.0">
+         <children>
+            <AnchorPane prefHeight="801.0" prefWidth="239.0">
+               <children>
+                  <Button layoutY="67.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="162.0" stylesheets="@css/buttons.css" text="Markets" />
+                  <Button layoutY="98.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="161.0" stylesheets="@css/buttons.css" text="Trading" />
+                  <Button layoutY="129.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="162.0" stylesheets="@css/buttons.css" text="Portfolio" />
+                  <Button layoutY="160.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="163.0" stylesheets="@css/buttons.css" text="Transactions" />
+                  <Button layoutY="191.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="163.0" stylesheets="@css/buttons.css" text="Wallet" />
+                  <FontIcon iconLiteral="fas-bars" iconSize="20" layoutX="201.0" layoutY="37.0" wrappingWidth="7.875" />
+                  <FontIcon iconColor="#f5385cc4" iconLiteral="fas-credit-card" iconSize="30" layoutX="12.0" layoutY="41.0" wrappingWidth="13.5" />
+                  <Hyperlink layoutX="62.0" layoutY="9.0" text="CashMate" textFill="#b92e2e">
+                     <font>
+                        <Font name="System Bold Italic" size="23.0" />
+                     </font>
+                  </Hyperlink>
+                  <Label layoutX="16.0" layoutY="102.0" text="📈" textFill="#fcf8f8" />
+                  <Label layoutX="15.0" layoutY="133.0" text="💼" textFill="#fcfcfc" />
+                  <Label layoutX="15.0" layoutY="164.0" text="💱" textFill="#ebebeb" />
+                  <Label layoutX="16.0" layoutY="195.0" text="💳" textFill="#fffefe" />
+                  <Label layoutX="15.0" layoutY="70.0" text="📈" textFill="#fcf8f8" />
+               </children>
+            </AnchorPane>
+         </children>
+      </VBox>
+      <TextField layoutX="464.0" layoutY="24.0" prefHeight="25.0" prefWidth="402.0" promptText="Search" style="-fx-background-color: black;" styleClass="searchbar" stylesheets="@css/buttons.css">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </TextField>
+      <FontIcon iconColor="#fffbfb" iconLiteral="fas-search" layoutX="840.0" layoutY="40.0" selectionFill="#f8efef" text="" />
+      <Label layoutX="1204.0" layoutY="16.0" prefHeight="36.0" prefWidth="154.0" style="-fx-background-color: black;" stylesheets="@css/buttons.css" />
+      <Hyperlink layoutX="1253.0" layoutY="22.0" text="Noman Talib" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font>
+      </Hyperlink>
+      <FontIcon iconColor="#f8f8f8" iconLiteral="fas-bell" layoutX="1216.0" layoutY="39.0" />
+      <FontIcon iconColor="WHITE" iconLiteral="fas-envelope" layoutX="1236.0" layoutY="39.0" />
+      <ImageView fitHeight="17.0" fitWidth="21.0" layoutX="1335.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/pak.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="251.0" layoutY="49.0" text="Wallet" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="30.0" />
+         </font>
+      </Label>
+      <AnchorPane layoutX="250.0" layoutY="97.0" prefHeight="200.0" prefWidth="239.0" styleClass="coinanchorpane" stylesheets="@css/anchorpane.css" />
+      <AnchorPane layoutX="512.0" layoutY="97.0" prefHeight="200.0" prefWidth="66.0" styleClass="coinanchorpane" stylesheets="@css/anchorpane.css">
+         <children>
+            <Hyperlink layoutX="8.0" layoutY="89.0" text="+ ADD" textFill="#f2f2f2">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Hyperlink>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="601.0" layoutY="98.0" prefHeight="200.0" prefWidth="239.0" style="-fx-background-color: white;" styleClass="coinanchorpane" stylesheets="@css/anchorpane.css">
+         <children>
+            <Button layoutX="35.0" layoutY="161.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="59.0" stylesheets="@css/buttons.css" text="Buy" />
+            <Button layoutX="143.0" layoutY="161.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="59.0" stylesheets="@css/buttons.css" text="Sell" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="852.0" layoutY="101.0" prefHeight="200.0" prefWidth="239.0" style="-fx-background-color: white;" styleClass="coinanchorpane" stylesheets="@css/anchorpane.css">
+         <children>
+            <Button layoutX="35.0" layoutY="161.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="59.0" stylesheets="@css/buttons.css" text="Buy" />
+            <Button layoutX="144.0" layoutY="161.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="59.0" stylesheets="@css/buttons.css" text="Sell" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="1102.0" layoutY="102.0" prefHeight="200.0" prefWidth="239.0" style="-fx-background-color: white;" styleClass="coinanchorpane" stylesheets="@css/anchorpane.css">
+         <children>
+            <Button layoutX="28.0" layoutY="161.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="59.0" stylesheets="@css/buttons.css" text="Buy" />
+            <Button layoutX="162.0" layoutY="162.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="59.0" stylesheets="@css/buttons.css" text="Sell" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="255.0" layoutY="314.0" prefHeight="206.0" prefWidth="1086.0" style="-fx-background-color: white;" styleClass="coinanchorpane" stylesheets="@css/anchorpane.css">
+         <children>
+            <Label layoutX="27.0" layoutY="17.0" text="My Wallet">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="258.0" layoutY="531.0" prefHeight="155.0" prefWidth="1086.0" style="-fx-background-color: white;" styleClass="coinanchorpane" stylesheets="@css/anchorpane.css">
+         <children>
+            <Label layoutX="20.0" layoutY="4.0" text="My Cards">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
