@@ -1,5 +1,6 @@
 package src.model;
 
+import src.model.Asset;
 public class Crypto extends Asset {
     private String blockchain; // e.g., Ethereum, Bitcoin
 

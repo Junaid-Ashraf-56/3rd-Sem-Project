@@ -1,5 +1,7 @@
 package src.model;
 
+import src.model.AssetType;
+
 public abstract class Asset {
     private String assetID;
     private String name;

@@ -1,6 +1,7 @@
 package src.model;
 
 import java.time.LocalDate;
+import src.model.TransactionType;
 
 public class Transaction {
     private int transactionId;

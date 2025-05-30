@@ -1,6 +1,7 @@
 package src.model;
 
 import java.util.ArrayList;
+import src.model.Transaction;
 
 public class Wallet {
     private int walletId;

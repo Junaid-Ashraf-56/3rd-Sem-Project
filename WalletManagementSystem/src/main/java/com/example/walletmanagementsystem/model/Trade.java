@@ -1,5 +1,6 @@
 package src.model;
 
+import src.model.TradeType;
 import java.time.LocalDate;
 
 public class Trade {
