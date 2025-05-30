@@ -1,8 +1,9 @@
 package com.example.walletmanagementsystem.service;
 
-import src.dao.UserDAO;
-import src.model.Role;
-import src.model.User;
+
+import com.example.walletmanagementsystem.dao.UserDAO;
+import com.example.walletmanagementsystem.model.Role;
+import com.example.walletmanagementsystem.model.User;
 
 public class UserService {
     public boolean registerUser(User user){

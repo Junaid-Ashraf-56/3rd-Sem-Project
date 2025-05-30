@@ -1,10 +1,12 @@
 package com.example.walletmanagementsystem.service;
 
-import src.dao.TransactionDAO;
-import src.dao.WalletDAO;
-import src.model.Transaction;
-import src.model.TransactionType;
-import src.model.Wallet;
+
+
+import com.example.walletmanagementsystem.dao.TransactionDAO;
+import com.example.walletmanagementsystem.dao.WalletDAO;
+import com.example.walletmanagementsystem.model.Transaction;
+import com.example.walletmanagementsystem.model.TransactionType;
+import com.example.walletmanagementsystem.model.Wallet;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;

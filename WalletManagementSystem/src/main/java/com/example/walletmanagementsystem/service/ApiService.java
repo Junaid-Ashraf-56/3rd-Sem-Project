@@ -1,8 +1,9 @@
 package com.example.walletmanagementsystem.service;
 
+import com.example.walletmanagementsystem.model.Crypto;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import src.model.Crypto;
+
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
