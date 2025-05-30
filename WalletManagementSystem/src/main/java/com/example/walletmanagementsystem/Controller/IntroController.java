@@ -1,4 +1,4 @@
-package com.example.walletmanagementsystem;
+package com.example.walletmanagementsystem.Controller;
 
 import javafx.animation.*;
 import javafx.fxml.FXML;

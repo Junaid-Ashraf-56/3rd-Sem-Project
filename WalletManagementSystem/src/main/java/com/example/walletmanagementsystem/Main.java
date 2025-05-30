@@ -11,7 +11,7 @@ public class Main extends Application {
     }
 
     public void start(Stage primaryStage) throws Exception {
-        Parent root = (Parent)FXMLLoader.load(this.getClass().getResource("signup.fxml"));
+        Parent root = (Parent)FXMLLoader.load(this.getClass().getResource("IntroController.fxml"));
         primaryStage.setTitle("CashMate Wallet");
         primaryStage.setScene(new Scene(root, 1363, 800));
         primaryStage.show();
