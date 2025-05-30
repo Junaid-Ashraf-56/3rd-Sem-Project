@@ -1,10 +1,11 @@
 package com.example.walletmanagementsystem.dao;
 
 import com.example.walletmanagementsystem.config.DBConnection;
+import com.example.walletmanagementsystem.model.Asset;
+import com.example.walletmanagementsystem.model.Portfolio;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import src.model.Asset;
-import src.model.Portfolio;
+
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -31,7 +32,7 @@ public class PortfolioDAO {
                     // Jackson object mapper to parse JSON
                     ObjectMapper mapper = new ObjectMapper();
                     String jsonPortfolio = rs.getString("portfolio");
-                    HashMap<String,Asset> portfolioMap = mapper.readValue(
+                    HashMap<String, Asset> portfolioMap = mapper.readValue(
                             jsonPortfolio,
                             new TypeReference<>() {}
                     );

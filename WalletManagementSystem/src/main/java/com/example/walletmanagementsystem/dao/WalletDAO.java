@@ -1,9 +1,10 @@
 package com.example.walletmanagementsystem.dao;
 
 import com.example.walletmanagementsystem.config.DBConnection;
-import src.model.Transaction;
-import src.model.TransactionType;
-import src.model.Wallet;
+import com.example.walletmanagementsystem.model.Transaction;
+import com.example.walletmanagementsystem.model.TransactionType;
+import com.example.walletmanagementsystem.model.Wallet;
+
 
 import java.sql.*;
 import java.util.ArrayList;

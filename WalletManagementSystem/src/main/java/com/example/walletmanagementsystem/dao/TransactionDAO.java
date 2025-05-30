@@ -1,7 +1,8 @@
 package com.example.walletmanagementsystem.dao;
 
 import com.example.walletmanagementsystem.config.DBConnection;
-import src.model.Transaction;
+import com.example.walletmanagementsystem.model.Transaction;
+
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

@@ -1,10 +1,10 @@
 package com.example.walletmanagementsystem.dao;
 
 import com.example.walletmanagementsystem.config.DBConnection;
-import src.model.Asset;
-import src.model.AssetType;
-import src.model.Crypto;
-
+import com.example.walletmanagementsystem.model.Asset;
+import com.example.walletmanagementsystem.model.AssetType;
+import com.example.walletmanagementsystem.model.Crypto;
+import com.example.walletmanagementsystem.model.Stock;
 
 
 import java.sql.Connection;
