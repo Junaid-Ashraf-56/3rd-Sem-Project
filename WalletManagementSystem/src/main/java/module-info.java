@@ -1,13 +1,10 @@
 module com.example.walletmanagementsystem {
     requires javafx.controls;
     requires javafx.fxml;
-
-    requires org.controlsfx.controls;
-    requires org.kordamp.ikonli.javafx;
-    requires com.fasterxml.jackson.databind;
     requires java.sql;
-    requires java.desktop;
+    requires com.fasterxml.jackson.databind;
 
-    opens com.example.walletmanagementsystem to javafx.fxml;
+    opens com.example.walletmanagementsystem.Controller to javafx.fxml;
+
     exports com.example.walletmanagementsystem;
 }

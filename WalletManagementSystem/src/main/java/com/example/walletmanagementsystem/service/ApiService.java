@@ -1,4 +1,4 @@
-package src.service;
+package com.example.walletmanagementsystem.service;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
