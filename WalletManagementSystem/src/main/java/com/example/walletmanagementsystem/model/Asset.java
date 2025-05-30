@@ -1,6 +1,4 @@
-package src.model;
-
-import src.model.AssetType;
+package com.example.walletmanagementsystem.model;
 
 public abstract class Asset {
     private String assetID;
@@ -10,9 +8,13 @@ public abstract class Asset {
     private double quantity;
     private String assetSymbol;
 
-    // Constructors
-    public Asset() {
+
+
+    public Asset(String assetId, String name, double currentPrice, AssetType assetType) {
     }
+
+    // Constructors
+
 
 
     // Getter and Setter for Asset

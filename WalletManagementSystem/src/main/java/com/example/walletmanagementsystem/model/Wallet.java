@@ -1,7 +1,7 @@
-package src.model;
+package com.example.walletmanagementsystem.model;
 
 import java.util.ArrayList;
-import src.model.Transaction;
+
 
 public class Wallet {
     private int walletId;

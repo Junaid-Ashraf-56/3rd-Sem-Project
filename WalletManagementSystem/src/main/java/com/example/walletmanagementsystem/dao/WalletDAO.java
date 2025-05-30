@@ -1,6 +1,6 @@
-package src.dao;
+package com.example.walletmanagementsystem.dao;
 
-import src.config.DBConnection;
+import com.example.walletmanagementsystem.config.DBConnection;
 import src.model.Transaction;
 import src.model.TransactionType;
 import src.model.Wallet;

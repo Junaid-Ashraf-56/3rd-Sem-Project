@@ -1,6 +1,6 @@
-package src.dao;
+package com.example.walletmanagementsystem.dao;
 
-import src.config.DBConnection;
+import com.example.walletmanagementsystem.config.DBConnection;
 import src.model.Role;
 import src.model.User;
 import java.sql.Connection;

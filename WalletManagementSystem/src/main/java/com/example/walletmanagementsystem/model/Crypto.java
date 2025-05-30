@@ -1,11 +1,10 @@
-package src.model;
+package com.example.walletmanagementsystem.model;
 
-import src.model.Asset;
 public class Crypto extends Asset {
     private String blockchain; // e.g., Ethereum, Bitcoin
 
     public Crypto(String assetId, String name, double currentPrice, String blockchain) {
-        super();
+        super(assetId, name, currentPrice, AssetType.STOCK);
         this.blockchain = blockchain;
     }
 

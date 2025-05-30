@@ -1,7 +1,7 @@
-package src.model;
+package com.example.walletmanagementsystem.model;
 
 import java.time.LocalDate;
-import src.model.TransactionType;
+
 
 public class Transaction {
     private int transactionId;

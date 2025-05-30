@@ -1,4 +1,4 @@
-package src.model;
+package com.example.walletmanagementsystem.model;
 
 import src.model.Role;
 import src.model.Wallet;

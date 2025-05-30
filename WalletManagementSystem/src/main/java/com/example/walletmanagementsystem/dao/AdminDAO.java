@@ -1,7 +1,6 @@
 package com.example.walletmanagementsystem.dao;
 
-//import src.config.DBConnection;
-//import src.model.*;
+
 
 import com.example.walletmanagementsystem.config.DBConnection;
 
@@ -28,7 +27,7 @@ public class AdminDAO {
                 user.setPassword(rs.getString("password"));
 
                 int walletId = rs.getInt("wallet_id");
-                src.model.Wallet wallet = src.dao.WalletDAO.getWalletById(walletId);
+                src.model.Wallet wallet = WalletDAO.getWalletById(walletId);
                 user.setWallet(wallet);
 
                 int portfolioId = rs.getInt("portfolio_id");

@@ -1,6 +1,6 @@
-package src.model;
+package com.example.walletmanagementsystem.model;
 
-import src.model.Asset;
+
 import java.util.HashMap;
 
 public class Portfolio {
