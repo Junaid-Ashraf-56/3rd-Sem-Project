@@ -6,6 +6,7 @@ module com.example.walletmanagementsystem {
     requires org.kordamp.ikonli.javafx;
     requires com.fasterxml.jackson.databind;
     requires java.sql;
+    requires java.desktop;
 
     opens com.example.walletmanagementsystem to javafx.fxml;
     exports com.example.walletmanagementsystem;
