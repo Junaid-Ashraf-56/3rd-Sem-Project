@@ -1,5 +1,5 @@
 package com.example.walletmanagementsystem.model;
-import src.model.AssetType;
+
 public class Stock extends Asset {
     private String exchange; // e.g., NASDAQ, NYSE
 

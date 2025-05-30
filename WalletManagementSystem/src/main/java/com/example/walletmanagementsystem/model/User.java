@@ -1,8 +1,6 @@
 package com.example.walletmanagementsystem.model;
 
-import src.model.Role;
-import src.model.Wallet;
-import src.model.Portfolio;
+
 
 public class User {
     private int userId;
