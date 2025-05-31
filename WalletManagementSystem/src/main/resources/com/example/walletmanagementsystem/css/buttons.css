@@ -11,7 +11,7 @@
     }
 
  .button:focused {
-            -fx-background-color: #F63838; /* Purple */
+            -fx-background-color: #FF9913; /* Purple */
             -fx-text-fill: white;
             -fx-font-weight: bold;
         }
