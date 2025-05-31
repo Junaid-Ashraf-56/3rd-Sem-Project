@@ -33,4 +33,43 @@
 .label{
     -fx-background-radius: 10px;
 }
+.buybuttons{
+    -fx-background-color: white;
+    -fx-text-fill: black;
+    -fx-font-weight: bold;
+}
+ .buybuttons:hover {
+     -fx-background-color: #FE9F46;
+     -fx-text-fill: black;
+ }
 
+ .buybuttons:focused {
+     -fx-background-color: green; /* Purple */
+     -fx-text-fill: white;
+     -fx-font-weight: bold;
+ }
+.sellbuttons{
+    -fx-background-color: white;
+    -fx-text-fill: black;
+    -fx-font-weight: bold;
+}
+ .sellbuttons:hover {
+     -fx-background-color: #FE9F46;
+     -fx-text-fill: black;
+ }
+
+ .sellbuttons:focused {
+     -fx-background-color: red; /* Purple */
+     -fx-text-fill: white;
+     -fx-font-weight: bold;
+ }
+ .signupbutton{
+     -fx-background-color: black; /* Purple */
+     -fx-text-fill: white;
+     -fx-font-weight: bold;
+ }
+ .signuplabels{
+     -fx-background-color: black; /* Purple */
+     -fx-text-fill: white;
+     -fx-font-weight: bold;
+ }
