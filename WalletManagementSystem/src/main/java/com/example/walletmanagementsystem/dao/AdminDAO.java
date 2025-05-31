@@ -12,11 +12,12 @@ import java.util.List;
 
 public class AdminDAO {
 
+    static Connection connection = DBConnection.getConnection();
+
     //View all User
     public static User viewAllUsers(){
         User user = null;
         String sql = "SELECT * FROM users";
-        Connection connection = DBConnection.getConnection();
         try(PreparedStatement stmt = connection.prepareStatement(sql)){
             ResultSet rs = stmt.executeQuery();
             while(rs.next()){
@@ -44,7 +45,6 @@ public class AdminDAO {
     //View all transactions
     public static List<Transaction> viewAllTransactions(){
         List<Transaction> transactions = new ArrayList<>();
-        Connection connection = DBConnection.getConnection();
         String sql = "SELECT * FROM Transactions";
         try(PreparedStatement stmt = connection.prepareStatement(sql) ) {
             ResultSet rs = stmt.executeQuery();

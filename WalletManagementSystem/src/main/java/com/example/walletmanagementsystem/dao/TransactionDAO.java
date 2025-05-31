@@ -11,10 +11,11 @@ import java.sql.SQLException;
 
 
 public class TransactionDAO {
+       static Connection connection = DBConnection.getConnection();
+
         //Inserting new Transaction
         public boolean insertNewTransaction(Transaction transaction){
                 boolean isInserted = false;
-                Connection connection = DBConnection.getConnection();
                 String sql = "INSERT INTO transactions (user_id, type, asset_symbol, quantity, amount, price_at_time, date_time)  VALUES(?,?,?,?,?,?,?)";
                 try (PreparedStatement stmt = connection.prepareStatement(sql)) {
                         stmt.setInt(1, transaction.getUserId());
@@ -35,7 +36,6 @@ public class TransactionDAO {
         public static Transaction getTransactionsByUserId(int userId){
                 String sql = "SELECT * FROM Transaction WHERE userId = ?";
                 Transaction transaction = null;
-                Connection connection = DBConnection.getConnection();
                 try(PreparedStatement stmt = connection.prepareStatement(sql)){
                         stmt.setInt(1,userId);
                         ResultSet rs = stmt.executeQuery();
@@ -56,8 +56,7 @@ public class TransactionDAO {
         //Record Transactions
         public static boolean recordTransaction(int userId, double amount, String description) {
                 String sql = "INSERT INTO transactions (user_id, amount, description, timestamp) VALUES (?, ?, ?, CURRENT_TIMESTAMP)";
-                try (Connection conn = DBConnection.getConnection();
-                     PreparedStatement stmt = conn.prepareStatement(sql)) {
+                try (PreparedStatement stmt = connection.prepareStatement(sql)) {
 
                         stmt.setInt(1, userId);
                         stmt.setDouble(2, amount);

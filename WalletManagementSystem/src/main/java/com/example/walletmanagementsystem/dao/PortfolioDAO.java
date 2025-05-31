@@ -15,11 +15,11 @@ import java.util.Map;
 
 public class PortfolioDAO {
 
+   static Connection connection = DBConnection.getConnection();
     //Get id by Portfolio id
     public static Portfolio getPortfolioByUserId(int portfolioId){
         String sql = "SELECT * FROM portfolio WHERE id = ?";
         Portfolio portfolio = null;
-        Connection connection = DBConnection.getConnection();
 
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setInt(1, portfolioId);
@@ -49,7 +49,6 @@ public class PortfolioDAO {
     // Insert New Portfolio JSON
     public static void insertPortfolio(int userId,Portfolio portfolio) {
         String sql = "INSERT INTO portfolio(user_id, portfolio_data) VALUES (?, ?)";
-        Connection connection = DBConnection.getConnection();
 
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setInt(1, portfolio.getUserId());
@@ -69,7 +68,6 @@ public class PortfolioDAO {
     // Update Portfolio JSON by ID
     public static boolean updatePortfolio(int userId,Portfolio portfolio) {
         String sql = "UPDATE portfolio SET portfolio_data = ? WHERE id = ?";
-        Connection connection = DBConnection.getConnection();
         boolean success = false;
 
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {

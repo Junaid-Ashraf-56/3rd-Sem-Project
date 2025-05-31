@@ -15,12 +15,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AssetDAO {
+
+     static  Connection connection = DBConnection.getConnection();
     // 1. Insert new asset (from API or admin)
     public static boolean insertAsset(Asset asset) {
         String sql = "INSERT INTO assets ( name, current_price, asset_type, extra_info) VALUES (?, ?, ?, ?, ?)";
-        Connection conn = DBConnection.getConnection();
 
-        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setString(1, asset.getAssetID());
             stmt.setString(2, asset.getName());
             stmt.setDouble(3, asset.getCurrentPrice());
@@ -48,8 +49,7 @@ public class AssetDAO {
         String sql = "SELECT * FROM assets WHERE asset_id = ?";
         Asset asset = null;
 
-        Connection conn = DBConnection.getConnection();
-        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setString(1, assetId);
             ResultSet rs = stmt.executeQuery();
 
@@ -78,8 +78,7 @@ public class AssetDAO {
     public static boolean updateAssetPrice(String assetId, double newPrice) {
         String sql = "UPDATE assets SET current_price = ? WHERE asset_id = ?";
 
-        Connection conn = DBConnection.getConnection();
-        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setDouble(1, newPrice);
             stmt.setString(2, assetId);
             return stmt.executeUpdate() > 0;
@@ -95,8 +94,7 @@ public class AssetDAO {
         List<Asset> assets = new ArrayList<>();
         String sql = "SELECT * FROM assets WHERE userId = ?";
 
-        Connection conn = DBConnection.getConnection();
-        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setInt(1, userId);
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {

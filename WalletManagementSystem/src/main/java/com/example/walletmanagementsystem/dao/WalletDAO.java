@@ -13,10 +13,10 @@ import java.util.List;
 
 public class WalletDAO {
 
+    static Connection connection = DBConnection.getConnection();
     //Get wallet by wallet ID
     public static Wallet getWalletById(int walletId){
         String sql = "Select * from wallet where id = ?";
-        Connection connection = DBConnection.getConnection();
         Wallet wallet = null;
         if (connection != null){
 
@@ -43,7 +43,6 @@ public class WalletDAO {
         public static boolean updateWalletBalance(int walletId, double newBalance){
             boolean isUpdated = false;
             String sql = "UPDATE  wallet SET balance = ? Where walletId = ?";
-            Connection connection = DBConnection.getConnection();
         if(connection !=null){
             try (PreparedStatement stmt = connection.prepareStatement(sql)){
                 stmt.setDouble(1, newBalance);
@@ -61,7 +60,6 @@ public class WalletDAO {
         public static Wallet insertNewWallet(int userId){
             String sql = "INSERT INTO wallet (userId, balance) VALUES (?, ?)";
             Wallet wallet = null;
-            Connection connection = DBConnection.getConnection();
             if (connection != null){
                 try(PreparedStatement stmt = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)){
                     stmt.setInt(1, userId);
@@ -93,7 +91,6 @@ public class WalletDAO {
         public static List<Transaction> getTransactionByUserId(int userId){
         String sql = "SELECT * FROM Transactions WHERE user_id = ?";
         List<Transaction> transactions = new ArrayList<>();
-            Connection connection = DBConnection.getConnection();
         if (connection != null){
             try(PreparedStatement stmt = connection.prepareStatement(sql)) {
                 stmt.setInt(1, userId);

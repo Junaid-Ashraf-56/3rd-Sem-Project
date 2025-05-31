@@ -12,10 +12,10 @@ import java.sql.SQLException;
 
 public class UserDAO {
 
+    static Connection connection = DBConnection.getConnection();
     //Add a new user
 public static void addUser(User user){
     String sql = "INSERT INTO user(name,email,password,role) VALUES(?,?,?,?)";
-    Connection connection = DBConnection.getConnection();
     if (connection!=null){
         try(PreparedStatement stmt = connection.prepareStatement(sql)){
             stmt.setString(1,user.getName());
@@ -34,7 +34,7 @@ public static void addUser(User user){
     public static User getUserId(String email){
     String sql = "SELECT * FROM user WHERE email = ?";
                User user = null;
-               Connection connection = DBConnection.getConnection();
+
     if (connection!=null){
         try(PreparedStatement stmt = connection.prepareStatement(sql)){
             stmt.setString(1,email);
@@ -58,7 +58,6 @@ public static void addUser(User user){
     public static boolean updateUser(User user){
     String sql = "Update user SET name = ?,password = ?,role =? WHERE email = ?";
                boolean update = false;
-    Connection connection = DBConnection.getConnection();
     if (connection!=null){
         try(PreparedStatement stmt = connection.prepareStatement(sql)){
             stmt.setString(1, user.getName());
@@ -80,7 +79,6 @@ public static void addUser(User user){
     public static User Login(String email,String password){
     String sql = "SELECT FROM USER WHERE email = ? AND password = ?";
                User user = null;
-    Connection connection = DBConnection.getConnection();
     if (connection!=null){
         try(PreparedStatement stmt = connection.prepareStatement(sql)){
              stmt.setString(1,email);
@@ -99,5 +97,19 @@ public static void addUser(User user){
     }
 
      return user;
+    }
+
+    //Freeze User
+    public static boolean freezeUserByEmail(String email) {
+        String sql = "UPDATE users SET is_frozen = ? WHERE email = ?";
+        try (PreparedStatement stmt = connection.prepareStatement(sql);) {
+            stmt.setBoolean(1, true);
+            stmt.setString(2, email);
+            int updated = stmt.executeUpdate();
+            return updated > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 }

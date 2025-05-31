@@ -10,13 +10,14 @@ public class User {
     private Role role;
     private Wallet wallet;
     private Portfolio portfolio;
-
+    private boolean isFrozen;
 
     // Constructors
     public User() {
+
     }
 
-    public User(int userId, String name, String email, String password, Role role, Wallet wallet, Portfolio portfolio) {
+    public User(int userId, String name, String email, String password, Role role, Wallet wallet, Portfolio portfolio, boolean isFrozen) {
         this.userId = userId;
         this.name = name;
         this.email = email;
@@ -24,6 +25,7 @@ public class User {
         this.role = role;
         this.wallet = wallet;
         this.portfolio = portfolio;
+        this.isFrozen = isFrozen;
     }
 
     // Getter and Setter for User
@@ -43,4 +45,11 @@ public class User {
     public Wallet getWallet() {return wallet;}
     public Portfolio getPortfolio() {return portfolio;}
 
+    public boolean isFrozen() {
+        return isFrozen;
+    }
+
+    public void setFrozen(boolean frozen) {
+        isFrozen = frozen;
+    }
 }
