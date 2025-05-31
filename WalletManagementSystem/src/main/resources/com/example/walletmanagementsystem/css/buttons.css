@@ -11,7 +11,7 @@
     }
 
  .button:focused {
-            -fx-background-color: #FF9913; /* Purple */
+            -fx-background-color: #FF9913;
             -fx-text-fill: white;
             -fx-font-weight: bold;
         }
@@ -44,7 +44,7 @@
  }
 
  .buybuttons:focused {
-     -fx-background-color: green; /* Purple */
+     -fx-background-color: green;
      -fx-text-fill: white;
      -fx-font-weight: bold;
  }
@@ -59,17 +59,17 @@
  }
 
  .sellbuttons:focused {
-     -fx-background-color: red; /* Purple */
+     -fx-background-color: red;
      -fx-text-fill: white;
      -fx-font-weight: bold;
  }
  .signupbutton{
-     -fx-background-color: black; /* Purple */
+     -fx-background-color: black;
      -fx-text-fill: white;
      -fx-font-weight: bold;
  }
  .signuplabels{
-     -fx-background-color: black; /* Purple */
+     -fx-background-color: black;
      -fx-text-fill: white;
      -fx-font-weight: bold;
  }
