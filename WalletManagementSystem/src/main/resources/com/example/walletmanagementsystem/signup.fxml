@@ -14,12 +14,11 @@
 <?import javafx.scene.text.Text?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<<<<<<< HEAD
+
 <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" style="-fx-border-radius: 10px;" styleClass="loginanchorpane" stylesheets="@css/anchorpane.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
 
-=======
 <fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" type="StackPane" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.walletmanagementsystem.Controller.LSController">
->>>>>>> ba9ad37361ea60783d19ce99a9b1d322d9fad2a9
+
    <children>
 
       <AnchorPane fx:id="signupform" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" style="-fx-background-color: #2a2a2a;" styleClass="loginanchorpane" stylesheets="@css/anchorpane.css">
@@ -40,8 +39,6 @@
             <Text layoutX="200.0" layoutY="379.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Already have an account?">
                <font>
                   <Font name="System Bold" size="12.0" />
-<<<<<<< HEAD
-=======
                </font></Text>
             <Hyperlink fx:id="Login" layoutX="347.0" layoutY="363.0" onAction="#switchFrom" text="Login" textFill="WHITE">
                <font>
@@ -64,7 +61,7 @@
             <Text layoutX="193.0" layoutY="353.0" strokeType="OUTSIDE" strokeWidth="0.0" text="don't have an account?">
                <font>
                   <Font name="System Bold" size="12.0" />
->>>>>>> ba9ad37361ea60783d19ce99a9b1d322d9fad2a9
+
                </font>
             </Text>
             <Hyperlink fx:id="Login" layoutX="347.0" layoutY="363.0" onAction="#switchFrom" text="Login" textFill="WHITE">
