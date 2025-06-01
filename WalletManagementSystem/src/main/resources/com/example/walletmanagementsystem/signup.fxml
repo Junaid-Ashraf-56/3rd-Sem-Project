@@ -14,8 +14,12 @@
 <?import javafx.scene.text.Text?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
+<<<<<<< HEAD
 <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" style="-fx-border-radius: 10px;" styleClass="loginanchorpane" stylesheets="@css/anchorpane.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
 
+=======
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" type="StackPane" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.walletmanagementsystem.Controller.LSController">
+>>>>>>> ba9ad37361ea60783d19ce99a9b1d322d9fad2a9
    <children>
 
       <AnchorPane fx:id="signupform" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" style="-fx-background-color: #2a2a2a;" styleClass="loginanchorpane" stylesheets="@css/anchorpane.css">
@@ -36,6 +40,31 @@
             <Text layoutX="200.0" layoutY="379.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Already have an account?">
                <font>
                   <Font name="System Bold" size="12.0" />
+<<<<<<< HEAD
+=======
+               </font></Text>
+            <Hyperlink fx:id="Login" layoutX="347.0" layoutY="363.0" onAction="#switchFrom" text="Login" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font></Hyperlink>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="loginform" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" style="-fx-background-color: #2a2a2a;" styleClass="loginanchorpane" stylesheets="@css/anchorpane.css">
+         <children>
+            <PasswordField fx:id="LoginPassword" layoutX="151.0" layoutY="226.0" prefHeight="26.0" prefWidth="299.0" promptText="Password" styleClass="signupbutton" stylesheets="@css/buttons.css" />
+            <TextField fx:id="LoginEmail" layoutX="151.0" layoutY="180.0" prefHeight="26.0" prefWidth="299.0" promptText="Email" styleClass="signuplabels" stylesheets="@css/buttons.css" />
+            <FontIcon iconColor="WHITE" iconLiteral="fas-envelope" layoutX="430.0" layoutY="197.0" />
+            <Label layoutX="245.0" layoutY="78.0" prefHeight="61.0" prefWidth="110.0" text="Login" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="30.0" />
+               </font>
+            </Label>
+            <FontIcon iconColor="WHITE" iconLiteral="fas-lock" layoutX="431.0" layoutY="245.0" text="" />
+            <Button fx:id="LoginData" layoutX="221.0" layoutY="311.0" mnemonicParsing="false" onAction="#Login" prefHeight="26.0" prefWidth="146.0" styleClass="signupbutton" stylesheets="@css/buttons.css" text="Login" />
+            <Text layoutX="193.0" layoutY="353.0" strokeType="OUTSIDE" strokeWidth="0.0" text="don't have an account?">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+>>>>>>> ba9ad37361ea60783d19ce99a9b1d322d9fad2a9
                </font>
             </Text>
             <Hyperlink fx:id="Login" layoutX="347.0" layoutY="363.0" onAction="#switchFrom" text="Login" textFill="WHITE">
@@ -43,7 +72,7 @@
                   <Font name="System Bold Italic" size="12.0" />
                </font>
             </Hyperlink>
-            <ComboBox fx:id="myComboBox" layoutX="153.0" layoutY="250.0" prefHeight="25.0" prefWidth="299.0" promptText="Signup as !" styleClass="signuplabels" stylesheets="@css/buttons.css" xmlns:fx="http://javafx.com/fxml">
+            <ComboBox fx:id="myComboBox" layoutX="151.0" layoutY="271.0" prefHeight="25.0" prefWidth="299.0" promptText="Signup as !" styleClass="signuplabels" stylesheets="@css/buttons.css" xmlns:fx="http://javafx.com/fxml">
                <items>
                   <FXCollections fx:factory="observableArrayList">
                      <String fx:value="User" />
