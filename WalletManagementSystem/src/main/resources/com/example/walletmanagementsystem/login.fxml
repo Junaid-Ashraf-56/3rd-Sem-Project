@@ -37,7 +37,7 @@
                   <Font name="System Bold Italic" size="12.0" />
                </font>
             </Hyperlink>
-            <ComboBox fx:id="myComboBox" layoutX="153.0" layoutY="244.0" prefHeight="25.0" prefWidth="299.0" promptText="Signup as !" styleClass="signuplabels" stylesheets="@css/buttons.css" xmlns:fx="http://javafx.com/fxml">
+            <ComboBox fx:id="myComboBox" layoutX="153.0" layoutY="244.0" prefHeight="25.0" prefWidth="299.0" promptText="Login as !" styleClass="signuplabels" stylesheets="@css/buttons.css" xmlns:fx="http://javafx.com/fxml">
                <items>
                   <FXCollections fx:factory="observableArrayList">
                      <String fx:value="User" />

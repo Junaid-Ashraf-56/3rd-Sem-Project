@@ -3,6 +3,7 @@
 <?import java.lang.String?>
 <?import javafx.collections.FXCollections?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
@@ -13,51 +14,31 @@
 <?import javafx.scene.text.Text?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<?import javafx.scene.control.ComboBox?>
-<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" type="StackPane" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.walletmanagementsystem.Controller.LSController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" style="-fx-border-radius: 10px;" styleClass="loginanchorpane" stylesheets="@css/anchorpane.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+
    <children>
+
       <AnchorPane fx:id="signupform" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" style="-fx-background-color: #2a2a2a;" styleClass="loginanchorpane" stylesheets="@css/anchorpane.css">
+
          <children>
-            <PasswordField layoutX="151.0" layoutY="269.0" prefHeight="26.0" prefWidth="299.0" promptText="Password" styleClass="signuplabels" stylesheets="@css/buttons.css" />
-            <TextField layoutX="151.0" layoutY="226.0" prefHeight="26.0" prefWidth="299.0" promptText="Email" styleClass="signuplabels" stylesheets="@css/buttons.css" />
-            <FontIcon fill="WHITE" iconLiteral="fas-envelope" layoutX="430.0" layoutY="244.0" />
-            <TextField layoutX="151.0" layoutY="180.0" prefHeight="26.0" prefWidth="299.0" promptText="User Name" styleClass="signuplabels" stylesheets="@css/buttons.css" />
-            <Label layoutX="245.0" layoutY="78.0" prefHeight="61.0" prefWidth="124.0" text="Sign up" textFill="WHITE">
+            <PasswordField fx:id="signuppassword" layoutX="151.0" layoutY="212.0" prefHeight="26.0" prefWidth="299.0" promptText="Password" styleClass="signuplabels" stylesheets="@css/buttons.css" />
+            <TextField fx:id="signupemail" layoutX="151.0" layoutY="174.0" prefHeight="26.0" prefWidth="299.0" promptText="Email" styleClass="signuplabels" stylesheets="@css/buttons.css" />
+            <FontIcon fill="WHITE" iconLiteral="fas-envelope" layoutX="430.0" layoutY="191.0" />
+            <TextField layoutX="151.0" layoutY="136.0" prefHeight="26.0" prefWidth="299.0" promptText="User Name" styleClass="signuplabels" stylesheets="@css/buttons.css" />
+            <Label layoutX="245.0" layoutY="41.0" prefHeight="61.0" prefWidth="110.0" text="Sign up" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="30.0" />
                </font>
             </Label>
-            <FontIcon iconColor="WHITE" iconLiteral="fas-user" layoutX="430.0" layoutY="196.0" text="" wrappingWidth="11.375" />
-            <FontIcon fill="WHITE" iconLiteral="fas-lock" layoutX="430.0" layoutY="286.0" />
+            <FontIcon iconColor="WHITE" iconLiteral="fas-user" layoutX="430.0" layoutY="153.0" />
+            <FontIcon fill="WHITE" iconLiteral="fas-lock" layoutX="430.0" layoutY="228.0" />
             <Button layoutX="227.0" layoutY="316.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="146.0" styleClass="signupbutton" stylesheets="@css/buttons.css" text="Signup" />
             <Text layoutX="200.0" layoutY="379.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Already have an account?">
                <font>
                   <Font name="System Bold" size="12.0" />
-               </font></Text>
-            <Hyperlink fx:id="Login" layoutX="347.0" layoutY="363.0" onAction="#switchFrom" text="Login" textFill="WHITE">
-               <font>
-                  <Font name="System Bold Italic" size="12.0" />
-               </font></Hyperlink>
-         </children>
-      </AnchorPane>
-      <AnchorPane fx:id="loginform" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" style="-fx-background-color: #2a2a2a;" styleClass="loginanchorpane" stylesheets="@css/anchorpane.css">
-         <children>
-            <PasswordField fx:id="LoginPassword" layoutX="151.0" layoutY="226.0" prefHeight="26.0" prefWidth="299.0" promptText="Password" styleClass="signupbutton" stylesheets="@css/buttons.css" />
-            <TextField fx:id="LoginEmail" layoutX="151.0" layoutY="180.0" prefHeight="26.0" prefWidth="299.0" promptText="Email" styleClass="signuplabels" stylesheets="@css/buttons.css" />
-            <FontIcon iconColor="WHITE" iconLiteral="fas-envelope" layoutX="430.0" layoutY="197.0" />
-            <Label layoutX="245.0" layoutY="78.0" prefHeight="61.0" prefWidth="110.0" text="Login" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="30.0" />
-               </font>
-            </Label>
-            <FontIcon iconColor="WHITE" iconLiteral="fas-lock" layoutX="431.0" layoutY="245.0" text="" />
-            <Button fx:id="LoginData" layoutX="225.0" layoutY="282.0" mnemonicParsing="false" onAction="#Login" prefHeight="26.0" prefWidth="146.0" styleClass="signupbutton" stylesheets="@css/buttons.css" text="Login" />
-            <Text layoutX="193.0" layoutY="353.0" strokeType="OUTSIDE" strokeWidth="0.0" text="don't have an account?">
-               <font>
-                  <Font name="System Bold" size="12.0" />
                </font>
             </Text>
-            <Hyperlink fx:id="Signup" layoutX="331.0" layoutY="337.0" onAction="#switchFrom" text="Sign up" textFill="WHITE">
+            <Hyperlink fx:id="Login" layoutX="347.0" layoutY="363.0" onAction="#switchFrom" text="Login" textFill="WHITE">
                <font>
                   <Font name="System Bold Italic" size="12.0" />
                </font>
@@ -70,8 +51,8 @@
                   </FXCollections>
                </items>
             </ComboBox>
-
          </children>
       </AnchorPane>
    </children>
-</fx:root>
+
+</StackPane>
