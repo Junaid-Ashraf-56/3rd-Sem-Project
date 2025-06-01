@@ -1,9 +1,11 @@
 package com.example.walletmanagementsystem;
 
+import com.example.walletmanagementsystem.Controller.LSController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 public class Main extends Application {
@@ -11,10 +13,11 @@ public class Main extends Application {
     }
 
     public void start(Stage primaryStage) throws Exception {
-        Parent root = (Parent)FXMLLoader.load(this.getClass().getResource("signup.fxml"));
-        primaryStage.setTitle("CashMate Wallet");
-        primaryStage.setScene(new Scene(root, 1363, 800));
-        primaryStage.show();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("signup.fxml"));
+        loader.setController(new LSController());
+        Parent root = loader.load();
+
+
     }
 
     public static void main(String[] args) {
