@@ -14,7 +14,7 @@ public class DBConnection {
             try{
                    Class.forName("org.postgresql.Driver");
                    connection = DriverManager.getConnection(
-                           "jdbc:mysql://localhost:3306/smart_trading_system",
+                           "jdbc:postgresql://localhost:5432/smart_trading_system",
                            "trading",
                            "Str0ngPass@7733"
                    );
