@@ -11,7 +11,7 @@ import javafx.scene.layout.AnchorPane;
 
 
 
-public class LSController {
+public class SignupController {
     @FXML public AnchorPane loginform;
     @FXML public AnchorPane signupform;
     @FXML public Hyperlink Login;
@@ -20,15 +20,15 @@ public class LSController {
     @FXML public TextArea LoginEmail;
     @FXML public Button LoginData;
 
-
+    @FXML
     public void switchFrom(javafx.event.ActionEvent actionEvent) {
         if (actionEvent.getSource()==Login){
             loginform.setVisible(true);
             signupform.setVisible(false);
         }
         else{
-            loginform.setVisible(false);
             signupform.setVisible(true);
+            loginform.setVisible(false);
         }
     }
 

@@ -13,9 +13,9 @@
 <?import javafx.scene.text.Text?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.walletmanagementsystem.Login">
+<AnchorPane id="loginform" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.walletmanagementsystem.Controller.LoginController">
    <children>
-      <AnchorPane fx:id="loginform" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" style="-fx-background-color: #2a2a2a;" styleClass="loginanchorpane" stylesheets="@css/anchorpane.css">
+      <AnchorPane id="loginform" fx:id="loginform" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" style="-fx-background-color: #2a2a2a;" styleClass="loginanchorpane" stylesheets="@css/anchorpane.css">
          <children>
             <PasswordField layoutX="151.0" layoutY="201.0" prefHeight="26.0" prefWidth="299.0" promptText="Password" styleClass="signupbutton" stylesheets="@css/buttons.css" />
             <TextField layoutX="151.0" layoutY="164.0" prefHeight="26.0" prefWidth="299.0" promptText="Email" styleClass="signuplabels" stylesheets="@css/buttons.css" />
@@ -32,7 +32,7 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Text>
-            <Hyperlink fx:id="Signup" layoutX="331.0" layoutY="337.0" onAction="#switchFrom" text="Sign up" textFill="WHITE">
+            <Hyperlink fx:id="Signup" layoutX="331.0" layoutY="337.0" onAction="#switchToSignup" text="Sign up" textFill="WHITE">
                <font>
                   <Font name="System Bold Italic" size="12.0" />
                </font>
