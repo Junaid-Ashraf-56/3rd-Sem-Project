@@ -4,8 +4,11 @@ module com.example.walletmanagementsystem {
     requires java.sql;
     requires java.mail;
     requires com.fasterxml.jackson.databind;
-
+//    requires org.postgresql.jdbc;
+    opens com.example.walletmanagementsystem to javafx.fxml;
     opens com.example.walletmanagementsystem.Controller to javafx.fxml;
+    opens com.example.walletmanagementsystem.dao to javafx.fxml;
+    opens com.example.walletmanagementsystem.model to javafx.base; // for TableView bindings
 
     exports com.example.walletmanagementsystem;
 }

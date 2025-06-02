@@ -7,13 +7,13 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class Main extends Application {
-    public Main() {
-    }
-
+    @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = (Parent)FXMLLoader.load(this.getClass().getResource("signup.fxml"));
-        primaryStage.setTitle("CashMate Wallet");
-        primaryStage.setScene(new Scene(root, 1363, 800));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/walletmanagementsystem/signup.fxml"));
+        Parent root = loader.load();
+
+        primaryStage.setTitle("Signup Form");
+        primaryStage.setScene(new Scene(root));
         primaryStage.show();
     }
 
