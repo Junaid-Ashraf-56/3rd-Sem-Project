@@ -14,22 +14,22 @@ import java.io.IOException;
 public class LoginController {
 
     @FXML
-    private AnchorPane loginform;
+    public AnchorPane loginform;
 
     @FXML
-    private TextField LoginEmail;
+    public TextField LoginEmail;
 
     @FXML
-    private PasswordField LoginPassword;
+    public PasswordField LoginPassword;
 
     @FXML
-    private ComboBox<String> myComboBox;
+    public ComboBox<String> myComboBox;
 
     @FXML
-    private Button LoginData;
+    public Button LoginData;
 
     @FXML
-    private Hyperlink Signup;
+    public Hyperlink Signup;
 
     @FXML
     void handleLogin(ActionEvent event) {
