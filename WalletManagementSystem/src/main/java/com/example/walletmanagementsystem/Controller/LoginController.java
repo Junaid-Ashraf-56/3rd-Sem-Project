@@ -63,7 +63,7 @@ public class LoginController {
     @FXML
     void switchToSignup(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/walletmanagementsystem/login.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/walletmanagementsystem/Controller/login.fxml"));
             Parent root = loader.load();
 
             // Get current stage

@@ -3,6 +3,7 @@ package com.example.walletmanagementsystem.Controller;
 import com.example.walletmanagementsystem.dao.UserDAO;
 import com.example.walletmanagementsystem.model.User;
 import com.example.walletmanagementsystem.utils.AlertUtil;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
@@ -21,7 +22,7 @@ public class SignupController {
     @FXML public Button LoginData;
 
     @FXML
-    public void switchFrom(javafx.event.ActionEvent actionEvent) {
+    public void switchToSignup(ActionEvent actionEvent) {
         if (actionEvent.getSource()==Login){
             loginform.setVisible(true);
             signupform.setVisible(false);
