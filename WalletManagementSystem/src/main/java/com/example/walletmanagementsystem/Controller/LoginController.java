@@ -1,5 +1,8 @@
 package com.example.walletmanagementsystem.Controller;
 
+import com.example.walletmanagementsystem.dao.UserDAO;
+import com.example.walletmanagementsystem.model.User;
+import com.example.walletmanagementsystem.utils.AlertUtil;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -11,25 +14,27 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+import static com.example.walletmanagementsystem.utils.AlertUtil.showAlert;
+
 public class LoginController {
 
     @FXML
-    private AnchorPane loginform;
+    public AnchorPane loginform;
 
     @FXML
-    private TextField LoginEmail;
+    public TextField LoginEmail;
 
     @FXML
-    private PasswordField LoginPassword;
+    public PasswordField LoginPassword;
 
     @FXML
-    private ComboBox<String> myComboBox;
+    public ComboBox<String> myComboBox;
 
     @FXML
-    private Button LoginData;
+    public Button LoginData;
 
     @FXML
-    private Hyperlink Signup;
+    public Hyperlink Signup;
 
     @FXML
     void handleLogin(ActionEvent event) {
@@ -41,22 +46,17 @@ public class LoginController {
             showAlert(Alert.AlertType.ERROR, "Form Error!", "Please enter all fields");
             return;
         }
-
+        User user = UserDAO.Login(email,password);
 
         if (email.equals("admin@example.com") && password.equals("1234") && role.equals("Admin")) {
             showAlert(Alert.AlertType.INFORMATION, "Login Successful", "Welcome Admin!");
 
-        } else {
-            showAlert(Alert.AlertType.ERROR, "Login Failed", "Invalid credentials.");
+        }else if (user!=null){
+            AlertUtil.showInfo("Login Success","Welcome"+user.getName());
         }
-    }
-
-    private void showAlert(Alert.AlertType alertType, String title, String message) {
-        Alert alert = new Alert(alertType);
-        alert.setTitle(title);
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.show();
+        else {
+            AlertUtil.showError("Login Failed", "Invalid email or password.");
+        }
     }
 
 
