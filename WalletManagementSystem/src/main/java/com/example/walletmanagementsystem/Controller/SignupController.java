@@ -33,25 +33,6 @@ public class SignupController {
     }
 
     @FXML
-    public void handleLogin(){
-        String email = LoginEmail.getText();
-        String password = LoginPassword.getText();
-        if (email.isEmpty()&&password.isEmpty()){
-            AlertUtil.showWarning("Validation Error ","PLease enter your email and password");
-        return;
-        }
-
-        User user = UserDAO.Login(email,password);
-        if (user!=null){
-           AlertUtil.showInfo("Login Success","Welcome"+user.getName());
-        }
-        else {
-            AlertUtil.showError("Login Failed", "Invalid email or password.");
-        }
-
-    }
-
-    @FXML
     public void handleSignup(){
 
     }

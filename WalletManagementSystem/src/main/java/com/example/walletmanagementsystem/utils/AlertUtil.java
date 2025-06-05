@@ -15,7 +15,7 @@ public class AlertUtil {
         showAlert(Alert.AlertType.WARNING, title, message);
     }
 
-    private static void showAlert(Alert.AlertType type, String title, String message) {
+    public static void showAlert(Alert.AlertType type, String title, String message) {
         Alert alert = new Alert(type);
         alert.setTitle(title);
         alert.setContentText(message);
