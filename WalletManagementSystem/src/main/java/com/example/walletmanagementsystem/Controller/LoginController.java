@@ -1,6 +1,7 @@
 package com.example.walletmanagementsystem.Controller;
 
 import com.example.walletmanagementsystem.dao.UserDAO;
+import com.example.walletmanagementsystem.model.Role;
 import com.example.walletmanagementsystem.model.User;
 import com.example.walletmanagementsystem.utils.AlertUtil;
 import javafx.fxml.FXML;
@@ -18,41 +19,30 @@ import static com.example.walletmanagementsystem.utils.AlertUtil.showAlert;
 
 public class LoginController {
 
-    @FXML
-    public AnchorPane loginform;
-
-    @FXML
-    public TextField LoginEmail;
-
-    @FXML
-    public PasswordField LoginPassword;
-
-    @FXML
-    public ComboBox<String> myComboBox;
-
-    @FXML
-    public Button LoginData;
-
-    @FXML
-    public Hyperlink Signup;
+    @FXML public AnchorPane loginform;
+    @FXML public TextField LoginEmail;
+    @FXML public PasswordField LoginPassword;
+    @FXML public ComboBox<String> myComboBox;
+    @FXML public Button LoginData;
+    @FXML public Hyperlink Signup;
 
     @FXML
     void handleLogin(ActionEvent event) {
         String email = LoginEmail.getText();
         String password = LoginPassword.getText();
-        String role = myComboBox.getValue();
+        Role role = Role.valueOf(myComboBox.getValue());
 
-        if (email.isEmpty() || password.isEmpty() || role == null) {
+        if (email.isEmpty() || password.isEmpty()) {
             showAlert(Alert.AlertType.ERROR, "Form Error!", "Please enter all fields");
             return;
         }
         User user = UserDAO.Login(email,password);
 
-        if (email.equals("admin@example.com") && password.equals("1234") && role.equals("Admin")) {
+        if (email.equals("admin@gmail.com") && password.equals("1234") && role==Role.ADMIN) {
             showAlert(Alert.AlertType.INFORMATION, "Login Successful", "Welcome Admin!");
 
         }else if (user!=null){
-            AlertUtil.showInfo("Login Success","Welcome"+user.getName());
+            AlertUtil.showInfo("Login Success","Welcome "+user.getName());
         }
         else {
             AlertUtil.showError("Login Failed", "Invalid email or password.");
@@ -63,7 +53,7 @@ public class LoginController {
     @FXML
     void switchToSignup(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/walletmanagementsystem/Controller/login.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/walletmanagementsystem/Controller/signup.fxml"));
             Parent root = loader.load();
 
             // Get current stage

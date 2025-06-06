@@ -5,10 +5,7 @@ import com.example.walletmanagementsystem.model.Role;
 import com.example.walletmanagementsystem.model.User;
 
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 
 
 public class UserDAO {
@@ -19,20 +16,33 @@ public class UserDAO {
 
 
     //Add a new user
-public static void addUser(User user){
-    String sql = "INSERT INTO user(name,email,password,role) VALUES(?,?,?,?)";
-    if (connection!=null){
-        try(PreparedStatement stmt = connection.prepareStatement(sql)){
-            stmt.setString(1,user.getName());
-            stmt.setString(2, user.getEmail());
-            stmt.setString(3, user.getPassword());
-            stmt.setString(4,user.getRole().name());
-            stmt.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
+    public static User addUser(String name, String email, String password, Role role) {
+        String sql = "INSERT INTO user(name, email, password, role) VALUES (?, ?, ?, ?)";
+        if (connection != null) {
+            try (PreparedStatement stmt = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+                stmt.setString(1, name);
+                stmt.setString(2, email);
+                stmt.setString(3, password);
+                stmt.setString(4, String.valueOf(role));
+
+                int rows = stmt.executeUpdate();
+
+                if (rows > 0) {
+                    try (ResultSet rs = stmt.getGeneratedKeys()) {
+                        if (rs.next()) {
+                            int id = rs.getInt(1);
+                            return new User(id,name, email, password, role);
+                        }
+                    }
+                }
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
+        return null;
     }
-}
+
 
 
    //Get user id by email

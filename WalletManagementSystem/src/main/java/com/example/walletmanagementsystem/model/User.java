@@ -28,6 +28,14 @@ public class User {
         this.isFrozen = isFrozen;
     }
 
+    public User(int id, String name, String email, String password, Role role) {
+        this.userId = id;
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.role = role;
+    }
+
     // Getter and Setter for User
     public void setUserId(int userId) {this.userId = userId;}
     public void setName(String name) {this.name = name;}
