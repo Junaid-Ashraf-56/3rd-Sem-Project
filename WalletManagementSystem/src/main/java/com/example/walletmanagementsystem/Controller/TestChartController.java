@@ -28,10 +28,10 @@ public class TestChartController implements Initializable {
         btcYAxis.setAutoRanging(true);
 
         executor.scheduleAtFixedRate(() -> {
-            Asset btc = ApiService.getCrypto("bitcoin");
-            if (btc == null) return;
-
-            double price = btc.getCurrentPrice();
+//            Asset btc = ApiService.getCrypto("bitcoin");
+//            if (btc == null) return;
+//
+//            double price = btc.getCurrentPrice();
             String time = LocalTime.now().withNano(0).toString();
 
             if (priceHistory.size() >= MAX_POINTS) {
@@ -39,7 +39,7 @@ public class TestChartController implements Initializable {
                 timeLabels.poll();
             }
 
-            priceHistory.add(price);
+//            priceHistory.add(price);
             timeLabels.add(time);
 
             XYChart.Series<String, Number> series = new XYChart.Series<>();

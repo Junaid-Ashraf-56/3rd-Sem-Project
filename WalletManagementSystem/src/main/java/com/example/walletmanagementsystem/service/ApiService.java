@@ -1,6 +1,6 @@
 package com.example.walletmanagementsystem.service;
 
-import com.example.walletmanagementsystem.model.Crypto;
+
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -10,31 +10,50 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 
 public class ApiService {
-    public static Crypto getCrypto(String coinId){
-        coinId = coinId.toLowerCase(); // normalize input
-        String apiUrl = "https://api.coingecko.com/api/v3/simple/price?ids=" + coinId + "&vs_currencies=usd";
+    private static final String API_URL = "https://min-api.cryptocompare.com/data/pricemulti?fsyms=%s&tsyms=USD";
+    private static final Map<String, Double> cachedPrices = new HashMap<>();
+
+    public static Map<String, Double> getMultiplePrices(List<String> coinIds) {
+        String joinedSymbols = String.join(",", coinIds);
+        String apiUrl = String.format(API_URL, joinedSymbols);
 
         try {
-            System.out.println("DEBUG: API URL = " + apiUrl);
             URL url = new URL(apiUrl);
             JsonNode root = getJsonNode(url);
-            System.out.println("DEBUG: Raw JSON = " + root.toPrettyString());
 
-            double price = root.path(coinId).path("usd").asDouble();
-            return new Crypto(coinId.toUpperCase(), capitalize(coinId), price, "CoinGecko");
-        } catch (Exception e){
-            e.printStackTrace();
+            Map<String, Double> prices = new HashMap<>();
+            for (String coin : coinIds) {
+                double price = root.path(coin).path("USD").asDouble();
+                if (price > 0) {
+                    prices.put(coin, price);
+                    cachedPrices.put(coin, price); // ✅ cache on success
+                }
+            }
+
+            return prices;
+
+        } catch (Exception e) {
+            System.err.println("API failed, using cached prices.");
+            return new HashMap<>(cachedPrices); // ✅ fallback
         }
-        return null;
     }
 
     private static JsonNode getJsonNode(URL url) throws IOException {
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
         connection.setRequestMethod("GET");
         connection.setRequestProperty("User-Agent", "Mozilla/5.0");
+
+        int responseCode = connection.getResponseCode();
+        if (responseCode == 429) {
+            System.out.println("⚠️ Rate limit hit (HTTP 429). Skipping this tick.");
+            return null;
+        }
 
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
         StringBuilder response = new StringBuilder();
@@ -49,7 +68,7 @@ public class ApiService {
     }
 
 
-    private static String capitalize(String text) {
+    public static String capitalize(String text) {
         return text.substring(0, 1).toUpperCase() + text.substring(1);
     }
 }

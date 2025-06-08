@@ -16,3 +16,16 @@
     -fx-stroke: #00ff90;
     -fx-stroke-width: 2px;
 }
+.chart-series-line {
+    -fx-stroke-width: 2px;
+    -fx-stroke: #00ff90;
+}
+
+.chart-plot-background {
+    -fx-background-color: transparent;
+}
+
+.chart-legend {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+}

@@ -1,53 +1,44 @@
 package com.example.walletmanagementsystem.service;
 
-import com.example.walletmanagementsystem.model.Asset;
 import javafx.scene.chart.XYChart;
 
 import java.time.LocalTime;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.Map;
-import java.util.Queue;
+import java.util.*;
 
 public class ChartService {
-    private static final int MAX_POINTS = 10;
+    private static final int MAX_POINTS = 30;
+    private static final Map<String, LinkedList<Double>> priceHistoryMap = new HashMap<>();
+    private static final Map<String, LinkedList<String>> timeMap = new HashMap<>();
 
-    private static final Map<String, Queue<Double>> priceMap = new HashMap<>();
-    private static final Map<String, Queue<String>> timeMap = new HashMap<>();
+    public static Map<String, XYChart.Series<String, Number>> getLiveSeries(List<String> coinIds) {
+        Map<String, Double> prices = ApiService.getMultiplePrices(coinIds);
+        Map<String, XYChart.Series<String, Number>> seriesMap = new HashMap<>();
 
-    public static XYChart.Series<String, Number> getLivePriceSeries(String coinId) {
-        XYChart.Series<String, Number> series = new XYChart.Series<>();
-        series.setName(coinId.toUpperCase());
+        String time = LocalTime.now().withNano(0).toString();
 
-        // Fetch asset
-        Asset asset = ApiService.getCrypto(coinId);
-        if (asset == null) return series;
+        for (String coin : coinIds) {
+            double price = prices.getOrDefault(coin, 0.0);
+            priceHistoryMap.putIfAbsent(coin, new LinkedList<>());
+            timeMap.putIfAbsent(coin, new LinkedList<>());
 
-        double price = asset.getCurrentPrice();
-        String timestamp = LocalTime.now().withNano(0).toString();
+            LinkedList<Double> priceList = priceHistoryMap.get(coin);
+            LinkedList<String> timeList = timeMap.get(coin);
 
-        // Ensure queue exists
-        priceMap.putIfAbsent(coinId, new LinkedList<>());
-        timeMap.putIfAbsent(coinId, new LinkedList<>());
+            if (priceList.size() >= MAX_POINTS) {
+                priceList.poll();
+                timeList.poll();
+            }
 
-        Queue<Double> priceHistory = priceMap.get(coinId);
-        Queue<String> timeLabels = timeMap.get(coinId);
+            priceList.add(price);
+            timeList.add(time);
 
-        if (priceHistory.size() >= MAX_POINTS) {
-            priceHistory.poll();
-            timeLabels.poll();
+            XYChart.Series<String, Number> series = new XYChart.Series<>();
+            for (int i = 0; i < priceList.size(); i++) {
+                series.getData().add(new XYChart.Data<>(timeList.get(i), priceList.get(i)));
+            }
+            seriesMap.put(coin, series);
         }
 
-        priceHistory.add(price);
-        timeLabels.add(timestamp);
-
-        // Build chart series
-        int index = 0;
-        for (Double p : priceHistory) {
-            String t = ((LinkedList<String>) timeLabels).get(index++);
-            series.getData().add(new XYChart.Data<>(t, p));
-        }
-
-        return series;
+        return seriesMap;
     }
 }

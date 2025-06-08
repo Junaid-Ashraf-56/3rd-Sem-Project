@@ -10,6 +10,8 @@ import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 
 import java.net.URL;
+import java.util.List;
+import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -38,18 +40,18 @@ public class WalletController implements Initializable {
     }
 
     private void startGraph() {
+        List<String> coins = List.of("BTC", "ETH", "XRP", "DOGE"); // your desired coins
         executor.scheduleAtFixedRate(() -> {
-            XYChart.Series<String, Number> btcSeries = ChartService.getLivePriceSeries("bitcoin");
-            XYChart.Series<String, Number> ethSeries = ChartService.getLivePriceSeries("ethereum");
-            XYChart.Series<String, Number> xrpSeries = ChartService.getLivePriceSeries("ripple");
+            Map<String, XYChart.Series<String, Number>> dataMap = ChartService.getLiveSeries(coins);
 
             Platform.runLater(() -> {
-                btcChart.getData().setAll(btcSeries);
-                ethChart.getData().setAll(ethSeries);
-                XRPChart.getData().setAll(xrpSeries);
+                btcChart.getData().setAll(dataMap.get("BTC"));
+                ethChart.getData().setAll(dataMap.get("ETH"));
+                XRPChart.getData().setAll(dataMap.get("XRP"));
+                // add more charts if needed
             });
+
         }, 0, 10, TimeUnit.SECONDS);
-        }
 
-
+    }
 }
