@@ -1,7 +1,7 @@
 package com.example.walletmanagementsystem.model;
 
 public abstract class Asset {
-    private String assetID;
+    private String assetId;
     private String name;
     private double currentPrice;
     private AssetType assetType;
@@ -9,23 +9,29 @@ public abstract class Asset {
     private String assetSymbol;
 
 
-
-    public Asset(String assetId, String name, double currentPrice, AssetType assetType) {
+    // Constructors
+    public Asset(String assetId, String name, double currentPrice) {
+        this.assetId = assetId;
+        this.name = name;
+        this.currentPrice = currentPrice;
     }
 
-    // Constructors
-
-
+    public Asset(String assetId, String name, double currentPrice, AssetType assetType) {
+        this.assetId=assetId;
+        this.name=name;
+        this.currentPrice=currentPrice;
+        this.assetType=assetType;
+    }
 
     // Getter and Setter for Asset
-    public void setAssetID(String assetID) {this.assetID = assetID;}
+    public void setAssetId(String assetId) {this.assetId = assetId;}
     public void setName(String name) {this.name = name;}
     public void setCurrentPrice(double currentPrice) {this.currentPrice = currentPrice;}
     public void setAssetType(AssetType assetType) {this.assetType = assetType;}
     public void setQuantity(double quantity) {this.quantity = quantity;}
     public void setAssetSymbol(String assetSymbol) {this.assetSymbol = assetSymbol;}
 
-    public String getAssetID() {return assetID;}
+    public String getAssetId() {return assetId;}
     public String getName() {return name;}
     public double getCurrentPrice() {return currentPrice;}
     public AssetType getAssetType() {return assetType;}

@@ -5,3 +5,14 @@
 .loginanchorpane{
     -fx-background-radius: 10px;
 }
+.chart-plot-background {
+    -fx-background-color: transparent;
+}
+.chart-vertical-grid-lines,
+.chart-horizontal-grid-lines {
+    -fx-stroke: transparent;
+}
+.default-color0.chart-series-line {
+    -fx-stroke: #00ff90;
+    -fx-stroke-width: 2px;
+}

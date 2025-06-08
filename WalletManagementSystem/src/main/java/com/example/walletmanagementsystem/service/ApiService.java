@@ -14,16 +14,18 @@ import java.net.URL;
 
 public class ApiService {
     public static Crypto getCrypto(String coinId){
-        String apiUrl = "https://api.coingecko.com/api/v3/simple/price?ids=\" + coinId + \"&vs_currencies=usd";
+        coinId = coinId.toLowerCase(); // normalize input
+        String apiUrl = "https://api.coingecko.com/api/v3/simple/price?ids=" + coinId + "&vs_currencies=usd";
+
         try {
+            System.out.println("DEBUG: API URL = " + apiUrl);
             URL url = new URL(apiUrl);
             JsonNode root = getJsonNode(url);
+            System.out.println("DEBUG: Raw JSON = " + root.toPrettyString());
 
             double price = root.path(coinId).path("usd").asDouble();
-
-
             return new Crypto(coinId.toUpperCase(), capitalize(coinId), price, "CoinGecko");
-        }catch (Exception e){
+        } catch (Exception e){
             e.printStackTrace();
         }
         return null;
@@ -32,16 +34,15 @@ public class ApiService {
     private static JsonNode getJsonNode(URL url) throws IOException {
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
         connection.setRequestMethod("GET");
-
+        connection.setRequestProperty("User-Agent", "Mozilla/5.0");
 
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
         StringBuilder response = new StringBuilder();
         String line;
-        while ((line= bufferedReader.readLine())!=null){
+        while ((line = bufferedReader.readLine()) != null) {
             response.append(line);
         }
         bufferedReader.close();
-
 
         ObjectMapper mapper = new ObjectMapper();
         return mapper.readTree(response.toString());

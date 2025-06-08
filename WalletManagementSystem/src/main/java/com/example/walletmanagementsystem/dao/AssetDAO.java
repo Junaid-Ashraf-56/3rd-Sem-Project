@@ -22,7 +22,7 @@ public class AssetDAO {
         String sql = "INSERT INTO assets ( name, current_price, asset_type, extra_info) VALUES (?, ?, ?, ?, ?)";
 
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
-            stmt.setString(1, asset.getAssetID());
+            stmt.setString(1, asset.getAssetId());
             stmt.setString(2, asset.getName());
             stmt.setDouble(3, asset.getCurrentPrice());
             stmt.setString(4, asset.getAssetType().name());

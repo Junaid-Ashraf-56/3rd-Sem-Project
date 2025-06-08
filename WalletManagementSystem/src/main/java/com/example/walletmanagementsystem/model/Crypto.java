@@ -4,7 +4,7 @@ public class Crypto extends Asset {
     private String blockchain; // e.g., Ethereum, Bitcoin
 
     public Crypto(String assetId, String name, double currentPrice, String blockchain) {
-        super(assetId, name, currentPrice, AssetType.STOCK);
+        super(assetId, name, currentPrice, AssetType.CRYPTO);
         this.blockchain = blockchain;
     }
 
@@ -15,5 +15,7 @@ public class Crypto extends Asset {
     public void setBlockchain(String blockchain) {
         this.blockchain = blockchain;
     }
+
+
 }
 
