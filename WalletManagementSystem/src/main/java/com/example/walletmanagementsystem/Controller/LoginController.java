@@ -4,6 +4,7 @@ import com.example.walletmanagementsystem.dao.UserDAO;
 import com.example.walletmanagementsystem.model.Role;
 import com.example.walletmanagementsystem.model.User;
 import com.example.walletmanagementsystem.utils.AlertUtil;
+import com.example.walletmanagementsystem.utils.Session;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -40,9 +41,11 @@ public class LoginController {
 
         if (email.equals("admin@gmail.com") && password.equals("1234") && role==Role.ADMIN) {
             showAlert(Alert.AlertType.INFORMATION, "Login Successful", "Welcome Admin!");
+            Session.setCurrentUser(user);
 
         }else if (user!=null){
             AlertUtil.showInfo("Login Success","Welcome "+user.getName());
+            Session.setCurrentUser(user);
         }
         else {
             AlertUtil.showError("Login Failed", "Invalid email or password.");

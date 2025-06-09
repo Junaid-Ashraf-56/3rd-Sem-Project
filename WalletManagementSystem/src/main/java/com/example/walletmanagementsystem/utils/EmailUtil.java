@@ -1,6 +1,7 @@
 package com.example.walletmanagementsystem.utils;
 
 import java.util.Properties;
+import javax.mail.Session;
 import javax.mail.*;
 import javax.mail.internet.*;
 

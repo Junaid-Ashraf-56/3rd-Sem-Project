@@ -1,6 +1,12 @@
 package com.example.walletmanagementsystem.Controller;
 
+import com.example.walletmanagementsystem.dao.PortfolioDAO;
+import com.example.walletmanagementsystem.dao.WalletDAO;
+import com.example.walletmanagementsystem.model.Asset;
+import com.example.walletmanagementsystem.model.Portfolio;
+import com.example.walletmanagementsystem.model.Wallet;
 import com.example.walletmanagementsystem.service.ChartService;
+import com.example.walletmanagementsystem.utils.Session;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -8,8 +14,13 @@ import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
+import javafx.scene.layout.VBox;
+
+import javafx.scene.control.Label;
+
 
 import java.net.URL;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
@@ -31,16 +42,25 @@ public class WalletController implements Initializable {
     @FXML public CategoryAxis XRPXAxis;
     @FXML public NumberAxis XRPYAxis;
 
+
+    @FXML public VBox walletBalance;
+    @FXML public VBox walletCoins;
+
+
+
     private final ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        int userId = Session.getUserId();
+        showBalance(userId);
+        showCoins(userId);
         startGraph();
     }
 
     private void startGraph() {
-        List<String> coins = List.of("BTC", "ETH", "XRP", "DOGE"); // your desired coins
+        List<String> coins = List.of("BTC", "ETH", "XRP");
         executor.scheduleAtFixedRate(() -> {
             Map<String, XYChart.Series<String, Number>> dataMap = ChartService.getLiveSeries(coins);
 
@@ -48,10 +68,38 @@ public class WalletController implements Initializable {
                 btcChart.getData().setAll(dataMap.get("BTC"));
                 ethChart.getData().setAll(dataMap.get("ETH"));
                 XRPChart.getData().setAll(dataMap.get("XRP"));
-                // add more charts if needed
             });
 
         }, 0, 10, TimeUnit.SECONDS);
 
     }
+
+
+    public void showBalance(int userId){
+        walletBalance.getChildren().clear();
+        Wallet wallet = WalletDAO.getWalletById(userId);
+        if (wallet!=null){
+            Label balanceLabel = new Label("Balance: $" + String.format("%.2f", wallet.getBalance()));
+            balanceLabel.setStyle("-fx-font-size: 16px; -fx-font-weight: bold;");
+            walletBalance.getChildren().add(balanceLabel);
+        }
+    }
+
+    public void showCoins(int userId) {
+        Portfolio portfolio = PortfolioDAO.getPortfolioByUserId(userId);
+        if (portfolio != null) {
+            HashMap<String, Asset> assets = portfolio.getPortfolio();
+            walletCoins.getChildren().clear();
+
+            for (Map.Entry<String, Asset> entry : assets.entrySet()) {
+                String symbol = entry.getKey();
+                Asset asset = entry.getValue();
+
+                Label coinLabel = new Label(symbol + " - Qty: " + asset.getQuantity());
+                coinLabel.setStyle("-fx-text-fill: white; -fx-font-size: 14px;");
+                walletCoins.getChildren().add(coinLabel);
+            }
+        }
+    }
+
 }
