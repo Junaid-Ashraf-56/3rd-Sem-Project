@@ -74,6 +74,7 @@ public class WalletController implements Initializable {
 
     }
 
+    /*Dont delete it is for testing purpose */
 
 //    public void showBalance(int userId){
 //        walletBalance.getChildren().clear();
