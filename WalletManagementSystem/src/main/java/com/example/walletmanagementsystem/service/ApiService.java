@@ -32,7 +32,7 @@ public class ApiService {
                 double price = root.path(coin).path("USD").asDouble();
                 if (price > 0) {
                     prices.put(coin, price);
-                    cachedPrices.put(coin, price); // ✅ cache on success
+                    cachedPrices.put(coin, price);
                 }
             }
 
@@ -40,7 +40,7 @@ public class ApiService {
 
         } catch (Exception e) {
             System.err.println("API failed, using cached prices.");
-            return new HashMap<>(cachedPrices); // ✅ fallback
+            return new HashMap<>(cachedPrices);
         }
     }
 

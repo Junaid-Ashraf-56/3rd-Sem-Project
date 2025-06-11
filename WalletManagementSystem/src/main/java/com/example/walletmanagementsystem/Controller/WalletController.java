@@ -54,8 +54,8 @@ public class WalletController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         int userId = Session.getUserId();
-        showBalance(userId);
-        showCoins(userId);
+//        showBalance(userId);
+//        showCoins(userId);
         startGraph();
     }
 
@@ -75,31 +75,31 @@ public class WalletController implements Initializable {
     }
 
 
-    public void showBalance(int userId){
-        walletBalance.getChildren().clear();
-        Wallet wallet = WalletDAO.getWalletById(userId);
-        if (wallet!=null){
-            Label balanceLabel = new Label("Balance: $" + String.format("%.2f", wallet.getBalance()));
-            balanceLabel.setStyle("-fx-font-size: 16px; -fx-font-weight: bold;");
-            walletBalance.getChildren().add(balanceLabel);
-        }
-    }
-
-    public void showCoins(int userId) {
-        Portfolio portfolio = PortfolioDAO.getPortfolioByUserId(userId);
-        if (portfolio != null) {
-            HashMap<String, Asset> assets = portfolio.getPortfolio();
-            walletCoins.getChildren().clear();
-
-            for (Map.Entry<String, Asset> entry : assets.entrySet()) {
-                String symbol = entry.getKey();
-                Asset asset = entry.getValue();
-
-                Label coinLabel = new Label(symbol + " - Qty: " + asset.getQuantity());
-                coinLabel.setStyle("-fx-text-fill: white; -fx-font-size: 14px;");
-                walletCoins.getChildren().add(coinLabel);
-            }
-        }
-    }
+//    public void showBalance(int userId){
+//        walletBalance.getChildren().clear();
+//        Wallet wallet = WalletDAO.getWalletById(userId);
+//        if (wallet!=null){
+//            Label balanceLabel = new Label("Balance: $" + String.format("%.2f", wallet.getBalance()));
+//            balanceLabel.setStyle("-fx-font-size: 16px; -fx-font-weight: bold;");
+//            walletBalance.getChildren().add(balanceLabel);
+//        }
+//    }
+//
+//    public void showCoins(int userId) {
+//        Portfolio portfolio = PortfolioDAO.getPortfolioByUserId(userId);
+//        if (portfolio != null) {
+//            HashMap<String, Asset> assets = portfolio.getPortfolio();
+//            walletCoins.getChildren().clear();
+//
+//            for (Map.Entry<String, Asset> entry : assets.entrySet()) {
+//                String symbol = entry.getKey();
+//                Asset asset = entry.getValue();
+//
+//                Label coinLabel = new Label(symbol + " - Qty: " + asset.getQuantity());
+//                coinLabel.setStyle("-fx-text-fill: white; -fx-font-size: 14px;");
+//                walletCoins.getChildren().add(coinLabel);
+//            }
+//        }
+//    }
 
 }

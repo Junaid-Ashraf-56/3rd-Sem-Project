@@ -40,16 +40,16 @@
             </AnchorPane>
             <AnchorPane layoutX="1174.0" layoutY="156.0" prefHeight="637.0" prefWidth="184.0" style="-fx-background-color: black; -fx-background-radius: 5;" stylesheets="@../css/buttons.css">
                <children>
-                  <Button fx:id="BitcoinButton" layoutX="14.0" layoutY="90.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="160.0" style="-fx-background-radius: 8;" styleClass="portfoliobutton" stylesheets="@../css/buttons.css" text="Bitcoin" textFill="#e1e1e1" />
-                  <Button fx:id="EthereumButton" layoutX="14.0" layoutY="140.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="160.0" style="-fx-background-radius: 8;" styleClass="portfoliobutton" stylesheets="@../css/buttons.css" text="Ethereum" />
-                  <Button fx:id="XRPButton" layoutX="14.0" layoutY="190.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="160.0" style="-fx-background-radius: 8;" styleClass="portfoliobutton" stylesheets="@../css/buttons.css" text="XRP" />
-                  <Button fx:id="BNBButton" layoutX="14.0" layoutY="240.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="160.0" style="-fx-background-radius: 8;" styleClass="portfoliobutton" stylesheets="@../css/buttons.css" text="BNB" />
-                  <Button fx:id="SonanaButton" layoutX="14.0" layoutY="290.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="160.0" style="-fx-background-radius: 8;" styleClass="portfoliobutton" stylesheets="@../css/buttons.css" text="Solana" />
-                  <Button fx:id="USDTButton" layoutX="14.0" layoutY="340.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="160.0" style="-fx-background-radius: 8;" styleClass="portfoliobutton" stylesheets="@../css/buttons.css" text="USDT" />
-                  <Button fx:id="DogeButton" layoutX="14.0" layoutY="390.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="160.0" style="-fx-background-radius: 8;" styleClass="portfoliobutton" stylesheets="@../css/buttons.css" text="DOGE coin" />
-                  <Button fx:id="HyperliquidButton" layoutX="14.0" layoutY="440.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="160.0" style="-fx-background-radius: 8;" styleClass="portfoliobutton" stylesheets="@../css/buttons.css" text="Hyperliquid" />
-                  <Button fx:id="CardanoButton" layoutX="14.0" layoutY="490.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="160.0" style="-fx-background-radius: 8;" styleClass="portfoliobutton" stylesheets="@../css/buttons.css" text="Cardano" />
-                  <Button fx:id="SuiButton" layoutX="14.0" layoutY="540.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="160.0" style="-fx-background-radius: 8;" styleClass="portfoliobutton" stylesheets="@../css/buttons.css" text="Sui " />
+                  <Button fx:id="BitcoinButton" layoutX="14.0" layoutY="90.0" mnemonicParsing="false" onAction="#onBitcoinClick" prefHeight="26.0" prefWidth="160.0" style="-fx-background-radius: 8;" styleClass="portfoliobutton" stylesheets="@../css/buttons.css" text="Bitcoin" textFill="#e1e1e1" />
+                  <Button fx:id="EthereumButton" layoutX="14.0" layoutY="140.0" mnemonicParsing="false" onAction="#onEthereumClick" prefHeight="26.0" prefWidth="160.0" style="-fx-background-radius: 8;" styleClass="portfoliobutton" stylesheets="@../css/buttons.css" text="Ethereum" />
+                  <Button fx:id="XRPButton" layoutX="14.0" layoutY="190.0" mnemonicParsing="false" onAction="#onXrpClick" prefHeight="26.0" prefWidth="160.0" style="-fx-background-radius: 8;" styleClass="portfoliobutton" stylesheets="@../css/buttons.css" text="XRP" />
+                  <Button fx:id="BNBButton" layoutX="14.0" layoutY="240.0" mnemonicParsing="false" onAction="#onBnbClick" prefHeight="26.0" prefWidth="160.0" style="-fx-background-radius: 8;" styleClass="portfoliobutton" stylesheets="@../css/buttons.css" text="BNB" />
+                  <Button fx:id="SolanaButton" layoutX="14.0" layoutY="290.0" mnemonicParsing="false" onAction="#onSolanaClick" prefHeight="26.0" prefWidth="160.0" style="-fx-background-radius: 8;" styleClass="portfoliobutton" stylesheets="@../css/buttons.css" text="Solana" />
+                  <Button fx:id="USDTButton" layoutX="14.0" layoutY="340.0" mnemonicParsing="false" onAction="#onUsdtClick" prefHeight="26.0" prefWidth="160.0" style="-fx-background-radius: 8;" styleClass="portfoliobutton" stylesheets="@../css/buttons.css" text="USDT" />
+                  <Button fx:id="DogeButton" layoutX="14.0" layoutY="390.0" mnemonicParsing="false" onAction="#onDogeClick" prefHeight="26.0" prefWidth="160.0" style="-fx-background-radius: 8;" styleClass="portfoliobutton" stylesheets="@../css/buttons.css" text="DOGE coin" />
+                  <Button fx:id="HyperliquidButton" layoutX="14.0" layoutY="440.0" mnemonicParsing="false" onAction="#onHyperliquidClick" prefHeight="26.0" prefWidth="160.0" style="-fx-background-radius: 8;" styleClass="portfoliobutton" stylesheets="@../css/buttons.css" text="Hyperliquid" />
+                  <Button fx:id="CardanoButton" layoutX="14.0" layoutY="490.0" mnemonicParsing="false" onAction="#onCardanoClick" prefHeight="26.0" prefWidth="160.0" style="-fx-background-radius: 8;" styleClass="portfoliobutton" stylesheets="@../css/buttons.css" text="Cardano" />
+                  <Button fx:id="SuiButton" layoutX="14.0" layoutY="540.0" mnemonicParsing="false" onAction="#onSuiClick" prefHeight="26.0" prefWidth="160.0" style="-fx-background-radius: 8;" styleClass="portfoliobutton" stylesheets="@../css/buttons.css" text="Sui " />
                   <Text fill="WHITE" layoutX="28.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Coins" wrappingWidth="100.13000106811523">
                      <font>
                         <Font name="System Bold" size="22.0" />
@@ -70,12 +70,12 @@
                         <Font name="System Bold" size="13.0" />
                      </font>
                   </Button>
-                  <LineChart layoutX="14.0" layoutY="14.0" prefHeight="477.0" prefWidth="914.0">
+                  <LineChart fx:id="MarketChart" layoutX="14.0" layoutY="14.0" prefHeight="477.0" prefWidth="914.0">
                     <xAxis>
-                      <CategoryAxis side="BOTTOM" />
+                      <CategoryAxis side="BOTTOM" fx:id="xAxis" />
                     </xAxis>
                     <yAxis>
-                      <NumberAxis side="LEFT" />
+                      <NumberAxis fx:id="yAxis" side="LEFT" />
                     </yAxis>
                   </LineChart>
                </children>

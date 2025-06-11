@@ -27,7 +27,6 @@ public class WalletService {
 
         boolean updated = WalletDAO.updateWalletBalance(userId,newBalance);
         if (updated) {
-            // Log transaction
             Transaction tx = new Transaction();
             tx.setUserId(userId);
             tx.setType(TransactionType.ADD_FUNDS);

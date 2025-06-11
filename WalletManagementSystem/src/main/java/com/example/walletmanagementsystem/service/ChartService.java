@@ -5,7 +5,8 @@ import javafx.scene.chart.XYChart;
 import java.time.LocalTime;
 import java.util.*;
 
-public class ChartService {
+public class ChartService
+{
     private static final int MAX_POINTS = 30;
     private static final Map<String, LinkedList<Double>> priceHistoryMap = new HashMap<>();
     private static final Map<String, LinkedList<String>> timeMap = new HashMap<>();
@@ -38,7 +39,6 @@ public class ChartService {
             }
             seriesMap.put(coin, series);
         }
-
         return seriesMap;
     }
 }
