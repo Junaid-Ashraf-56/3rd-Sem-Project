@@ -6,6 +6,9 @@ module com.example.walletmanagementsystem {
     requires com.fasterxml.jackson.databind;
     requires java.desktop;
 //    requires org.postgresql.jdbc;
+
+
+    exports com.example.walletmanagementsystem.service;
     opens com.example.walletmanagementsystem to javafx.fxml;
     opens com.example.walletmanagementsystem.Controller to javafx.fxml;
     opens com.example.walletmanagementsystem.dao to javafx.fxml;

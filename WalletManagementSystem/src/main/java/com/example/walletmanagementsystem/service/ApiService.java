@@ -13,15 +13,20 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 
 public class ApiService {
-    private static final String API_URL = "https://min-api.cryptocompare.com/data/pricemulti?fsyms=%s&tsyms=USD";
+    private static final String API_URL = "https://api.coingecko.com/api/v3/simple/price?ids=%s&vs_currencies=usd";;
     private static final Map<String, Double> cachedPrices = new HashMap<>();
 
     public static Map<String, Double> getMultiplePrices(List<String> coinIds) {
-        String joinedSymbols = String.join(",", coinIds);
-        String apiUrl = String.format(API_URL, joinedSymbols);
+        String joinedIds = coinIds.stream()
+                .map(String::toLowerCase)
+                .collect(Collectors.joining(","));
+
+        String apiUrl = String.format(API_URL, joinedIds);
+        System.out.println("Requesting: " + apiUrl);
 
         try {
             URL url = new URL(apiUrl);
@@ -35,6 +40,7 @@ public class ApiService {
                     cachedPrices.put(coin, price);
                 }
             }
+            System.out.println("CoinGecko Batch Response: " + root);
 
             return prices;
 

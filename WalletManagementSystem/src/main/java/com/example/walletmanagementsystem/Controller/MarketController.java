@@ -4,6 +4,7 @@ import com.example.walletmanagementsystem.service.ChartService;
 
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
@@ -19,8 +20,8 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-public class MarketController {
-    @FXML public LineChart<String, Number> marketChart;
+public class MarketController implements Initializable {
+    @FXML public LineChart<String, Number> MarketChart;
     @FXML public CategoryAxis xAxis;
     @FXML public NumberAxis yAxis;
 
@@ -43,12 +44,22 @@ public class MarketController {
     private String currentCoin = "bitcoin";
 
     public void initialize(URL location, ResourceBundle resources) {
+        xAxis.setLabel("Time");
+        yAxis.setLabel("Price (USD)");
+        xAxis.setAutoRanging(true);
+        yAxis.setAutoRanging(true);
+        MarketChart.setLegendVisible(false);
+        MarketChart.setAnimated(false);
+
         startGraphUpdater();
     }
 
     private void startGraphUpdater() {
-        final List<String> coins = List.of("bitcoin", "ethereum", "xrp", "bnb", "solana", "usdt", "doge", "hyperliquid", "cardano", "sui");
-
+        List<String> coins = List.of(
+                "bitcoin", "ethereum", "ripple", "binancecoin",
+                "solana", "tether", "dogecoin", "hyperliquid",
+                "cardano", "sui"
+        );
         executor.scheduleAtFixedRate(() -> {
             Map<String, XYChart.Series<String, Number>> newData = ChartService.getLiveSeries(coins);
 
@@ -86,12 +97,12 @@ public class MarketController {
     }
 
     @FXML public void onXrpClick() {
-        currentCoin = "xrp";
+        currentCoin = "ripple";
         updateChart();
     }
     @FXML
     public void onBnbClick() {
-        currentCoin = "bnb";
+        currentCoin = "binancecoin";
         updateChart();
     }
     @FXML
@@ -101,12 +112,12 @@ public class MarketController {
     }
     @FXML
     public void onUsdtClick() {
-        currentCoin = "usdt";
+        currentCoin = "tether";
         updateChart();
     }
     @FXML
     public void onDogeClick() {
-        currentCoin = "doge";
+        currentCoin = "dogecoin";
         updateChart();
     }
     @FXML
@@ -126,10 +137,16 @@ public class MarketController {
     }
 
     private void updateChart() {
-        if (priceMap.containsKey(currentCoin)) {
-            marketChart.getData().setAll(priceMap.get(currentCoin));
+        XYChart.Series<String, Number> series = priceMap.get(currentCoin);
+        if (series != null && !series.getData().isEmpty()) {
+            MarketChart.getData().setAll(series);
+
+            // Manually adjust Y-axis range if needed
+            yAxis.setAutoRanging(true);  // Most important
+            xAxis.setAutoRanging(true);
         }
     }
+
 
 
 }
