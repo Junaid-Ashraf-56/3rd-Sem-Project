@@ -1,5 +1,6 @@
 package com.example.walletmanagementsystem.Controller;
 
+import com.example.walletmanagementsystem.Main;
 import com.example.walletmanagementsystem.dao.PortfolioDAO;
 import com.example.walletmanagementsystem.dao.WalletDAO;
 import com.example.walletmanagementsystem.model.Asset;
@@ -8,17 +9,24 @@ import com.example.walletmanagementsystem.model.Wallet;
 import com.example.walletmanagementsystem.service.ChartService;
 import com.example.walletmanagementsystem.utils.Session;
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
+import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 
 import javafx.scene.control.Label;
+import javafx.stage.Stage;
 
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.List;
@@ -104,4 +112,17 @@ public class WalletController implements Initializable {
 //        }
 //    }
 
+    @FXML
+    protected void onClickMarketButton(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/com/example/walletmanagementsystem/Controller/Markets.fxml"));
+        Stage stage = new Stage();
+        Scene scene = new Scene((Parent)fxmlLoader.load(), (double)414.0F, (double)383.0F);
+        stage.setTitle("Markets!");
+        stage.setScene(scene);
+        stage.setResizable(true);
+        stage.setMaximized(true);
+        stage.show();
+        Stage currentStage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+        currentStage.close();
+    }
 }

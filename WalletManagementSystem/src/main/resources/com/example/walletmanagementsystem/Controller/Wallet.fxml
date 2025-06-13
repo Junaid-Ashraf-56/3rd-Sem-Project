@@ -26,11 +26,11 @@
          <children>
             <AnchorPane prefHeight="801.0" prefWidth="239.0">
                <children>
-                  <Button layoutY="67.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="162.0" stylesheets="@../css/buttons.css" text="Markets" />
+                  <Button fx:id="marketbutton" layoutY="67.0" mnemonicParsing="false" onAction="#onClickMarketButton" prefHeight="25.0" prefWidth="162.0" stylesheets="@../css/buttons.css" text="Markets" />
                   <Button layoutY="98.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="161.0" stylesheets="@../css/buttons.css" text="Trading" />
                   <Button layoutY="129.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="162.0" stylesheets="@../css/buttons.css" text="Portfolio" />
                   <Button layoutY="160.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="163.0" stylesheets="@../css/buttons.css" text="Transactions" />
-                  <Button layoutY="191.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="163.0" stylesheets="@../css/buttons.css" text="Wallet" />
+                  <Button fx:id="walletbutton" layoutY="191.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="163.0" stylesheets="@../css/buttons.css" text="Wallet" />
                   <FontIcon iconLiteral="fas-bars" iconSize="20" layoutX="201.0" layoutY="37.0" wrappingWidth="7.875" />
                   <FontIcon iconColor="#f5385cc4" iconLiteral="fas-credit-card" iconSize="30" layoutX="12.0" layoutY="41.0" wrappingWidth="13.5" />
                   <Hyperlink layoutX="62.0" layoutY="9.0" text="CashMate" textFill="#b92e2e">
@@ -85,7 +85,7 @@
       <!-- Card 3 with LineChart -->
       <AnchorPane layoutX="507.0" layoutY="95.0" prefHeight="280.0" prefWidth="281.0" styleClass="coinanchorpane" stylesheets="@../css/anchorpane.css">
          <children>
-            <LineChart fx:id="btcChart" animated="false" layoutX="10.0" layoutY="10.0" legendVisible="false" prefHeight="207.0" prefWidth="220.0">
+            <LineChart fx:id="btcChart" animated="false" layoutX="10.0" layoutY="10.0" legendVisible="false" prefHeight="207.0" prefWidth="260.0">
                <xAxis>
                   <CategoryAxis fx:id="btcXAxis" />
                </xAxis>
@@ -101,7 +101,7 @@
       <!-- Card 4 with LineChart -->
       <AnchorPane layoutX="803.0" layoutY="98.0" prefHeight="280.0" prefWidth="263.0" styleClass="coinanchorpane" stylesheets="@../css/anchorpane.css">
          <children>
-            <LineChart fx:id="ethChart" animated="false" layoutX="10.0" layoutY="10.0" legendVisible="false" prefHeight="207.0" prefWidth="220.0">
+            <LineChart fx:id="ethChart" animated="false" layoutX="10.0" layoutY="10.0" legendVisible="false" prefHeight="207.0" prefWidth="239.0">
                <xAxis>
                   <CategoryAxis fx:id="ethXAxis" />
                </xAxis>
@@ -117,7 +117,7 @@
       <!-- Card 5 with LineChart -->
       <AnchorPane layoutX="1081.0" layoutY="99.0" prefHeight="280.0" prefWidth="260.0" styleClass="coinanchorpane" stylesheets="@../css/anchorpane.css">
          <children>
-            <LineChart fx:id="XRPChart" animated="false" layoutX="10.0" layoutY="10.0" legendVisible="false" prefHeight="207.0" prefWidth="220.0">
+            <LineChart fx:id="XRPChart" animated="false" layoutX="10.0" layoutY="10.0" legendVisible="false" prefHeight="207.0" prefWidth="239.0">
                <xAxis>
                   <CategoryAxis fx:id="XRPXAxis" />
                </xAxis>
