@@ -82,19 +82,8 @@
             </Label>
          </children></AnchorPane>
 
-      <!-- Card 2 with +ADD -->
-      <AnchorPane layoutX="512.0" layoutY="97.0" prefHeight="280.0" prefWidth="66.0" styleClass="coinanchorpane" stylesheets="@../css/anchorpane.css">
-         <children>
-            <Hyperlink layoutX="8.0" layoutY="89.0" text="+ ADD" textFill="#f2f2f2">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Hyperlink>
-         </children>
-      </AnchorPane>
-
       <!-- Card 3 with LineChart -->
-      <AnchorPane layoutX="601.0" layoutY="98.0" prefHeight="280.0" prefWidth="239.0" styleClass="coinanchorpane" stylesheets="@../css/anchorpane.css">
+      <AnchorPane layoutX="507.0" layoutY="95.0" prefHeight="280.0" prefWidth="281.0" styleClass="coinanchorpane" stylesheets="@../css/anchorpane.css">
          <children>
             <LineChart fx:id="btcChart" animated="false" layoutX="10.0" layoutY="10.0" legendVisible="false" prefHeight="207.0" prefWidth="220.0">
                <xAxis>
@@ -110,7 +99,7 @@
       </AnchorPane>
 
       <!-- Card 4 with LineChart -->
-      <AnchorPane layoutX="852.0" layoutY="101.0" prefHeight="280.0" prefWidth="239.0" styleClass="coinanchorpane" stylesheets="@../css/anchorpane.css">
+      <AnchorPane layoutX="803.0" layoutY="98.0" prefHeight="280.0" prefWidth="263.0" styleClass="coinanchorpane" stylesheets="@../css/anchorpane.css">
          <children>
             <LineChart fx:id="ethChart" animated="false" layoutX="10.0" layoutY="10.0" legendVisible="false" prefHeight="207.0" prefWidth="220.0">
                <xAxis>
@@ -126,7 +115,7 @@
       </AnchorPane>
 
       <!-- Card 5 with LineChart -->
-      <AnchorPane layoutX="1102.0" layoutY="102.0" prefHeight="280.0" prefWidth="239.0" styleClass="coinanchorpane" stylesheets="@../css/anchorpane.css">
+      <AnchorPane layoutX="1081.0" layoutY="99.0" prefHeight="280.0" prefWidth="260.0" styleClass="coinanchorpane" stylesheets="@../css/anchorpane.css">
          <children>
             <LineChart fx:id="XRPChart" animated="false" layoutX="10.0" layoutY="10.0" legendVisible="false" prefHeight="207.0" prefWidth="220.0">
                <xAxis>
