@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 
 
 public class ApiService {
-    private static final String API_URL = "https://min-api.cryptocompare.com/data/pricemulti?fsyms=%s&tsyms=USD";
+    private static final String API_URL = "https://api.coingecko.com/api/v3/simple/price?ids=%s&vs_currencies=usd";;
     private static final Map<String, Double> cachedPrices = new HashMap<>();
 
     public static Map<String, Double> getMultiplePrices(List<String> coinIds) {

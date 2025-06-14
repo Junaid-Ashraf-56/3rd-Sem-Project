@@ -1,12 +1,9 @@
 <component name="libraryTable">
   <library name="java">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/WalletManagementSystem/src/main/java/com/example/walletmanagementsystem/lib/jackson-databind-2.17.0.jar!/" />
-      <root url="jar://$PROJECT_DIR$/WalletManagementSystem/src/main/java/com/example/walletmanagementsystem/lib/jackson-core-2.17.0.jar!/" />
       <root url="jar://$PROJECT_DIR$/WalletManagementSystem/src/main/java/com/example/walletmanagementsystem/lib/jackson-annotations-2.17.0.jar!/" />
-      <root url="jar://$PROJECT_DIR$/WalletManagementSystem/src/main/java/com/example/walletmanagementsystem/lib/ikonli-javafx-12.3.1.jar!/" />
-      <root url="jar://$PROJECT_DIR$/WalletManagementSystem/src/main/java/com/example/walletmanagementsystem/lib/ikonli-fontawesome5-pack-12.3.1.jar!/" />
-      <root url="jar://$PROJECT_DIR$/WalletManagementSystem/src/main/java/com/example/walletmanagementsystem/lib/ikonli-core-12.3.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/WalletManagementSystem/src/main/java/com/example/walletmanagementsystem/lib/jackson-core-2.17.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/WalletManagementSystem/src/main/java/com/example/walletmanagementsystem/lib/jackson-databind-2.17.0.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

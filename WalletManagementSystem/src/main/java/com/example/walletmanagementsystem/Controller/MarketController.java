@@ -1,24 +1,17 @@
 package com.example.walletmanagementsystem.Controller;
 
-import com.example.walletmanagementsystem.Main;
 import com.example.walletmanagementsystem.service.ChartService;
 
 import javafx.application.Platform;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 
-import javafx.scene.control.Button;
-import javafx.stage.Stage;
 
-import java.io.IOException;
+import javafx.scene.control.Button;
 import java.net.URL;
 import java.util.List;
 import java.util.Map;
@@ -152,22 +145,6 @@ public class MarketController implements Initializable {
             yAxis.setAutoRanging(true);  // Most important
             xAxis.setAutoRanging(true);
         }
-    }
-
-    @FXML
-    protected void onClickwalletButton(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/walletmanagementsystem/Controller/Wallet.fxml"));
-        Parent root = loader.load();
-
-        Stage stage = new Stage();
-        Scene scene = new Scene(root, 414.0, 383.0);
-        stage.setTitle("Wallet!");
-        stage.setScene(scene);
-        stage.setResizable(true);
-        stage.setMaximized(true);
-        stage.show();
-        Stage currentStage = (Stage) ((Button) event.getSource()).getScene().getWindow();
-        currentStage.close();
     }
 
 
