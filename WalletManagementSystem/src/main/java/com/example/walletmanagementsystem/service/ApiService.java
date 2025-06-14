@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 
 
 public class ApiService {
-    private static final String API_URL = "https://min-api.cryptocompare.com/data/pricemulti?fsyms=%s&tsyms=USD";
+    private static final String API_URL = "https://api.coingecko.com/api/v3/simple/price?ids=%s&vs_currencies=usd";
     //"https://api.coingecko.com/api/v3/simple/price?ids=%s&vs_currencies=usd"
     private static final Map<String, Double> cachedPrices = new HashMap<>();
 
@@ -35,7 +35,7 @@ public class ApiService {
 
             Map<String, Double> prices = new HashMap<>();
             for (String coin : coinIds) {
-                double price = root.path(coin).path("USD").asDouble();
+                double price = root.path(coin).path("usd").asDouble();
                 if (price > 0) {
                     prices.put(coin, price);
                     cachedPrices.put(coin, price);

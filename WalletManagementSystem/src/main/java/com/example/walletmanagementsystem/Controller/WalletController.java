@@ -69,14 +69,14 @@ public class WalletController implements Initializable {
     }
 
     private void startGraph() {
-        List<String> coins = List.of("BTC", "ETH", "XRP");
+        List<String> coins = List.of("bitcoin", "ethereum", "ripple");
         executor.scheduleAtFixedRate(() -> {
             Map<String, XYChart.Series<String, Number>> dataMap = ChartService.getLiveSeries(coins);
 
             Platform.runLater(() -> {
-                btcChart.getData().setAll(dataMap.get("BTC"));
-                ethChart.getData().setAll(dataMap.get("ETH"));
-                XRPChart.getData().setAll(dataMap.get("XRP"));
+                btcChart.getData().setAll(dataMap.get("bitcoin"));
+                ethChart.getData().setAll(dataMap.get("ethereum"));
+                XRPChart.getData().setAll(dataMap.get("ripple"));
             });
 
         }, 0, 10, TimeUnit.SECONDS);
