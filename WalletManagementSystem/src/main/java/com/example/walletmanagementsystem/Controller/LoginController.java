@@ -20,12 +20,12 @@ import static com.example.walletmanagementsystem.utils.AlertUtil.showAlert;
 
 public class LoginController {
 
-    @FXML public AnchorPane loginform;
-    @FXML public TextField LoginEmail;
-    @FXML public PasswordField LoginPassword;
-    @FXML public ComboBox<String> myComboBox;
-    @FXML public Button LoginData;
-    @FXML public Hyperlink Signup;
+    @FXML private AnchorPane loginform;
+    @FXML private TextField LoginEmail;
+    @FXML private PasswordField LoginPassword;
+    @FXML private ComboBox<String> myComboBox;
+    @FXML private Button LoginData;
+    @FXML private Hyperlink Signup;
 
     @FXML
     void handleLogin(ActionEvent event) {

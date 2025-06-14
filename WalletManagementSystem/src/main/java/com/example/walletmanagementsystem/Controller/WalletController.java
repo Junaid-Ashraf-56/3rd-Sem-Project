@@ -38,21 +38,21 @@ import java.util.concurrent.TimeUnit;
 
 
 public class WalletController implements Initializable {
-    @FXML public LineChart<String, Number> btcChart;
-    @FXML public CategoryAxis btcXAxis;
-    @FXML public NumberAxis btcYAxis;
+    @FXML private LineChart<String, Number> btcChart;
+    @FXML private CategoryAxis btcXAxis;
+    @FXML private NumberAxis btcYAxis;
 
-    @FXML public LineChart<String,Number> ethChart;
-    @FXML public CategoryAxis ethXAxis;
-    @FXML public NumberAxis ethYAxis;
+    @FXML private LineChart<String,Number> ethChart;
+    @FXML private CategoryAxis ethXAxis;
+    @FXML private NumberAxis ethYAxis;
 
-    @FXML public LineChart<String,Number> XRPChart;
-    @FXML public CategoryAxis XRPXAxis;
-    @FXML public NumberAxis XRPYAxis;
+    @FXML private LineChart<String,Number> XRPChart;
+    @FXML private CategoryAxis XRPXAxis;
+    @FXML private NumberAxis XRPYAxis;
 
 
-    @FXML public VBox walletBalance;
-    @FXML public VBox walletCoins;
+    @FXML private VBox walletBalance;
+    @FXML private VBox walletCoins;
 
 
 

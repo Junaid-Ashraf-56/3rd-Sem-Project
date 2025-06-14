@@ -20,14 +20,14 @@ import static com.example.walletmanagementsystem.utils.AlertUtil.showAlert;
 
 
 public class SignupController {
-    @FXML public AnchorPane loginform;
-    @FXML public AnchorPane signupform;
-    @FXML public Hyperlink loginLink;
-    @FXML public Hyperlink Signup;
-    @FXML public TextField SignupEmail;
-    @FXML public PasswordField SignupPassword;
-    @FXML public TextField UserName;
-    @FXML public Button Sigup;
+    @FXML private AnchorPane loginform;
+    @FXML private AnchorPane signupform;
+    @FXML private Hyperlink loginLink;
+    @FXML private Hyperlink Signup;
+    @FXML private TextField SignupEmail;
+    @FXML private PasswordField SignupPassword;
+    @FXML private TextField UserName;
+    @FXML private Button Sigup;
 
     @FXML
     public void switchToLogin(ActionEvent actionEvent) {

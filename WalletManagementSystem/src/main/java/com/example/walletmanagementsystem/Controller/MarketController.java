@@ -1,6 +1,5 @@
 package com.example.walletmanagementsystem.Controller;
 
-import com.example.walletmanagementsystem.Main;
 import com.example.walletmanagementsystem.service.ChartService;
 
 import javafx.application.Platform;
@@ -28,21 +27,21 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 public class MarketController implements Initializable {
-    @FXML public LineChart<String, Number> MarketChart;
-    @FXML public CategoryAxis xAxis;
-    @FXML public NumberAxis yAxis;
+    @FXML private LineChart<String, Number> MarketChart;
+    @FXML private CategoryAxis xAxis;
+    @FXML private NumberAxis yAxis;
 
 
-    @FXML public Button BitcoinButton;
-    @FXML public Button EthereumButton;
-    @FXML public Button XRPButton;
-    @FXML public Button BNBButton;
-    @FXML public Button SolanaButton;
-    @FXML public Button USDTButton;
-    @FXML public Button DogeButton;
-    @FXML public Button HyperliquidButton;
-    @FXML public Button CardanoButton;
-    @FXML public Button SuiButton;
+    @FXML private Button BitcoinButton;
+    @FXML private Button EthereumButton;
+    @FXML private Button XRPButton;
+    @FXML private Button BNBButton;
+    @FXML private Button SolanaButton;
+    @FXML private Button USDTButton;
+    @FXML private Button DogeButton;
+    @FXML private Button HyperliquidButton;
+    @FXML private Button CardanoButton;
+    @FXML private Button SuiButton;
 
 
     private final ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
