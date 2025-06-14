@@ -10,19 +10,20 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
 
 <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1363.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.walletmanagementsystem.Controller.MarketController">
    <children>
-      <AnchorPane prefHeight="800.0" prefWidth="1137.0" style="-fx-background-color: black;">
+      <AnchorPane prefHeight="800.0" prefWidth="1363.0" style="-fx-background-color: black;">
          <children>
             <AnchorPane layoutX="205.0" layoutY="14.0" prefHeight="82.0" prefWidth="1136.0" style="-fx-background-color: Black; -fx-background-radius: 5;">
                <children>
-                  <Label layoutX="14.0" layoutY="13.0" text="Market" textFill="WHITE">
+                  <Label layoutX="14.0" layoutY="34.0" text="Market" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="48.0" />
                      </font>
                   </Label>
-                  <Hyperlink layoutX="989.0" layoutY="25.0" prefHeight="33.0" prefWidth="133.0" text="Login/Signup" textFill="WHITE">
+                  <Hyperlink layoutX="989.0" layoutY="51.0" prefHeight="33.0" prefWidth="133.0" text="Login/Signup" textFill="WHITE">
                      <font>
                         <Font name="Calibri" size="18.0" />
                      </font>
@@ -71,16 +72,31 @@
                      </font>
                   </Button>
                   <LineChart fx:id="MarketChart" layoutX="14.0" layoutY="14.0" prefHeight="477.0" prefWidth="914.0" stylesheets="@../css/anchorpane.css">
-                    <xAxis>
-                      <CategoryAxis side="BOTTOM" fx:id="xAxis" />
-                    </xAxis>
-                    <yAxis>
-                      <NumberAxis fx:id="yAxis" side="LEFT" />
-                    </yAxis>
+                     <xAxis>
+                        <CategoryAxis side="BOTTOM" fx:id="xAxis" />
+                     </xAxis>
+                     <yAxis>
+                        <NumberAxis fx:id="yAxis" side="LEFT" />
+                     </yAxis>
                   </LineChart>
                </children>
             </AnchorPane>
             <AnchorPane layoutX="-1.0" layoutY="258.0" prefHeight="462.0" prefWidth="1160.0" style="-fx-background-color: Grey;" visible="false" />
+            <AnchorPane layoutX="1.0" layoutY="120.0" prefHeight="384.0" prefWidth="176.0" style="-fx-background-color: black;">
+               <children>
+                  <Button fx:id="marketbutton" layoutX="-12.0" layoutY="19.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="162.0" stylesheets="@../css/buttons.css" text="Markets" />
+                  <Button layoutX="-11.0" layoutY="50.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="161.0" stylesheets="@../css/buttons.css" text="Trading" />
+                  <Button layoutX="-11.0" layoutY="81.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="162.0" stylesheets="@../css/buttons.css" text="Portfolio" />
+                  <Button layoutX="-11.0" layoutY="112.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="163.0" stylesheets="@../css/buttons.css" text="Transactions" />
+                  <Button fx:id="walletbutton" layoutX="-11.0" layoutY="143.0" mnemonicParsing="false" onAction="#onClickwalletButton" prefHeight="25.0" prefWidth="163.0" stylesheets="@../css/buttons.css" text="Wallet" />
+               </children>
+            </AnchorPane>
+            <Hyperlink layoutX="69.0" layoutY="67.0" text="CashMate" textFill="#b92e2e">
+               <font>
+                  <Font name="System Bold Italic" size="23.0" />
+               </font>
+            </Hyperlink>
+            <FontIcon iconColor="#f5385cc4" iconLiteral="fas-credit-card" iconSize="30" layoutX="22.0" layoutY="95.0" wrappingWidth="13.5" />
          </children>
       </AnchorPane>
    </children>
