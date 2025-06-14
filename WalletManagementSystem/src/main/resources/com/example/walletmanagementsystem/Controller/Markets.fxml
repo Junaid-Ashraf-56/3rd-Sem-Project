@@ -72,12 +72,12 @@
                      </font>
                   </Button>
                   <LineChart fx:id="MarketChart" layoutX="14.0" layoutY="14.0" prefHeight="477.0" prefWidth="914.0" stylesheets="@../css/anchorpane.css">
-                    <xAxis>
-                      <CategoryAxis side="BOTTOM" fx:id="xAxis" />
-                    </xAxis>
-                    <yAxis>
-                      <NumberAxis fx:id="yAxis" side="LEFT" />
-                    </yAxis>
+                     <xAxis>
+                        <CategoryAxis side="BOTTOM" fx:id="xAxis" />
+                     </xAxis>
+                     <yAxis>
+                        <NumberAxis fx:id="yAxis" side="LEFT" />
+                     </yAxis>
                   </LineChart>
                </children>
             </AnchorPane>
