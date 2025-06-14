@@ -23,7 +23,7 @@
                         <Font name="System Bold" size="48.0" />
                      </font>
                   </Label>
-                  <Hyperlink layoutX="989.0" layoutY="51.0" prefHeight="33.0" prefWidth="133.0" text="Login/Signup" textFill="WHITE">
+                  <Hyperlink layoutX="989.0" layoutY="51.0" prefHeight="33.0" prefWidth="133.0" text="Noman Talib" textFill="WHITE">
                      <font>
                         <Font name="Calibri" size="18.0" />
                      </font>
