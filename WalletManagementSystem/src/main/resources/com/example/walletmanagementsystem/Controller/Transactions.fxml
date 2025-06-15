@@ -31,12 +31,12 @@
                     <Label style="-fx-translate-x: 15; -fx-translate-y: -25;" text="📈" textFill="#fcf8f8" />
                     <Button mnemonicParsing="false" onAction="#onClickPortfolioButton" prefHeight="25.0" prefWidth="162.0" stylesheets="@../css/buttons.css" text="Portfolio" />
                     <Label style="-fx-translate-x: 15; -fx-translate-y: -25;" text="💼" textFill="#fcfcfc" />
-                    <Button fx:id="transactionsbutton" mnemonicParsing="false" prefHeight="25.0" prefWidth="163.0" stylesheets="@../css/buttons.css" text="Transactions" />
+                    <Button fx:id="transactionbutton" mnemonicParsing="false" prefHeight="25.0" prefWidth="163.0" stylesheets="@../css/buttons.css" text="Transactions" />
                     <Label style="-fx-translate-x: 15; -fx-translate-y: -25;" text="💱" textFill="#ebebeb" />
                     <Button fx:id="walletbutton" mnemonicParsing="false" onAction="#onClickWalletButton" prefHeight="25.0" prefWidth="163.0" stylesheets="@../css/buttons.css" text="Wallet" />
                     <Label style="-fx-translate-x: 16; -fx-translate-y: -25;" text="💳" textFill="#fffefe" />
                     <VBox VBox.vgrow="ALWAYS" />
-                    <Button fx:id="walletbutton1" mnemonicParsing="false"  prefHeight="25.0" prefWidth="163.0" stylesheets="@../css/buttons.css" text="Logout" />
+                    <Button fx:id="walletbutton1" mnemonicParsing="false" prefHeight="25.0" prefWidth="163.0" stylesheets="@../css/buttons.css" text="Logout" />
                 </children>
             </VBox>
             <!-- Main Content -->
