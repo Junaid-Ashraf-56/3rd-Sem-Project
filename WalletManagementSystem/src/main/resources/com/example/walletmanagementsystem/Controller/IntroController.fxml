@@ -1,20 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Hyperlink?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<?import javafx.scene.control.Label?>
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1363.0" style="-fx-background-color: pink;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.walletmanagementsystem.Controller.IntroController">
+<VBox alignment="CENTER" prefHeight="800.0" prefWidth="1363.0" style="-fx-background-color: #1e1e1e;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.walletmanagementsystem.Controller.IntroController">
    <children>
-      <FontIcon iconColor="#f5385cc4" iconLiteral="fas-credit-card" iconSize="60" layoutX="602.0" layoutY="403.0" wrappingWidth="36.5" />
-      <Hyperlink layoutX="735.0" layoutY="370.0" text="CashMate" textFill="#b92e2e">
-         <Label fx:id="walletName" text="My Wallet" layoutX="100" layoutY="100"/>
-
+      <FontIcon fx:id="creditCardIcon" iconColor="#651717c4" iconLiteral="fas-credit-card" iconSize="60" wrappingWidth="36.5" />
+      <Label fx:id="cashmatelabel" style="-fx-padding: 50px;" text="CashMate" textFill="#651717">
          <font>
-            <Font name="System Bold Italic" size="51.0" />
+            <Font name="System Bold Italic" size="53.0" />
          </font>
-      </Hyperlink>
+      </Label>
    </children>
-</AnchorPane>
+</VBox>

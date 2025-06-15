@@ -20,11 +20,9 @@ import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
-import javafx.scene.layout.VBox;
-
 import javafx.scene.control.Label;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-
 
 import java.io.IOException;
 import java.net.URL;
@@ -36,45 +34,35 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-
 public class WalletController implements Initializable {
+
     @FXML private LineChart<String, Number> btcChart;
     @FXML private CategoryAxis btcXAxis;
     @FXML private NumberAxis btcYAxis;
 
-    @FXML private LineChart<String,Number> ethChart;
+    @FXML private LineChart<String, Number> ethChart;
     @FXML private CategoryAxis ethXAxis;
     @FXML private NumberAxis ethYAxis;
 
-    @FXML private LineChart<String,Number> XRPChart;
+    @FXML private LineChart<String, Number> XRPChart;
     @FXML private CategoryAxis XRPXAxis;
     @FXML private NumberAxis XRPYAxis;
 
-    @FXML
-    private Button walletbutton;
-
-    @FXML
-    private Button marketbutton;
+    @FXML private Button walletbutton;
 
     @FXML private VBox walletBalance;
     @FXML private VBox walletCoins;
 
-
-
     private final ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
-
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        Platform.runLater(() -> {
-            walletbutton.setStyle("-fx-background-color: #f90; -fx-text-fill: white;");
+        Platform.runLater(() -> walletbutton.requestFocus());
 
-            marketbutton.setStyle("-fx-background-color: #333; -fx-text-fill: white;");
-        });
         int userId = Session.getUserId();
 
-//        showBalance(userId);
-//        showCoins(userId);
+        //        showBalance(userId);
+        //        showCoins(userId);
 
         startGraph();
     }
@@ -91,7 +79,6 @@ public class WalletController implements Initializable {
             });
 
         }, 0, 30, TimeUnit.SECONDS);
-
     }
 
     /*Don't delete it is for testing purpose */
@@ -125,46 +112,31 @@ public class WalletController implements Initializable {
 
     @FXML
     protected void onClickMarketButton(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/com/example/walletmanagementsystem/Controller/Markets.fxml"));
-        Stage stage = new Stage();
-        Scene scene = new Scene((Parent)fxmlLoader.load(), (double)414.0F, (double)383.0F);
-        stage.setTitle("Markets!");
-        stage.setScene(scene);
-        stage.setResizable(true);
-        stage.setMaximized(true);
-        stage.show();
-        Stage currentStage = (Stage) ((Button) event.getSource()).getScene().getWindow();
-        currentStage.close();
+        switchScene(event, "/com/example/walletmanagementsystem/Controller/Markets.fxml", "Markets");
     }
 
     @FXML
     protected void onClickPortfolioButton(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/walletmanagementsystem/Controller/Portfolio.fxml"));
-        Parent root = loader.load();
-
-        Stage stage = new Stage();
-        Scene scene = new Scene(root, 414.0, 383.0);
-        stage.setTitle("Wallet!");
-        stage.setScene(scene);
-        stage.setResizable(true);
-        stage.setMaximized(true);
-        stage.show();
-        Stage currentStage = (Stage) ((Button) event.getSource()).getScene().getWindow();
-        currentStage.close();
+        switchScene(event, "/com/example/walletmanagementsystem/Controller/Portfolio.fxml", "Portfolio");
     }
 
     @FXML
     protected void onClickTransactionButton(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/walletmanagementsystem/Controller/Transactions.fxml"));
+        switchScene(event, "/com/example/walletmanagementsystem/Controller/Transactions.fxml", "Transactions");
+    }
+
+    private void switchScene(ActionEvent event, String fxmlPath, String title) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
         Parent root = loader.load();
 
         Stage stage = new Stage();
         Scene scene = new Scene(root, 414.0, 383.0);
-        stage.setTitle("Wallet!");
+        stage.setTitle(title);
         stage.setScene(scene);
         stage.setResizable(true);
         stage.setMaximized(true);
         stage.show();
+
         Stage currentStage = (Stage) ((Button) event.getSource()).getScene().getWindow();
         currentStage.close();
     }

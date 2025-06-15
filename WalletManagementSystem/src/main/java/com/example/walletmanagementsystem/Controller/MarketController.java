@@ -33,7 +33,6 @@ public class MarketController implements Initializable {
 
     @FXML private Button walletbutton;
     @FXML private Button marketbutton;
-    @FXML private Button portfoliobutton;
     @FXML private Button transactionbutton;
     @FXML private Button BitcoinButton;
     @FXML private Button EthereumButton;
@@ -64,7 +63,6 @@ public class MarketController implements Initializable {
         Platform.runLater(() -> {
             marketbutton.setStyle("-fx-background-color: #f90; -fx-text-fill: white;");
             walletbutton.setStyle("-fx-background-color: #333; -fx-text-fill: white;");
-            portfoliobutton.setStyle("-fx-background-color: #333; -fx-text-fill: white;");
             transactionbutton.setStyle("-fx-background-color: #333; -fx-text-fill: white;");
         });
         startGraphUpdater();
