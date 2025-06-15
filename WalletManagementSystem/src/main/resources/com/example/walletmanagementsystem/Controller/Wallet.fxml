@@ -45,7 +45,7 @@
             </AnchorPane>
          </children>
       </VBox>
-      <TextField layoutX="464.0" layoutY="24.0" prefHeight="25.0" prefWidth="402.0" promptText="Search" styleClass="coinanchorpane" stylesheets="@../css/anchorpane.css">
+      <TextField layoutX="464.0" layoutY="24.0" prefHeight="25.0" prefWidth="402.0" promptText="Search" style="-fx-background-color: #b92e2e;" styleClass="searchbar" stylesheets="@../css/buttons.css">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
