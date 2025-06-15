@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Hyperlink?>
@@ -9,20 +12,13 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
-<?import javafx.collections.FXCollections?>
 
-<?import java.lang.String?>
 <AnchorPane fx:id="loginform" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #2a2a2a;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.walletmanagementsystem.Controller.LoginController">
    <children>
       <TextField fx:id="LoginEmail" layoutX="151.0" layoutY="159.0" prefHeight="26.0" prefWidth="299.0" promptText="Email" styleClass="signuplabels" stylesheets="@../css/buttons.css" />
       <PasswordField fx:id="LoginPassword" layoutX="151.0" layoutY="201.0" prefHeight="26.0" prefWidth="299.0" promptText="Password" styleClass="signupbutton" stylesheets="@../css/buttons.css" />
-      <Label layoutX="245.0" layoutY="78.0" prefHeight="61.0" prefWidth="110.0" text="Login" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="30.0" />
-         </font>
-      </Label>
       <FontIcon iconColor="WHITE" iconLiteral="fas-lock" layoutX="431.0" layoutY="218.0" />
-      <Button fx:id="Login" layoutX="225.0" layoutY="282.0" mnemonicParsing="false" onAction="#handleLogin" prefHeight="26.0" prefWidth="146.0" styleClass="signupbutton" stylesheets="@../css/buttons.css" text="Login" />
+      <Button fx:id="Login" layoutX="225.0" layoutY="282.0" mnemonicParsing="false" onAction="#handleLogin" prefHeight="33.0" prefWidth="146.0" styleClass="signupbutton" stylesheets="@../css/buttons.css" text="Login" />
       <Text layoutX="193.0" layoutY="353.0" strokeType="OUTSIDE" strokeWidth="0.0" text="don't have an account?">
          <font>
             <Font name="System Bold" size="12.0" />
@@ -42,5 +38,10 @@
          </items>
       </ComboBox>
       <FontIcon iconColor="WHITE" iconLiteral="fas-envelope" layoutX="431.0" layoutY="176.0" />
+      <Label layoutX="245.0" layoutY="78.0" prefHeight="61.0" prefWidth="110.0" text="Login" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

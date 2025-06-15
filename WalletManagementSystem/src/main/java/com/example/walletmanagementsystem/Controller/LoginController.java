@@ -37,6 +37,7 @@ public class LoginController {
         System.out.println("LoginController initialized. LoginEmail: " + (LoginEmail != null) + ", LoginPassword: " + (LoginPassword != null));
     }
 
+
     @FXML
     void handleLogin(ActionEvent event) {
         if (LoginEmail == null || LoginPassword == null || myComboBox == null) {
@@ -85,6 +86,7 @@ public class LoginController {
             AlertUtil.showAlert(Alert.AlertType.ERROR, "Form Error", "Invalid role selected.");
         }
     }
+
 
     @FXML
     void switchToSignup(ActionEvent event) {
