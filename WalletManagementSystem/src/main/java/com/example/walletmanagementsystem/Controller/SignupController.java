@@ -68,4 +68,19 @@ public class SignupController {
         }
     }
 
+    @FXML
+    protected void onClickSignUpButton(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/walletmanagementsystem/Controller/Markets.fxml"));
+        Parent root = loader.load();
+
+        Stage stage = new Stage();
+        Scene scene = new Scene(root, 414.0, 383.0);
+        stage.setTitle("Market!");
+        stage.setScene(scene);
+        stage.setResizable(true);
+        stage.setMaximized(true);
+        stage.show();
+        Stage currentStage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+        currentStage.close();
+    }
 }

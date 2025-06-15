@@ -34,7 +34,7 @@
                </font>
             </Label>
 
-            <Button fx:id="Sigup" layoutX="227.0" layoutY="316.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="146.0" styleClass="signupbutton" stylesheets="@../css/buttons.css" text="Signup" />
+            <Button fx:id="Sigup" layoutX="227.0" layoutY="316.0" mnemonicParsing="false" onAction="#handleSignup" prefHeight="26.0" prefWidth="146.0" styleClass="signupbutton" stylesheets="@../css/buttons.css" text="Signup" />
 
             <Text layoutX="200.0" layoutY="379.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Already have an account?">
                <font>

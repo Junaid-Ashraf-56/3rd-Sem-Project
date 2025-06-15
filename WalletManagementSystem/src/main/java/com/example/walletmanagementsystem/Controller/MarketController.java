@@ -44,6 +44,7 @@ public class MarketController implements Initializable {
     @FXML private Button SuiButton;
 
 
+
     private final ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
     public XYChart.Series<String, Number> currentSeries = new XYChart.Series<>();
     private final Map<String, XYChart.Series<String, Number>> priceMap = new java.util.HashMap<>();
@@ -154,7 +155,7 @@ public class MarketController implements Initializable {
     }
 
     @FXML
-    protected void onClickwalletButton(ActionEvent event) throws IOException {
+    protected void onClickWalletButton(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/walletmanagementsystem/Controller/Wallet.fxml"));
         Parent root = loader.load();
 
