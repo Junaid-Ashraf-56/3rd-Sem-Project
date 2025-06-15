@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
 public class TradeService {
 
     //Buy Asset
-    public boolean buyAsset(int userId, String symbol, double quantity) {
+    public boolean buyAsset(String accountNumber, String symbol, double quantity) {
         if (quantity <= 0) {
             return false;
         }
@@ -28,18 +28,18 @@ public class TradeService {
 
         double totalCost = quantity * asset.getCurrentPrice();
 
-        Wallet wallet = WalletDAO.getWalletById(userId);
+        Wallet wallet = WalletDAO.getWalletByAccountNumber(accountNumber);
         if (wallet == null || wallet.getBalance() < totalCost) {
             return false;
         }
 
         wallet.setBalance(wallet.getBalance() - totalCost);
-        WalletDAO.updateWalletBalance(userId, wallet.getBalance());
+        WalletDAO.updateWalletBalance(accountNumber, wallet.getBalance());
 
-        PortfolioDAO.upsertAsset(userId,asset,quantity);
+        PortfolioDAO.upsertAsset(accountNumber,asset,quantity);
 
         Transaction transaction = new Transaction();
-        transaction.setUserId(userId);
+        transaction.setAccountNumber(accountNumber);
         transaction.setType(TransactionType.BUY);
         transaction.setAssetSymbol("USD");
         transaction.setQuantity(quantity);
@@ -51,7 +51,7 @@ public class TradeService {
     }
 
     //Sell Asset
-    public boolean sellAsset(int userId, String symbol, double quantity) {
+    public boolean sellAsset(String accountNumber, String symbol, double quantity) {
         if (quantity < 0) {
             return false;
         }
@@ -61,21 +61,21 @@ public class TradeService {
             return false;
         }
 
-        double ownedQty = PortfolioDAO.getAssetQuantity(userId, symbol);
+        double ownedQty = PortfolioDAO.getAssetQuantity(accountNumber, symbol);
         if (ownedQty < quantity) {
             return false;
         }
 
         double totalRevenue = quantity*asset.getCurrentPrice();
 
-        PortfolioDAO.upsertAsset(userId,asset,quantity);
+        PortfolioDAO.upsertAsset(accountNumber,asset,quantity);
 
-        Wallet wallet = WalletDAO.getWalletById(userId);
+        Wallet wallet = WalletDAO.getWalletByAccountNumber(accountNumber);
         wallet.setBalance(wallet.getBalance()+totalRevenue);
-        WalletDAO.updateWalletBalance(userId,wallet.getBalance());
+        WalletDAO.updateWalletBalance(accountNumber,wallet.getBalance());
 
         Transaction transaction = new Transaction();
-        transaction.setUserId(userId);
+        transaction.setAccountNumber(accountNumber);
         transaction.setType(TransactionType.BUY);
         transaction.setAssetSymbol("USD");
         transaction.setQuantity(quantity);

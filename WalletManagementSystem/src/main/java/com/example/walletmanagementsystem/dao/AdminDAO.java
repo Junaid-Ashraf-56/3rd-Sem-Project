@@ -28,12 +28,12 @@ public class AdminDAO {
                 user.setRole(Role.valueOf(rs.getString("role")));
                 user.setPassword(rs.getString("password"));
 
-                int walletId = rs.getInt("wallet_id");
-                Wallet wallet = WalletDAO.getWalletById(walletId);
+                String accountNumber = rs.getString("wallet_id");
+                Wallet wallet = WalletDAO.getWalletByAccountNumber(accountNumber);
                 user.setWallet(wallet);
 
-                int portfolioId = rs.getInt("portfolio_id");
-                Portfolio portfolio = PortfolioDAO.getPortfolioByUserId(portfolioId);
+                accountNumber = rs.getString("portfolio_id");
+                Portfolio portfolio = PortfolioDAO.getPortfolioByAccountNumber(accountNumber);
                 user.setPortfolio(portfolio);
             }
         } catch (Exception e) {
