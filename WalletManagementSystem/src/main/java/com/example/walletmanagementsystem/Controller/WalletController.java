@@ -50,6 +50,11 @@ public class WalletController implements Initializable {
     @FXML private CategoryAxis XRPXAxis;
     @FXML private NumberAxis XRPYAxis;
 
+    @FXML
+    private Button walletbutton;
+
+    @FXML
+    private Button marketbutton;
 
     @FXML private VBox walletBalance;
     @FXML private VBox walletCoins;
@@ -61,7 +66,13 @@ public class WalletController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        Platform.runLater(() -> {
+            walletbutton.setStyle("-fx-background-color: #f90; -fx-text-fill: white;");
+
+            marketbutton.setStyle("-fx-background-color: #333; -fx-text-fill: white;");
+        });
         int userId = Session.getUserId();
+
 //        showBalance(userId);
 //        showCoins(userId);
 

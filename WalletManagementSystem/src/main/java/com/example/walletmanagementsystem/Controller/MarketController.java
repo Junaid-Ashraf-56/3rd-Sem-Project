@@ -31,7 +31,11 @@ public class MarketController implements Initializable {
     @FXML private CategoryAxis xAxis;
     @FXML private NumberAxis yAxis;
 
+    @FXML
+    private Button walletbutton;
 
+    @FXML
+    private Button marketbutton;
     @FXML private Button BitcoinButton;
     @FXML private Button EthereumButton;
     @FXML private Button XRPButton;
@@ -58,6 +62,13 @@ public class MarketController implements Initializable {
         MarketChart.setLegendVisible(false);
         MarketChart.setAnimated(false);
 
+        Platform.runLater(() -> {
+            // Highlight Markets button
+            marketbutton.setStyle("-fx-background-color: #f90; -fx-text-fill: white;");
+
+            // Un-highlight Wallet button
+            walletbutton.setStyle("-fx-background-color: #333; -fx-text-fill: white;");
+        });
         startGraphUpdater();
     }
 
