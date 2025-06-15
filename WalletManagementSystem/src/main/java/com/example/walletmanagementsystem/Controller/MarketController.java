@@ -89,7 +89,7 @@ public class MarketController implements Initializable {
                 // Show selected coin
                 updateChart();
             });
-        }, 0, 10, TimeUnit.SECONDS);
+        }, 0, 30, TimeUnit.SECONDS);
     }
 
     @FXML public void onBitcoinClick() {

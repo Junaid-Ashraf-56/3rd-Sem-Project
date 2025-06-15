@@ -79,7 +79,7 @@ public class WalletController implements Initializable {
                 XRPChart.getData().setAll(dataMap.get("ripple"));
             });
 
-        }, 0, 10, TimeUnit.SECONDS);
+        }, 0, 30, TimeUnit.SECONDS);
 
     }
 
