@@ -86,7 +86,7 @@
          <!-- Enhanced Main Content -->
          <VBox fx:id="mainContent" prefWidth="1173.0" style="-fx-padding: 20; -fx-background-color: #0f1419;">
             <children>
-<<<<<<< HEAD
+
                <!-- Header Section -->
                <AnchorPane prefHeight="100.0" prefWidth="1133.0" style="-fx-background-color: #1a202c; -fx-background-radius: 12; -fx-border-color: #2d3748; -fx-border-width: 1; -fx-border-radius: 12;">
                   <children>
@@ -353,48 +353,8 @@
                      </TableView>
                   </children>
                </AnchorPane>
-=======
                <!-- User Profile -->
-               <HBox alignment="CENTER_LEFT" spacing="20" style="-fx-padding: 10;">
-                  <ImageView fitHeight="110.0" fitWidth="113.0" pickOnBounds="true">
-                     <image>
-                        <Image url="@../images/Profile.png" />
-                     </image></ImageView>
-                  <VBox prefHeight="121.0" prefWidth="620.0" spacing="5">
-                     <Label fx:id="userNameLabel" style="-fx-font-size: 28; -fx-font-weight: bold;" text="Name :" textFill="WHITE">
-                        <font>
-                           <Font size="15.0" />
-                        </font></Label>
-                     <Label fx:id="emailLabel" prefHeight="22.0" prefWidth="61.0" style="-fx-font-size: 16;" text="Email :" textFill="#cccccc" />
-                     <Label fx:id="accountNumberLabel" style="-fx-font-size: 16;" text="Account Number" textFill="#cccccc" />
-                     <Label fx:id="balanceLabel" style="-fx-font-size: 16; -fx-font-weight: bold;" text="Balance :" textFill="WHITE" />
-                  </VBox>
-               </HBox>
-               <!-- Actions -->
-               <HBox spacing="10" style="-fx-padding: 10;">
-                  <TextField prefHeight="25.0" prefWidth="180.0" promptText="Old Password" styleClass="label" stylesheets="@../css/Portfolio.css">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </TextField>
-                  <TextField prefHeight="25.0" prefWidth="180.0" promptText="New Password">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </TextField>
-                  <Hyperlink style="-fx-background-color: black; -fx-text-fill: white;" styleClass="button" stylesheets="@../css/buttons.css" text="Update Password" />
-               </HBox>
-               <!-- Portfolio Table -->
-               <Label prefHeight="49.0" prefWidth="146.0" style="-fx-font-size: 20; -fx-font-weight: bold; -fx-padding: 10 0 10 0;" text="Portfolio" textFill="WHITE" />
-               <TableView fx:id="portfolioTable" prefHeight="474.0" prefWidth="1084.0" style="-fx-background-color: black;">
-                  <columns>
-                     <TableColumn fx:id="assetSymbolColumn" prefWidth="200.0" text="Asset Symbol" />
-                     <TableColumn fx:id="valueColumn" prefWidth="150.0" text="Total Value" />
-                     <TableColumn fx:id="priceColumn" prefWidth="150.0" text="Price" />
-                     <TableColumn fx:id="quantityColumn" prefWidth="150.0" text="Quantity" />
-                  </columns>
-               </TableView>
->>>>>>> 2bf31d975dd0857ca5cc5f4607c16e06d5d94a0b
+               <HBox alignment="CENTER_LEFT" spacing="20" style="-fx-padding: 10;" />
             </children>
          </VBox>
       </HBox>
