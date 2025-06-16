@@ -15,6 +15,7 @@ import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -45,6 +46,8 @@ public class MarketController implements Initializable {
     @FXML private Button CardanoButton;
     @FXML private Button SuiButton;
 
+    @FXML private Label CoinPrice;
+    @FXML private Label CoinName;
 
 
     private final ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
@@ -66,6 +69,7 @@ public class MarketController implements Initializable {
             transactionbutton.setStyle("-fx-background-color: #333; -fx-text-fill: white;");
         });
         startGraphUpdater();
+        startPriceUpdater();
     }
 
     private void startGraphUpdater() {
@@ -99,54 +103,93 @@ public class MarketController implements Initializable {
             });
         }, 0, 30, TimeUnit.SECONDS);
     }
+    private void startPriceUpdater() {
+        executor.scheduleAtFixedRate(() -> {
+            double price = ChartService.getLivePrice(currentCoin);
+            Platform.runLater(() -> {
+                CoinPrice.setText("$ " + String.format("%.2f", price));
+            });
+        }, 0, 30, TimeUnit.SECONDS); // Update every 10 seconds
+    }
+
 
     @FXML public void onBitcoinClick() {
         currentCoin = "bitcoin";
+        CoinName.setText(" Bitcoin ");
+        double price = ChartService.getLivePrice(currentCoin);
+        CoinPrice.setText("$ " + price);
         updateChart();
     }
 
     @FXML public void onEthereumClick() {
         currentCoin = "ethereum";
+        CoinName.setText(" Ethereum ");
+        double price = ChartService.getLivePrice(currentCoin);
+        CoinPrice.setText("$ " + price);
         updateChart();
     }
 
     @FXML public void onXrpClick() {
         currentCoin = "ripple";
+        CoinName.setText(" XRP ");
+        double price = ChartService.getLivePrice(currentCoin);
+        CoinPrice.setText("$ " + price);
         updateChart();
     }
     @FXML
     public void onBnbClick() {
         currentCoin = "binancecoin";
+        CoinName.setText(" BNB ");
+        double price = ChartService.getLivePrice(currentCoin);
+        CoinPrice.setText("$ " + price);
         updateChart();
     }
     @FXML
     public void onSolanaClick() {
         currentCoin = "solana";
+        CoinName.setText(" Solana ");
+        double price = ChartService.getLivePrice(currentCoin);
+        CoinPrice.setText("$ " + price);
         updateChart();
     }
     @FXML
     public void onUsdtClick() {
         currentCoin = "tether";
+        CoinName.setText(" Usdt ");
+        double price = ChartService.getLivePrice(currentCoin);
+        CoinPrice.setText("$ " + price);
         updateChart();
     }
     @FXML
     public void onDogeClick() {
         currentCoin = "dogecoin";
+        CoinName.setText(" Dogecoin");
+        double price = ChartService.getLivePrice(currentCoin);
+        CoinPrice.setText("$ " + price);
         updateChart();
     }
     @FXML
     public void onHyperliquidClick() {
         currentCoin = "hyperliquid";
+        CoinName.setText(" Hyper Liquid ");
+        double price = ChartService.getLivePrice(currentCoin);
+        CoinPrice.setText("$ " + price);
         updateChart();
     }
     @FXML
     public void onCardanoClick() {
         currentCoin = "cardano";
+        CoinName.setText(" Cardano ");
+        double price = ChartService.getLivePrice(currentCoin);
+        CoinPrice.setText("$ " + price);
         updateChart();
     }
     @FXML
     public void onSuiClick() {
         currentCoin = "sui";
+        CoinName.setText(" SUI ");
+        double price = ChartService.getLivePrice(currentCoin);
+        CoinPrice.setText("$ " + price);
         updateChart();
     }
 

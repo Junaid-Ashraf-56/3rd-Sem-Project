@@ -53,6 +53,8 @@ public class WalletController implements Initializable {
     @FXML private VBox walletBalance;
     @FXML private VBox walletCoins;
 
+
+
     private final ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
 
     @Override

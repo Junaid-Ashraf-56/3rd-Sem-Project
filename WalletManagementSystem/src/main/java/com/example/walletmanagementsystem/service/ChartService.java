@@ -41,4 +41,11 @@ public class ChartService
         }
         return seriesMap;
     }
+
+    public static double getLivePrice(String coinId) {
+        List<String> singleCoinList = Collections.singletonList(coinId);
+        Map<String, Double> prices = ApiService.getMultiplePrices(singleCoinList);
+        return prices.getOrDefault(coinId, 0.0);
+    }
+
 }
