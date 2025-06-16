@@ -112,6 +112,7 @@ public class UserDAO {
                             user.setName(rs.getString("name"));
                             user.setEmail(rs.getString("email"));
                             user.setPassword(rs.getString("password"));
+                            user.setAccountNumber(rs.getString("accountnumber"));
                             user.setRole(Role.valueOf(rs.getString("role")));
                         }
                     }
@@ -123,6 +124,34 @@ public class UserDAO {
             return user;
 
     }
+//Verify and update password
+    public static boolean verifyPassword(int userId, String inputPassword) {
+        String query = "SELECT password FROM users WHERE user_id = ?";
+        try (PreparedStatement stmt = connection.prepareStatement(query)) {
+            stmt.setInt(1, userId);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                String storedPassword = rs.getString("password");
+                return storedPassword.equals(inputPassword);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public static boolean updatePassword(int userId, String newPassword) {
+        String query = "UPDATE users SET password = ? WHERE user_id = ?";
+        try (PreparedStatement stmt = connection.prepareStatement(query)) {
+            stmt.setString(1, newPassword); // Hash here if needed
+            stmt.setInt(2, userId);
+            return stmt.executeUpdate() > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
 
     //Freeze User
     public static boolean freezeUserByEmail(String email) {
