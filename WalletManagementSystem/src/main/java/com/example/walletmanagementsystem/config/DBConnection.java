@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-//sudo mysql -u root -p for using database
+//sudo mysql -u root smart_trading_system
 
 public class DBConnection {
     private static Connection connection = null;
@@ -37,3 +37,6 @@ public class DBConnection {
         }
     }
 }
+
+
+
