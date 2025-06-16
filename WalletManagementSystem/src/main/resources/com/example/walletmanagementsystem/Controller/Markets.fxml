@@ -90,7 +90,7 @@
             </AnchorPane>
 
             <!-- Enhanced Chart & Trading Panel -->
-            <AnchorPane layoutX="207.0" layoutY="194.0" prefHeight="599.0" prefWidth="952.0" style="-fx-background-color: #1a202c; -fx-background-radius: 12; -fx-border-color: #2d3748; -fx-border-width: 1; -fx-border-radius: 12;">
+            <AnchorPane layoutX="207.0" layoutY="215.0" prefHeight="599.0" prefWidth="952.0" style="-fx-background-color: #1a202c; -fx-background-radius: 12; -fx-border-color: #2d3748; -fx-border-width: 1; -fx-border-radius: 12;">
                <children>
                   <LineChart fx:id="MarketChart" layoutX="20.0" layoutY="20.0" prefHeight="480.0" prefWidth="912.0" style="-fx-background-color: #2d3748; -fx-background-radius: 8;">
                      <xAxis>
