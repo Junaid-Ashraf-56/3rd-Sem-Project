@@ -6,6 +6,7 @@ import java.time.LocalDate;
 public class Transaction {
     private int transactionId;
     private int userId;
+    private String accountNumber;
     private TransactionType type;
     private String assetSymbol;
     private double quantity;
@@ -29,6 +30,17 @@ public class Transaction {
         this.dateTime = dateTime;
     }
 
+    public Transaction(int transactionId, int userId, String accountNumber, TransactionType type, String assetSymbol, double quantity, double amount, double priceAtTime, LocalDate dateTime) {
+        this.transactionId = transactionId;
+        this.userId = userId;
+        this.accountNumber = accountNumber;
+        this.type = type;
+        this.assetSymbol = assetSymbol;
+        this.quantity = quantity;
+        this.amount = amount;
+        this.priceAtTime = priceAtTime;
+        this.dateTime = dateTime;
+    }
 
     // Getter and Setter for Transaction
     public void setTransactionId(int transactionId) {this.transactionId = transactionId;}
@@ -39,7 +51,7 @@ public class Transaction {
     public void setAmount(double amount) {this.amount = amount;}
     public void setPriceAtTime(double priceAtTime) {this.priceAtTime = priceAtTime;}
     public void setDateTime(LocalDate dateTime) {this.dateTime = dateTime;}
-
+    public void setAccountNumber(String accountNumber) {this.accountNumber = accountNumber;}
 
     public int getTransactionId() {return transactionId;}
     public int getUserId() {return userId;}
@@ -49,4 +61,5 @@ public class Transaction {
     public double getAmount() {return amount;}
     public double getPriceAtTime() {return priceAtTime;}
     public LocalDate getDateTime() {return dateTime;}
+    public String getAccountNumber() {return accountNumber;}
 }

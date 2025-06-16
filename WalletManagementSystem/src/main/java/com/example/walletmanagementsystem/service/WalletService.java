@@ -13,6 +13,15 @@ import java.time.LocalDateTime;
 
 public class WalletService {
 
+
+    public StringBuilder generateAccountNumber(){
+        StringBuilder accountNumber = new StringBuilder("ACC");
+        for (int i = 0; i < 10; i++) {
+            int digit = (int)(Math.random() * 10);
+            accountNumber.append(digit);
+        }
+        return accountNumber;
+    }
     //Add funds
     public boolean addFunds(int userId ,double amount){
         if (amount<=0){
