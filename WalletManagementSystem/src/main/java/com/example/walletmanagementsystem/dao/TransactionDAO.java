@@ -19,7 +19,7 @@ public class TransactionDAO {
     // Insert new transaction
     public boolean insertNewTransaction(Transaction transaction) {
         boolean isInserted = false;
-        String sql = "INSERT INTO transactions (account_number, type, asset_symbol, quantity, amount, price_at_time, date_time) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO Transaction (account_number, type, asset_symbol, quantity, amount, price_at_time, date_time) VALUES (?, ?, ?, ?, ?, ?, ?)";
         if (connection != null) {
             try (PreparedStatement stmt = connection.prepareStatement(sql)) {
                 stmt.setString(1, transaction.getAccountNumber());
@@ -39,7 +39,7 @@ public class TransactionDAO {
 
     // Get transactions by account number
     public static List<Transaction> getTransactionsByAccountNumber(String accountNumber) {
-        String sql = "SELECT * FROM transactions WHERE account_number = ?";
+        String sql = "SELECT * FROM Transaction WHERE account_number = ?";
         List<Transaction> transactions = new ArrayList<>();
         if (connection != null) {
             try (PreparedStatement stmt = connection.prepareStatement(sql)) {
@@ -66,7 +66,7 @@ public class TransactionDAO {
 
     // Record transaction
     public static boolean recordTransaction(String accountNumber, double amount, String description) {
-        String sql = "INSERT INTO transactions (account_number, amount, description, date_time) VALUES (?, ?, ?, CURRENT_TIMESTAMP)";
+        String sql = "INSERT INTO Transaction (account_number, amount, description, date_time) VALUES (?, ?, ?, CURRENT_TIMESTAMP)";
         if (connection != null) {
             try (PreparedStatement stmt = connection.prepareStatement(sql)) {
                 stmt.setString(1, accountNumber);

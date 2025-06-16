@@ -19,7 +19,7 @@ public class AssetDAO {
      static  Connection connection = DBConnection.getConnection();
     // 1. Insert new asset (from API or admin)
     public static boolean insertAsset(Asset asset) {
-        String sql = "INSERT INTO assets ( name, current_price, asset_type, extra_info) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO asset( name, current_price, asset_type, extra_info) VALUES (?, ?, ?, ?, ?)";
 
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setString(1, asset.getAssetId());
@@ -46,7 +46,7 @@ public class AssetDAO {
 
     // 2. Get asset by ID
     public static Asset getAssetById(String assetId) {
-        String sql = "SELECT * FROM assets WHERE asset_id = ?";
+        String sql = "SELECT * FROM asset WHERE asset_id = ?";
         Asset asset = null;
 
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
@@ -76,7 +76,7 @@ public class AssetDAO {
 
     // 3. Update current price (on price refresh)
     public static boolean updateAssetPrice(String assetId, double newPrice) {
-        String sql = "UPDATE assets SET current_price = ? WHERE asset_id = ?";
+        String sql = "UPDATE asset SET current_price = ? WHERE asset_id = ?";
 
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setDouble(1, newPrice);
@@ -92,7 +92,7 @@ public class AssetDAO {
     // 4. Get a list of all available assets
     public static List<Asset> getAllAssets(int userId) {
         List<Asset> assets = new ArrayList<>();
-        String sql = "SELECT * FROM assets WHERE userId = ?";
+        String sql = "SELECT * FROM asset WHERE userId = ?";
 
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setInt(1, userId);

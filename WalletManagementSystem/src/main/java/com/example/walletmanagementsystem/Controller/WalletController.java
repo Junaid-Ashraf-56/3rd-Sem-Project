@@ -1,6 +1,6 @@
 package com.example.walletmanagementsystem.Controller;
 
-import com.example.walletmanagementsystem.Main;
+
 import com.example.walletmanagementsystem.dao.PortfolioDAO;
 import com.example.walletmanagementsystem.dao.WalletDAO;
 import com.example.walletmanagementsystem.model.Asset;
@@ -26,6 +26,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
@@ -93,32 +94,32 @@ public class WalletController implements Initializable {
 
     /*Don't delete it is for testing purpose */
 
-//    public void showBalance(int userId){
-//        walletBalance.getChildren().clear();
-//        Wallet wallet = WalletDAO.getWalletById(userId);
-//        if (wallet!=null){
-//            Label balanceLabel = new Label("Balance: $" + String.format("%.2f", wallet.getBalance()));
-//            balanceLabel.setStyle("-fx-font-size: 16px; -fx-font-weight: bold;");
-//            walletBalance.getChildren().add(balanceLabel);
-//        }
-//    }
-//
-//    public void showCoins(int userId) {
-//        Portfolio portfolio = PortfolioDAO.getPortfolioByUserId(userId);
-//        if (portfolio != null) {
-//            HashMap<String, Asset> assets = portfolio.getPortfolio();
-//            walletCoins.getChildren().clear();
-//
-//            for (Map.Entry<String, Asset> entry : assets.entrySet()) {
-//                String symbol = entry.getKey();
-//                Asset asset = entry.getValue();
-//
-//                Label coinLabel = new Label(symbol + " - Qty: " + asset.getQuantity());
-//                coinLabel.setStyle("-fx-text-fill: white; -fx-font-size: 14px;");
-//                walletCoins.getChildren().add(coinLabel);
-//            }
-//        }
-//    }
+    public void showBalance(String accountNumber){
+        walletBalance.getChildren().clear();
+        Wallet wallet = WalletDAO.getWalletByAccountNumber(accountNumber);
+        if (wallet!=null){
+            Label balanceLabel = new Label("Balance: $" + String.format("%.2f", wallet.getBalance()));
+            balanceLabel.setStyle("-fx-font-size: 16px; -fx-font-weight: bold;");
+            walletBalance.getChildren().add(balanceLabel);
+        }
+    }
+
+    public void showCoins(String accountNumber) {
+        Portfolio portfolio = PortfolioDAO.getPortfolioByAccountNumber(accountNumber);
+        if (portfolio != null) {
+            HashMap<String, Asset> assets = portfolio.getPortfolio();
+            walletCoins.getChildren().clear();
+
+            for (Map.Entry<String, Asset> entry : assets.entrySet()) {
+                String symbol = entry.getKey();
+                Asset asset = entry.getValue();
+
+                Label coinLabel = new Label(symbol + " - Qty: " + asset.getQuantity());
+                coinLabel.setStyle("-fx-text-fill: white; -fx-font-size: 14px;");
+                walletCoins.getChildren().add(coinLabel);
+            }
+        }
+    }
 
     @FXML
     protected void onClickMarketButton(ActionEvent event) throws IOException {

@@ -85,7 +85,7 @@ public class WalletDAO {
 
     // Get transactions by account number
     public static List<Transaction> getTransactionsByAccountNumber(String accountNumber) {
-        String sql = "SELECT * FROM transactions WHERE account_number = ?";
+        String sql = "SELECT * FROM Transaction WHERE account_number = ?";
         List<Transaction> transactions = new ArrayList<>();
         if (connection != null) {
             try (PreparedStatement stmt = connection.prepareStatement(sql)) {

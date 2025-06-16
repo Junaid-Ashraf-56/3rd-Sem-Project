@@ -17,7 +17,7 @@ public class UserDAO {
 
     //Add a new user
     public static User addUser(String name, String email, String password, Role role) {
-        String sql = "INSERT INTO user(name, email, password, role) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO User(name, email, password, role) VALUES (?, ?, ?, ?)";
         if (connection != null) {
             try (PreparedStatement stmt = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
                 stmt.setString(1, name);
@@ -47,7 +47,7 @@ public class UserDAO {
 
    //Get user id by email
     public static User getUserId(String email){
-    String sql = "SELECT * FROM user WHERE email = ?";
+    String sql = "SELECT * FROM User WHERE email = ?";
                User user = null;
 
     if (connection!=null){
@@ -71,7 +71,7 @@ public class UserDAO {
     }
               //Update user
     public static boolean updateUser(User user){
-    String sql = "Update user SET name = ?,password = ?,role =? WHERE email = ?";
+    String sql = "Update User SET name = ?,password = ?,role =? WHERE email = ?";
                boolean update = false;
     if (connection!=null){
         try(PreparedStatement stmt = connection.prepareStatement(sql)){
@@ -92,7 +92,7 @@ public class UserDAO {
 
     //Login User
     public static User Login(String email,String password) {
-            String sql = "SELECT * FROM user WHERE email = ? AND password = ?";
+            String sql = "SELECT * FROM User WHERE email = ? AND password = ?";
             User user = null;
             if (connection != null) {
                 try (PreparedStatement stmt = connection.prepareStatement(sql)) {
@@ -117,7 +117,7 @@ public class UserDAO {
 
     //Freeze User
     public static boolean freezeUserByEmail(String email) {
-        String sql = "UPDATE users SET is_frozen = ? WHERE email = ?";
+        String sql = "UPDATE User SET is_frozen = ? WHERE email = ?";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setBoolean(1, true);
             stmt.setString(2, email);

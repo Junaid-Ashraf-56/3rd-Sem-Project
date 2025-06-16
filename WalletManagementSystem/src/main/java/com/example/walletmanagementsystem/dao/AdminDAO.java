@@ -17,7 +17,7 @@ public class AdminDAO {
     //View all User
     public static User viewAllUsers(){
         User user = null;
-        String sql = "SELECT * FROM users";
+        String sql = "SELECT * FROM User";
         try(PreparedStatement stmt = connection.prepareStatement(sql)){
             ResultSet rs = stmt.executeQuery();
             while(rs.next()){
@@ -45,7 +45,7 @@ public class AdminDAO {
     //View all transactions
     public static List<Transaction> viewAllTransactions(){
         List<Transaction> transactions = new ArrayList<>();
-        String sql = "SELECT * FROM Transactions";
+        String sql = "SELECT * FROM Transaction";
         try(PreparedStatement stmt = connection.prepareStatement(sql) ) {
             ResultSet rs = stmt.executeQuery();
             while (rs.next()){
