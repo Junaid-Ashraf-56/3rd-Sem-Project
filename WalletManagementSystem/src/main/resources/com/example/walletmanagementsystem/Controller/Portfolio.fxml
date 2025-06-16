@@ -16,7 +16,6 @@
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
 <VBox prefHeight="800.0" prefWidth="1363.0" style="-fx-background-color: #0f1419;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.walletmanagementsystem.Controller.PortfolioController">
-<<<<<<< HEAD
     <children>
         <HBox prefHeight="800.0" prefWidth="1363.0">
             <!-- Enhanced Sidebar -->
@@ -24,108 +23,10 @@
                 <children>
                     <!-- Logo Section -->
                     <AnchorPane prefHeight="100.0" prefWidth="190.0" style="-fx-background-color: #2d3748;">
-=======
-   <children>
-      <HBox prefHeight="800.0" prefWidth="1363.0">
-         <!-- Enhanced Sidebar -->
-         <VBox fx:id="sidebar" prefWidth="190.0" style="-fx-background-color: #1a202c; -fx-border-color: #2d3748; -fx-border-width: 0 1 0 0;">
-            <children>
-               <!-- Logo Section -->
-               <AnchorPane prefHeight="100.0" prefWidth="190.0" style="-fx-background-color: #2d3748;">
-                  <children>
-                     <Hyperlink layoutX="51.0" layoutY="14.0" text="CashMate" textFill="#4fd1c7" underline="false">
-                        <font>
-                           <Font name="System Bold Italic" size="24.0" />
-                        </font>
-                     </Hyperlink>
-                     <FontIcon iconColor="#4fd1c7" iconLiteral="fas-wallet" iconSize="32" layoutX="15.0" layoutY="52.0" />
-                  </children>
-               </AnchorPane>
-
-               <!-- Navigation Menu -->
-               <VBox spacing="5" style="-fx-padding: 20 10 10 10;">
-                  <Label text="NAVIGATION" textFill="#a0aec0">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Label>
-
-                  <Button fx:id="marketbutton" mnemonicParsing="false" onAction="#onClickMarketButton" prefHeight="40.0" prefWidth="170.0" style="-fx-background-color: transparent; -fx-text-fill: #e2e8f0; -fx-background-radius: 8; -fx-border-color: transparent;" text="   Markets" textAlignment="LEFT">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Button>
-                  <FontIcon iconColor="#a0aec0" iconLiteral="fas-chart-line" iconSize="18" style="-fx-translate-x: 25; -fx-translate-y: -30;" />
-
-                  <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="170.0" style="-fx-background-color: #4fd1c7; -fx-text-fill: #1a202c; -fx-background-radius: 8; -fx-font-weight: bold;" text="   Portfolio" textAlignment="LEFT">
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font>
-                  </Button>
-                  <FontIcon iconColor="#1a202c" iconLiteral="fas-briefcase" iconSize="18" style="-fx-translate-x: 25; -fx-translate-y: -30;" />
-
-                  <Button fx:id="transactionbutton" mnemonicParsing="false" onAction="#onClickTransactionButton" prefHeight="40.0" prefWidth="170.0" style="-fx-background-color: transparent; -fx-text-fill: #e2e8f0; -fx-background-radius: 8; -fx-border-color: transparent;" text="   Transactions" textAlignment="LEFT">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Button>
-                  <FontIcon iconColor="#a0aec0" iconLiteral="fas-exchange-alt" iconSize="18" style="-fx-translate-x: 25; -fx-translate-y: -30;" />
-
-                  <Button fx:id="walletbutton" mnemonicParsing="false" onAction="#onClickWalletButton" prefHeight="40.0" prefWidth="170.0" style="-fx-background-color: transparent; -fx-text-fill: #e2e8f0; -fx-background-radius: 8; -fx-border-color: transparent;" text="   Wallet" textAlignment="LEFT">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Button>
-                  <FontIcon iconColor="#a0aec0" iconLiteral="fas-credit-card" iconSize="18" style="-fx-translate-x: 25; -fx-translate-y: -30;" />
-               </VBox>
-
-               <!-- Account Section -->
-               <VBox spacing="5" style="-fx-padding: 460 10 10 10;">
-
-                  <Button fx:id="logoutButton" mnemonicParsing="false" prefHeight="40.0" prefWidth="170.0" style="-fx-background-color: #f56565; -fx-text-fill: white; -fx-background-radius: 8;" text="   Logout" textAlignment="LEFT">
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font>
-                  </Button>
-                  <FontIcon iconColor="white" iconLiteral="fas-sign-out-alt" iconSize="18" style="-fx-translate-x: 25; -fx-translate-y: -30;" />
-               </VBox>
-            </children>
-         </VBox>
-
-         <!-- Enhanced Main Content -->
-         <VBox fx:id="mainContent" prefWidth="1173.0" style="-fx-padding: 20; -fx-background-color: #0f1419;">
-            <children>
-
-               <!-- Header Section -->
-               <AnchorPane prefHeight="100.0" prefWidth="1133.0" style="-fx-background-color: #1a202c; -fx-background-radius: 12; -fx-border-color: #2d3748; -fx-border-width: 1; -fx-border-radius: 12;">
-                  <children>
-                     <Label layoutX="24.0" layoutY="20.0" text="Portfolio Management" textFill="#e2e8f0">
-                        <font>
-                           <Font name="System Bold" size="32.0" />
-                        </font>
-                     </Label>
-                     <Label layoutX="24.0" layoutY="67.0" text="Track your assets, performance, and manage your investment portfolio" textFill="#a0aec0">
-                        <font>
-                           <Font size="14.0" />
-                        </font>
-                     </Label>
-                     <FontIcon iconColor="#4fd1c7" iconLiteral="fas-chart-pie" iconSize="36" layoutX="1070.0" layoutY="62.0" />
-                  </children>
-               </AnchorPane>
-
-               <Region prefHeight="20.0" />
-
-               <!-- Enhanced User Profile Section -->
-               <AnchorPane prefHeight="160.0" prefWidth="1133.0" style="-fx-background-color: #1a202c; -fx-background-radius: 12; -fx-border-color: #2d3748; -fx-border-width: 1; -fx-border-radius: 12;">
-                  <children>
-
-                     <!-- User Information -->
-                     <VBox layoutX="160.0" layoutY="20.0" spacing="8">
->>>>>>> ef9d16e4bec8f568f92180cc5c22cc78e1b4ff5a
                         <children>
-                            <Hyperlink layoutX="56.0" layoutY="20.0" text="CashMate" textFill="#4fd1c7" underline="false">
+                            <Hyperlink layoutX="50.0" layoutY="20.0" text="CashMate" textFill="#4fd1c7" underline="false">
                                 <font>
-                                    <Font name="System Bold" size="24.0" />
+                                    <Font name="System Bold Italic" size="24.0" />
                                 </font>
                             </Hyperlink>
                             <FontIcon iconColor="#4fd1c7" iconLiteral="fas-wallet" iconSize="32" layoutX="15.0" layoutY="52.0" />
@@ -193,12 +94,12 @@
                                     <Font name="System Bold" size="32.0" />
                                 </font>
                             </Label>
-                            <Label layoutX="24.0" layoutY="67.0" text="Track your assets, performance, and manage your investment portfolio" textFill="#a0aec0">
+                            <Label layoutX="24.0" layoutY="63.0" text="Track your assets, performance, and manage your investment portfolio" textFill="#a0aec0">
                                 <font>
                                     <Font size="14.0" />
                                 </font>
                             </Label>
-                            <FontIcon iconColor="#4fd1c7" iconLiteral="fas-chart-pie" iconSize="36" layoutX="1070.0" layoutY="65.0" />
+                            <FontIcon iconColor="#4fd1c7" iconLiteral="fas-chart-pie" iconSize="36" layoutX="1070.0" layoutY="64.0" />
                         </children>
                     </AnchorPane>
 
@@ -313,7 +214,7 @@
                                     </AnchorPane>
                                 </children>
                             </HBox>
-                              <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="29.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="21.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true">
                                   <image>
                                       <Image url="@../images/Profile.png" />
                                   </image>
@@ -331,9 +232,9 @@
                                     <Font name="System Bold" size="18.0" />
                                 </font>
                             </Label>
-                            <FontIcon iconColor="#f56565" iconLiteral="fas-shield-alt" iconSize="18" layoutX="175.0" layoutY="35.0" />
+                            <FontIcon iconColor="#f56565" iconLiteral="fas-shield-alt" iconSize="18" layoutX="176.0" layoutY="35.0" />
 
-                            <Label layoutX="20.0" layoutY="44.0" text="Update your account password for enhanced security" textFill="#a0aec0">
+                            <Label layoutX="20.0" layoutY="40.0" text="Update your account password for enhanced security" textFill="#a0aec0">
                                 <font>
                                     <Font size="12.0" />
                                 </font>
@@ -379,7 +280,7 @@
                                     <Font name="System Bold" size="20.0" />
                                 </font>
                             </Label>
-                            <FontIcon iconColor="#4fd1c7" iconLiteral="fas-briefcase" iconSize="20" layoutX="207.0" layoutY="45.0" />
+                            <FontIcon iconColor="#4fd1c7" iconLiteral="fas-briefcase" iconSize="20" layoutX="211.0" layoutY="43.0" />
 
                             <Label layoutX="20.0" layoutY="50.0" text="Real-time view of your cryptocurrency and asset holdings" textFill="#a0aec0">
                                 <font>
@@ -450,157 +351,9 @@
                                 </columns>
                             </TableView>
                         </children>
-<<<<<<< HEAD
                     </AnchorPane>
                 </children>
             </VBox>
         </HBox>
     </children>
-=======
-                     </HBox>
-                     <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="24.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true">
-                        <image>
-                           <Image url="@../images/Profile.png" />
-                        </image>
-                     </ImageView>
-                  </children>
-               </AnchorPane>
-
-               <Region prefHeight="20.0" />
-
-               <!-- Security Settings Section -->
-               <AnchorPane prefHeight="120.0" prefWidth="1133.0" style="-fx-background-color: #1a202c; -fx-background-radius: 12; -fx-border-color: #2d3748; -fx-border-width: 1; -fx-border-radius: 12;">
-                  <children>
-                     <Label layoutX="20.0" layoutY="15.0" text="Security Settings" textFill="#e2e8f0">
-                        <font>
-                           <Font name="System Bold" size="18.0" />
-                        </font>
-                     </Label>
-                     <FontIcon iconColor="#f56565" iconLiteral="fas-shield-alt" iconSize="18" layoutX="177.0" layoutY="34.0" />
-
-                     <Label layoutX="20.0" layoutY="44.0" text="Update your account password for enhanced security" textFill="#a0aec0">
-                        <font>
-                           <Font size="12.0" />
-                        </font>
-                     </Label>
-
-                     <HBox layoutX="20.0" layoutY="70.0" spacing="15">
-                        <children>
-                           <PasswordField fx:id="oldPasswordField" prefHeight="35.0" prefWidth="200.0" promptText="Current Password" style="-fx-background-color: #2d3748; -fx-text-fill: #e2e8f0; -fx-prompt-text-fill: #a0aec0; -fx-background-radius: 8; -fx-border-color: #4a5568; -fx-border-width: 1; -fx-border-radius: 8;">
-                              <font>
-                                 <Font size="14.0" />
-                              </font>
-                           </PasswordField>
-
-                           <PasswordField fx:id="newPasswordField" prefHeight="35.0" prefWidth="200.0" promptText="New Password" style="-fx-background-color: #2d3748; -fx-text-fill: #e2e8f0; -fx-prompt-text-fill: #a0aec0; -fx-background-radius: 8; -fx-border-color: #4a5568; -fx-border-width: 1; -fx-border-radius: 8;">
-                              <font>
-                                 <Font size="14.0" />
-                              </font>
-                           </PasswordField>
-
-                           <PasswordField fx:id="confirmPasswordField" prefHeight="35.0" prefWidth="200.0" promptText="Confirm New Password" style="-fx-background-color: #2d3748; -fx-text-fill: #e2e8f0; -fx-prompt-text-fill: #a0aec0; -fx-background-radius: 8; -fx-border-color: #4a5568; -fx-border-width: 1; -fx-border-radius: 8;">
-                              <font>
-                                 <Font size="14.0" />
-                              </font>
-                           </PasswordField>
-
-                           <Button fx:id="updatePasswordButton" mnemonicParsing="false" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: #4fd1c7; -fx-text-fill: #1a202c; -fx-background-radius: 8; -fx-font-weight: bold;" text="Update Password">
-                              <font>
-                                 <Font name="System Bold" size="14.0" />
-                              </font>
-                           </Button>
-                        </children>
-                     </HBox>
-                  </children>
-               </AnchorPane>
-
-               <Region prefHeight="20.0" />
-
-               <!-- Enhanced Portfolio Table Section -->
-               <AnchorPane prefHeight="450.0" prefWidth="1133.0" style="-fx-background-color: #1a202c; -fx-background-radius: 12; -fx-border-color: #2d3748; -fx-border-width: 1; -fx-border-radius: 12;">
-                  <children>
-                     <Label layoutX="20.0" layoutY="20.0" text="Portfolio Holdings" textFill="#e2e8f0">
-                        <font>
-                           <Font name="System Bold" size="20.0" />
-                        </font>
-                     </Label>
-                     <FontIcon iconColor="#4fd1c7" iconLiteral="fas-briefcase" iconSize="20" layoutX="213.0" layoutY="42.0" />
-
-                     <Label layoutX="20.0" layoutY="51.0" text="Real-time view of your cryptocurrency and asset holdings" textFill="#a0aec0">
-                        <font>
-                           <Font size="12.0" />
-                        </font>
-                     </Label>
-
-                     <!-- Portfolio Performance Summary -->
-                     <HBox layoutX="600.0" layoutY="15.0" spacing="20">
-                        <children>
-                           <VBox alignment="CENTER">
-                              <children>
-                                 <Label text="Portfolio Value" textFill="#a0aec0">
-                                    <font>
-                                       <Font size="12.0" />
-                                    </font>
-                                 </Label>
-                                 <Label text="125,450.00" textFill="#e2e8f0">
-                                    <font>
-                                       <Font name="System Bold" size="16.0" />
-                                    </font>
-                                 </Label>
-                              </children>
-                           </VBox>
-                           <VBox alignment="CENTER">
-                              <children>
-                                 <Label text="24h Change" textFill="#a0aec0">
-                                    <font>
-                                       <Font size="12.0" />
-                                    </font>
-                                 </Label>
-                                 <Label text="+$2,340 (+1.9%)" textFill="#48bb78">
-                                    <font>
-                                       <Font name="System Bold" size="16.0" />
-                                    </font>
-                                 </Label>
-                              </children>
-                           </VBox>
-                           <VBox alignment="CENTER">
-                              <children>
-                                 <Label text="Best Performer" textFill="#a0aec0">
-                                    <font>
-                                       <Font size="12.0" />
-                                    </font>
-                                 </Label>
-                                 <Label text="BTC (+8.5%)" textFill="#48bb78">
-                                    <font>
-                                       <Font name="System Bold" size="16.0" />
-                                    </font>
-                                 </Label>
-                              </children>
-                           </VBox>
-                        </children>
-                     </HBox>
-
-                     <!-- Enhanced Portfolio Table -->
-                     <TableView fx:id="portfolioTable" layoutX="20.0" layoutY="80.0" prefHeight="350.0" prefWidth="1093.0" style="-fx-background-color: #2d3748; -fx-background-radius: 8; -fx-border-color: #4a5568; -fx-border-width: 1; -fx-border-radius: 8;">
-                        <columns>
-                           <TableColumn fx:id="assetSymbolColumn" prefWidth="120.0" text="Asset" />
-                           <TableColumn fx:id="assetNameColumn" prefWidth="180.0" text="Asset Name" />
-                           <TableColumn fx:id="quantityColumn" prefWidth="130.0" text="Quantity" />
-                           <TableColumn fx:id="priceColumn" prefWidth="130.0" text="Current Price" />
-                           <TableColumn fx:id="valueColumn" prefWidth="140.0" text="Market Value" />
-                           <TableColumn fx:id="changeColumn" prefWidth="120.0" text="24h Change" />
-                           <TableColumn fx:id="percentageColumn" prefWidth="110.0" />
-                           <TableColumn fx:id="pnlColumn" prefWidth="130.0" text="P&amp;L" />
-                           <TableColumn fx:id="actionsColumn" prefWidth="120.0" text="Actions" />
-                        </columns>
-                     </TableView>
-                  </children>
-               </AnchorPane>
-               <!-- User Profile -->
-               <HBox alignment="CENTER_LEFT" spacing="20" style="-fx-padding: 10;" />
-            </children>
-         </VBox>
-      </HBox>
-   </children>
->>>>>>> ef9d16e4bec8f568f92180cc5c22cc78e1b4ff5a
 </VBox>

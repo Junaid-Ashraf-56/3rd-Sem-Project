@@ -29,7 +29,7 @@ public class PortfolioController implements Initializable {
     @FXML private Label emailLabel;
     @FXML private Label accountNumberLabel;
     @FXML private Label balanceLabel;
-    @FXML private
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         Platform.runLater(() -> {

@@ -2,66 +2,260 @@
 
 <?import java.lang.String?>
 <?import javafx.collections.FXCollections?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.ProgressIndicator?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.GaussianBlur?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<AnchorPane fx:id="loginform" prefHeight="800.0" prefWidth="740.0" style="-fx-background-color: #2a2a2a;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.walletmanagementsystem.Controller.LoginController">
+<?import javafx.scene.layout.Region?>
+<AnchorPane fx:id="loginform" prefHeight="900.0" prefWidth="1400.0" stylesheets="@../css/login.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.walletmanagementsystem.Controller.LoginController">
    <children>
-      <TextField fx:id="LoginEmail" layoutX="228.0" layoutY="275.0" prefHeight="46.0" prefWidth="323.0" promptText="Email" style="-fx-border-radius: 25px; -fx-background-radius: 25px;" styleClass="signuplabels" stylesheets="@../css/buttons.css" />
-      <PasswordField fx:id="LoginPassword" layoutX="229.0" layoutY="340.0" prefHeight="46.0" prefWidth="323.0" promptText="Password" style="-fx-background-radius: 25px; -fx-border-radius: 25px;" styleClass="signupbutton" stylesheets="@../css/buttons.css" />
-      <FontIcon fx:id="togglePasswordIcon" iconColor="WHITE" iconLiteral="fas-eye" iconSize="16" layoutX="517.0" layoutY="369.0" onMouseClicked="#togglePasswordVisibility" />
-      <Button fx:id="Login" layoutX="305.0" layoutY="493.0" mnemonicParsing="false" onAction="#handleLogin" prefHeight="33.0" prefWidth="146.0" styleClass="signupbutton" stylesheets="@../css/buttons.css" text="Login" />
-      <Text layoutX="209.0" layoutY="574.0" strokeType="OUTSIDE" strokeWidth="0.0" text="don't have an account?">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-      </Text>
-      <Hyperlink fx:id="Signup" layoutX="453.0" layoutY="545.0" onAction="#switchToSignup" text="Sign up" textFill="WHITE">
-         <font>
-            <Font name="System Bold Italic" size="19.0" />
-         </font>
-      </Hyperlink>
-      <ComboBox fx:id="myComboBox" editable="true" layoutX="229.0" layoutY="407.0" prefHeight="46.0" prefWidth="323.0" promptText="Login as" style="-fx-background-radius: 25px; -fx-background-color: black;" styleClass="login-label" stylesheets="@../css/login.css">
-         <items>
-            <FXCollections fx:factory="observableArrayList">
-               <String fx:value="USER" />
-               <String fx:value="ADMIN" />
-            </FXCollections>
-         </items>
-      </ComboBox>
-      <Label layoutX="340.0" layoutY="173.0" styleClass="login-label" stylesheets="@../css/login.css" text="Login" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="38.0" />
-         </font>
-      </Label>
-      <AnchorPane layoutX="765.0" layoutY="-2.0" prefHeight="800.0" prefWidth="827.0" style="-fx-background-color: black;">
+      <!-- Left Panel - Login Form -->
+      <StackPane layoutX="0.0" layoutY="0.0" prefHeight="900.0" prefWidth="700.0" styleClass="left-panel">
          <children>
-            <ImageView fitHeight="520.0" fitWidth="523.0" layoutX="2.0" layoutY="183.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/intro logo.png" />
-               </image>
-            </ImageView>
-            <Label layoutX="153.0" layoutY="560.0" prefHeight="55.0" prefWidth="360.0" styleClass="login-label" stylesheets="@../css/login.css" text="Simple way to " textFill="WHITE">
-               <font>
-                  <Font name="Georgia" size="38.0" />
-               </font>
-            </Label>
-            <Label layoutX="226.0" layoutY="621.0" prefHeight="55.0" prefWidth="606.0" styleClass="login-label" stylesheets="@../css/login.css" text="manage your money!" textFill="WHITE">
-               <font>
-                  <Font name="Georgia" size="38.0" />
-               </font>
-            </Label>
+            <VBox alignment="CENTER" maxWidth="400.0" spacing="25.0">
+               <padding>
+                  <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+               </padding>
+               <children>
+                  <!-- Logo/Brand -->
+                  <VBox alignment="CENTER" spacing="10.0">
+                     <children>
+                        <FontIcon iconLiteral="fas-wallet" iconSize="48" styleClass="brand-icon" />
+                        <Label styleClass="brand-title" text="WalletManager" />
+                        <Label styleClass="brand-subtitle" text="Secure • Simple • Smart" />
+                     </children>
+                  </VBox>
+
+                  <!-- Welcome Text -->
+                  <VBox alignment="CENTER" spacing="8.0">
+                     <children>
+                        <Label styleClass="welcome-title" text="Welcome Back!" />
+                        <Label styleClass="welcome-subtitle" text="Please sign in to your account" />
+                     </children>
+                  </VBox>
+
+                  <!-- Login Form -->
+                  <VBox spacing="20.0">
+                     <children>
+                        <!-- Email Field -->
+                        <VBox spacing="8.0">
+                           <children>
+                              <Label styleClass="field-label" text="Email Address" />
+                              <StackPane>
+                                 <children>
+                                    <TextField fx:id="LoginEmail" promptText="Enter your email" styleClass="modern-textfield" />
+                                    <FontIcon iconLiteral="fas-envelope" iconSize="16" styleClass="field-icon" StackPane.alignment="CENTER_LEFT" />
+                                 </children>
+                              </StackPane>
+                           </children>
+                        </VBox>
+
+                        <!-- Password Field -->
+                        <VBox spacing="8.0">
+                           <children>
+                              <Label styleClass="field-label" text="Password" />
+                              <StackPane>
+                                 <children>
+                                    <PasswordField fx:id="LoginPassword" promptText="Enter your password" styleClass="modern-textfield" />
+                                    <FontIcon iconLiteral="fas-lock" iconSize="16" styleClass="field-icon" StackPane.alignment="CENTER_LEFT" />
+                                    <FontIcon fx:id="togglePasswordIcon" iconLiteral="fas-eye" iconSize="16" onMouseClicked="#togglePasswordVisibility" styleClass="toggle-icon" StackPane.alignment="CENTER_RIGHT" />
+                                 </children>
+                              </StackPane>
+                           </children>
+                        </VBox>
+
+                        <!-- Role Selection -->
+                        <VBox spacing="8.0">
+                           <children>
+                              <Label styleClass="field-label" text="Login As" />
+                              <StackPane>
+                                 <children>
+                                    <ComboBox fx:id="myComboBox" prefWidth="400.0" promptText="Select your role" styleClass="modern-combobox">
+                                       <items>
+                                          <FXCollections fx:factory="observableArrayList">
+                                             <String fx:value="USER" />
+                                             <String fx:value="ADMIN" />
+                                          </FXCollections>
+                                       </items>
+                                    </ComboBox>
+                                    <FontIcon iconLiteral="fas-user-tag" iconSize="16" styleClass="field-icon" StackPane.alignment="CENTER_LEFT" />
+                                 </children>
+                              </StackPane>
+                           </children>
+                        </VBox>
+
+                        <!-- Options Row -->
+                        <HBox alignment="CENTER_LEFT" spacing="10.0">
+                           <children>
+                              <CheckBox fx:id="rememberMe" styleClass="modern-checkbox" text="Remember me" />
+                              <Region HBox.hgrow="ALWAYS" />
+                              <Hyperlink fx:id="forgotPassword"  styleClass="forgot-link" text="Forgot Password?" />
+                           </children>
+                        </HBox>
+
+                        <!-- Login Button -->
+                        <StackPane>
+                           <children>
+                              <Button fx:id="Login" onAction="#handleLogin" prefHeight="50.0" prefWidth="400.0" styleClass="primary-button" text="Sign In" />
+                              <ProgressIndicator fx:id="loginProgress" prefHeight="24.0" prefWidth="24.0" styleClass="login-progress" visible="false" />
+                           </children>
+                        </StackPane>
+
+                        <!-- Error/Success Message -->
+                        <Label fx:id="messageLabel" styleClass="message-label" visible="false" wrapText="true" />
+
+                        <!-- Divider -->
+                        <HBox alignment="CENTER" spacing="15.0">
+                           <children>
+                              <Rectangle fill="#E5E7EB" height="1.0" width="150.0" />
+                              <Label styleClass="divider-text" text="or" />
+                              <Rectangle fill="#E5E7EB" height="1.0" width="150.0" />
+                           </children>
+                        </HBox>
+
+                        <!-- Social Login Buttons -->
+                        <HBox alignment="CENTER" spacing="15.0">
+                           <children>
+                              <Button fx:id="googleLogin" styleClass="social-button google-button">
+                                 <graphic>
+                                    <FontIcon iconLiteral="fab-google" iconSize="18" />
+                                 </graphic>
+                              </Button>
+                              <Button fx:id="facebookLogin"  styleClass="social-button facebook-button">
+                                 <graphic>
+                                    <FontIcon iconLiteral="fab-facebook-f" iconSize="18" />
+                                 </graphic>
+                              </Button>
+                              <Button fx:id="appleLogin"  styleClass="social-button apple-button">
+                                 <graphic>
+                                    <FontIcon iconLiteral="fab-apple" iconSize="18" />
+                                 </graphic>
+                              </Button>
+                           </children>
+                        </HBox>
+
+                        <!-- Signup Link -->
+                        <HBox alignment="CENTER" spacing="5.0">
+                           <children>
+                              <Label styleClass="signup-text" text="Don't have an account?" />
+                              <Hyperlink fx:id="Signup" onAction="#switchToSignup" styleClass="signup-link" text="Create Account" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
          </children>
-      </AnchorPane>
+      </StackPane>
+
+      <!-- Right Panel - Branding/Marketing -->
+      <StackPane layoutX="700.0" layoutY="0.0" prefHeight="900.0" prefWidth="700.0" styleClass="right-panel">
+         <children>
+            <VBox alignment="CENTER" spacing="30.0">
+               <padding>
+                  <Insets bottom="80.0" left="80.0" right="80.0" top="80.0" />
+               </padding>
+               <children>
+                  <!-- Hero Image/Illustration -->
+                  <StackPane maxHeight="400.0" maxWidth="400.0">
+                     <children>
+                        <ImageView fitHeight="350.0" fitWidth="350.0" pickOnBounds="true" preserveRatio="true" styleClass="hero-image">
+                           <image>
+                              <Image url="@../images/intro logo.png" />
+                           </image>
+                        </ImageView>
+                        <!-- Floating Elements for Visual Appeal -->
+                        <FontIcon iconLiteral="fas-coins" iconSize="32" styleClass="floating-icon floating-icon-1" />
+                        <FontIcon iconLiteral="fas-credit-card" iconSize="28" styleClass="floating-icon floating-icon-2" />
+                        <FontIcon iconLiteral="fas-chart-line" iconSize="24" styleClass="floating-icon floating-icon-3" />
+                     </children>
+                  </StackPane>
+
+                  <!-- Marketing Content -->
+                  <VBox alignment="CENTER" spacing="20.0">
+                     <children>
+                        <Label styleClass="hero-title" text="Simple way to" textAlignment="CENTER" />
+                        <Label styleClass="hero-title-accent" text="manage your money!" textAlignment="CENTER" />
+                        <Label styleClass="hero-description" text="Track expenses, set budgets, and achieve your financial goals with our intuitive wallet management system." textAlignment="CENTER" wrapText="true" />
+                     </children>
+                  </VBox>
+
+                  <!-- Feature Highlights -->
+                  <VBox spacing="20.0">
+                     <children>
+                        <HBox alignment="CENTER_LEFT" spacing="15.0" styleClass="feature-item">
+                           <children>
+                              <FontIcon iconLiteral="fas-shield-alt" iconSize="24" styleClass="feature-icon" />
+                              <VBox spacing="5.0">
+                                 <children>
+                                    <Label styleClass="feature-title" text="Bank-level Security" />
+                                    <Label styleClass="feature-description" text="Your data is protected with 256-bit encryption" />
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+
+                        <HBox alignment="CENTER_LEFT" spacing="15.0" styleClass="feature-item">
+                           <children>
+                              <FontIcon iconLiteral="fas-mobile-alt" iconSize="24" styleClass="feature-icon" />
+                              <VBox spacing="5.0">
+                                 <children>
+                                    <Label styleClass="feature-title" text="Multi-platform Access" />
+                                    <Label styleClass="feature-description" text="Sync across all your devices seamlessly" />
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+
+                        <HBox alignment="CENTER_LEFT" spacing="15.0" styleClass="feature-item">
+                           <children>
+                              <FontIcon iconLiteral="fas-chart-pie" iconSize="24" styleClass="feature-icon" />
+                              <VBox spacing="5.0">
+                                 <children>
+                                    <Label styleClass="feature-title" text="Smart Analytics" />
+                                    <Label styleClass="feature-description" text="Get insights into your spending patterns" />
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+         </children>
+      </StackPane>
+
+      <!-- Loading Overlay -->
+      <StackPane fx:id="loadingOverlay" prefHeight="900.0" prefWidth="1400.0" styleClass="loading-overlay" visible="false">
+         <children>
+            <VBox alignment="CENTER" spacing="20.0">
+               <children>
+                  <ProgressIndicator prefHeight="60.0" prefWidth="60.0" styleClass="loading-spinner" />
+                  <Label styleClass="loading-text" text="Authenticating..." />
+               </children>
+            </VBox>
+         </children>
+      </StackPane>
    </children>
 </AnchorPane>
