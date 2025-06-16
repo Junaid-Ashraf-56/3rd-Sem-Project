@@ -78,6 +78,12 @@
                   <Font name="System Bold Italic" size="30.0" />
                </font>
             </Label>
+            <Label fx:id="walletBalance" layoutX="15.0" layoutY="77.0" prefHeight="66.0" prefWidth="197.0" textFill="#fffdfd">
+               <font>
+                  <Font name="System Bold" size="25.0" />
+               </font>
+            </Label>
+            <Label layoutX="40.0" layoutY="200.0" text="Label" />
          </children></AnchorPane>
 
       <!-- Card 3 with LineChart -->
@@ -166,6 +172,7 @@
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
+            <VBox fx:id="walletCoins" layoutX="17.0" layoutY="46.0" prefHeight="251.0" prefWidth="1052.0" />
          </children>
       </AnchorPane>
    </children>

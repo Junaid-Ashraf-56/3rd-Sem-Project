@@ -15,7 +15,7 @@ public class WalletDAO {
 
     // Get wallet by account number
     public static Wallet getWalletByAccountNumber(String accountNumber) {
-        String sql = "SELECT * FROM wallet WHERE account_number = ?";
+        String sql = "SELECT * FROM wallet WHERE accountnumber = ?";
         Wallet wallet = null;
         if (connection != null) {
             try (PreparedStatement stmt = connection.prepareStatement(sql)) {
@@ -24,8 +24,8 @@ public class WalletDAO {
                 if (rs.next()) {
                     wallet = new Wallet();
                     wallet.setWalletId(rs.getInt("id"));
-                    wallet.setUserId(rs.getInt("user_id")); // Keep if user_id is still needed
-                    wallet.setAccountNumber(rs.getString("account_number")); // Changed to match DB column
+                    wallet.setUserId(rs.getInt("userid")); // Keep if user_id is still needed
+                    wallet.setAccountNumber(rs.getString("accountnumber")); // Changed to match DB column
                     wallet.setBalance(rs.getDouble("balance"));
                     wallet.setWallet(new ArrayList<>());
                 }
@@ -39,7 +39,7 @@ public class WalletDAO {
     // Update wallet balance
     public static boolean updateWalletBalance(String accountNumber, double newBalance) {
         boolean isUpdated = false;
-        String sql = "UPDATE wallet SET balance = ? WHERE account_number = ?";
+        String sql = "UPDATE wallet SET balance = ? WHERE accountnumber = ?";
         if (connection != null) {
             try (PreparedStatement stmt = connection.prepareStatement(sql)) {
                 stmt.setDouble(1, newBalance);
@@ -54,7 +54,7 @@ public class WalletDAO {
 
     // Insert new wallet
     public static Wallet insertNewWallet(String accountNumber) {
-        String sql = "INSERT INTO wallet (account_number, balance, user_id) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO wallet (accountnumber, balance, userid) VALUES (?, ?, ?)";
         Wallet wallet = null;
         if (connection != null) {
             try (PreparedStatement stmt = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
@@ -85,7 +85,7 @@ public class WalletDAO {
 
     // Get transactions by account number
     public static List<Transaction> getTransactionsByAccountNumber(String accountNumber) {
-        String sql = "SELECT * FROM Transaction WHERE account_number = ?";
+        String sql = "SELECT * FROM Transaction WHERE accountnumber = ?";
         List<Transaction> transactions = new ArrayList<>();
         if (connection != null) {
             try (PreparedStatement stmt = connection.prepareStatement(sql)) {
@@ -95,7 +95,7 @@ public class WalletDAO {
                     Transaction transaction = new Transaction();
                     transaction.setTransactionId(rs.getInt("id"));
                     transaction.setUserId(rs.getInt("user_id")); // Keep if user_id is still needed
-                    transaction.setAccountNumber(rs.getString("account_number"));
+                    transaction.setAccountNumber(rs.getString("accountnumber"));
                     transaction.setType(TransactionType.valueOf(rs.getString("type")));
                     transaction.setAssetSymbol(rs.getString("asset_symbol"));
                     transaction.setQuantity(rs.getDouble("quantity"));

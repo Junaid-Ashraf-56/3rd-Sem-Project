@@ -51,7 +51,7 @@ public class WalletController implements Initializable {
 
     @FXML private Button walletbutton;
 
-    @FXML private VBox walletBalance;
+    @FXML private Label walletBalance;
     @FXML private VBox walletCoins;
 
     @FXML private Label BTClabel;
@@ -69,10 +69,10 @@ public class WalletController implements Initializable {
             walletbutton.requestFocus();
             UserName.setText(Session.getUsername()); // Will show username from logged-in user
         });
-        int userId = Session.getUserId();
+        String accountNumber = Session.getCurrentUser().getAccountNumber();
 
-        //        showBalance(userId);
-        //        showCoins(userId);
+                showBalance(accountNumber);
+                showCoins(accountNumber);
 
         startGraph();
     }
@@ -100,13 +100,12 @@ public class WalletController implements Initializable {
 
     /*Don't delete it is for testing purpose */
 
-    public void showBalance(String accountNumber){
-        walletBalance.getChildren().clear();
+    public void showBalance(String accountNumber) {
         Wallet wallet = WalletDAO.getWalletByAccountNumber(accountNumber);
-        if (wallet!=null){
-            Label balanceLabel = new Label("Balance: $" + String.format("%.2f", wallet.getBalance()));
-            balanceLabel.setStyle("-fx-font-size: 16px; -fx-font-weight: bold;");
-            walletBalance.getChildren().add(balanceLabel);
+        if (wallet != null) {
+            walletBalance.setText("Balance: $ " + String.format("%.2f", wallet.getBalance()));
+        } else {
+            walletBalance.setText("$ 0.0");
         }
     }
 

@@ -18,7 +18,7 @@ public class PortfolioDAO {
 
     // Get portfolio by account number
     public static Portfolio getPortfolioByAccountNumber(String accountNumber) {
-        String sql = "SELECT * FROM portfolio WHERE account_number = ?";
+        String sql = "SELECT * FROM portfolio WHERE accountnumber = ?";
         Portfolio portfolio = null;
 
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
@@ -26,7 +26,7 @@ public class PortfolioDAO {
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
                     portfolio = new Portfolio();
-                    portfolio.setAccountNumber(rs.getString("account_number"));
+                    portfolio.setAccountNumber(rs.getString("accountnumber"));
 
                     // Jackson object mapper to parse JSON
                     ObjectMapper mapper = new ObjectMapper();
@@ -46,7 +46,7 @@ public class PortfolioDAO {
 
     // Insert new portfolio JSON
     public static void insertPortfolio(int accountNumber, Portfolio portfolio) {
-        String sql = "INSERT INTO portfolio(account_number, portfolio_data) VALUES (?, ?)";
+        String sql = "INSERT INTO portfolio(accountnumber, portfolio_data) VALUES (?, ?)";
 
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setInt(1, accountNumber);
@@ -65,7 +65,7 @@ public class PortfolioDAO {
 
     // Update portfolio JSON by account number
     public static boolean updatePortfolio(String accountNumber, Portfolio portfolio) {
-        String sql = "UPDATE portfolio SET portfolio_data = ? WHERE account_number = ?";
+        String sql = "UPDATE portfolio SET portfolio_data = ? WHERE accountnumber = ?";
         boolean success = false;
 
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
