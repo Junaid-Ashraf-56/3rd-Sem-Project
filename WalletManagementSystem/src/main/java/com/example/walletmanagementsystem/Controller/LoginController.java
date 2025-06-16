@@ -14,6 +14,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.event.ActionEvent;
 import javafx.stage.Stage;
+import org.kordamp.ikonli.javafx.FontIcon;
 
 import java.io.IOException;
 
@@ -25,6 +26,48 @@ public class LoginController {
     @FXML private ComboBox<String> myComboBox;
     @FXML private Hyperlink Signup;
     @FXML private Button Login;
+    @FXML private AnchorPane Iloginform;
+    @FXML private PasswordField ILoginPassword;
+    @FXML private FontIcon togglePasswordIcon;
+    private TextField passwordTextField;
+    private boolean isPasswordVisible = false;
+
+    @FXML
+    private void togglePasswordVisibility() {
+        if (isPasswordVisible) {
+            // Switch to PasswordField (hide password)
+            String password = passwordTextField.getText();
+            loginform.getChildren().remove(passwordTextField);
+            LoginPassword = new PasswordField();
+            LoginPassword.setText(password);
+            LoginPassword.setLayoutX(229.0);
+            LoginPassword.setLayoutY(340.0);
+            LoginPassword.setPrefHeight(46.0);
+            LoginPassword.setPrefWidth(323.0);
+            LoginPassword.setPromptText("Password");
+            LoginPassword.setStyle("-fx-background-radius: 25px; -fx-border-radius: 25px;");
+            LoginPassword.getStyleClass().add("signupbutton");
+            loginform.getChildren().add(LoginPassword);
+            togglePasswordIcon.setIconLiteral("fas-eye");
+            isPasswordVisible = false;
+        } else {
+            // Switch to TextField (show password)
+            String password = LoginPassword.getText();
+            loginform.getChildren().remove(LoginPassword);
+            passwordTextField = new TextField();
+            passwordTextField.setText(password);
+            passwordTextField.setLayoutX(229.0);
+            passwordTextField.setLayoutY(340.0);
+            passwordTextField.setPrefHeight(46.0);
+            passwordTextField.setPrefWidth(323.0);
+            passwordTextField.setPromptText("Password");
+            passwordTextField.setStyle("-fx-background-radius: 25px; -fx-border-radius: 25px;");
+            passwordTextField.getStyleClass().add("signupbutton");
+            loginform.getChildren().add(passwordTextField);
+            togglePasswordIcon.setIconLiteral("fas-eye-slash");
+            isPasswordVisible = true;
+        }
+    }
 
     private WalletService walletService = new WalletService();
 
