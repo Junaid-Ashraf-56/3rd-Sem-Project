@@ -50,13 +50,14 @@ public class MarketController implements Initializable {
 
     @FXML private Label CoinPrice;
     @FXML private Label CoinName;
-
+    @FXML private Label percentageperhour;
     @FXML private Hyperlink UserName;
 
     private final ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
     public XYChart.Series<String, Number> currentSeries = new XYChart.Series<>();
     private final Map<String, XYChart.Series<String, Number>> priceMap = new java.util.HashMap<>();
     private String currentCoin = "bitcoin";
+    private double previousPrice = -1;
 
     public void initialize(URL location, ResourceBundle resources) {
         xAxis.setLabel("Time");
@@ -113,12 +114,32 @@ public class MarketController implements Initializable {
     }
     private void startPriceUpdater() {
         executor.scheduleAtFixedRate(() -> {
-            double price = ChartService.getLivePrice(currentCoin);
+            double newPrice = ChartService.getLivePrice(currentCoin);
+
             Platform.runLater(() -> {
-                CoinPrice.setText("$ " + String.format("%.2f", price));
+                CoinPrice.setText("$ " + String.format("%.2f", newPrice));
+
+                if (previousPrice > 0) {
+                    double change = ((newPrice - previousPrice) / previousPrice) * 100;
+                    String symbol = change >= 0 ? "+" : "-";
+                    percentageperhour.setText(String.format("%s%.2f%% (recent)", symbol, Math.abs(change)));
+
+                    // Set color based on positive/negative
+                    if (change >= 0) {
+                        percentageperhour.setStyle("-fx-text-fill: #00ff00;"); // green
+                    } else {
+                        percentageperhour.setStyle("-fx-text-fill: red;");
+                    }
+                } else {
+                    percentageperhour.setText("");
+                }
+
+                previousPrice = newPrice;
             });
-        }, 0, 30, TimeUnit.SECONDS); // Update every 10 seconds
+        }, 0, 30, TimeUnit.SECONDS);
     }
+
+
 
 
     @FXML
@@ -131,6 +152,7 @@ public class MarketController implements Initializable {
         CoinName.setText(" Bitcoin ");
         double price = ChartService.getLivePrice(currentCoin);
         CoinPrice.setText("$ " + price);
+        previousPrice = -1;
         updateChart();
     }
 
@@ -139,6 +161,7 @@ public class MarketController implements Initializable {
         CoinName.setText(" Ethereum ");
         double price = ChartService.getLivePrice(currentCoin);
         CoinPrice.setText("$ " + price);
+        previousPrice = -1;
         updateChart();
     }
 
@@ -147,6 +170,7 @@ public class MarketController implements Initializable {
         CoinName.setText(" XRP ");
         double price = ChartService.getLivePrice(currentCoin);
         CoinPrice.setText("$ " + price);
+        previousPrice = -1;
         updateChart();
     }
     @FXML
@@ -155,6 +179,7 @@ public class MarketController implements Initializable {
         CoinName.setText(" BNB ");
         double price = ChartService.getLivePrice(currentCoin);
         CoinPrice.setText("$ " + price);
+        previousPrice = -1;
         updateChart();
     }
     @FXML
@@ -163,6 +188,7 @@ public class MarketController implements Initializable {
         CoinName.setText(" Solana ");
         double price = ChartService.getLivePrice(currentCoin);
         CoinPrice.setText("$ " + price);
+        previousPrice = -1;
         updateChart();
     }
     @FXML
@@ -171,6 +197,7 @@ public class MarketController implements Initializable {
         CoinName.setText(" Usdt ");
         double price = ChartService.getLivePrice(currentCoin);
         CoinPrice.setText("$ " + price);
+        previousPrice = -1;
         updateChart();
     }
     @FXML
@@ -179,6 +206,7 @@ public class MarketController implements Initializable {
         CoinName.setText(" Dogecoin");
         double price = ChartService.getLivePrice(currentCoin);
         CoinPrice.setText("$ " + price);
+        previousPrice = -1;
         updateChart();
     }
     @FXML
@@ -187,6 +215,7 @@ public class MarketController implements Initializable {
         CoinName.setText(" Hyper Liquid ");
         double price = ChartService.getLivePrice(currentCoin);
         CoinPrice.setText("$ " + price);
+        previousPrice = -1;
         updateChart();
     }
     @FXML
@@ -195,6 +224,7 @@ public class MarketController implements Initializable {
         CoinName.setText(" Cardano ");
         double price = ChartService.getLivePrice(currentCoin);
         CoinPrice.setText("$ " + price);
+        previousPrice = -1;
         updateChart();
     }
     @FXML
@@ -203,6 +233,7 @@ public class MarketController implements Initializable {
         CoinName.setText(" SUI ");
         double price = ChartService.getLivePrice(currentCoin);
         CoinPrice.setText("$ " + price);
+        previousPrice = -1;
         updateChart();
     }
 
