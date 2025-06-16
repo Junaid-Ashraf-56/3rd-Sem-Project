@@ -5,64 +5,215 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<VBox prefHeight="800.0" prefWidth="1363.0" style="-fx-background-color: #1e1e1e;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.walletmanagementsystem.Controller.TransactionsController">
+<VBox prefHeight="800.0" prefWidth="1363.0" style="-fx-background-color: #0f1419;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.walletmanagementsystem.Controller.TransactionsController">
     <children>
         <HBox prefHeight="800.0" prefWidth="1363.0">
-            <!-- Sidebar -->
-            <VBox fx:id="sidebar" prefWidth="239.0" style="-fx-background-color: black; -fx-padding: 10;">
+            <!-- Enhanced Sidebar -->
+            <VBox fx:id="sidebar" prefWidth="190.0" style="-fx-background-color: #1a202c; -fx-border-color: #2d3748; -fx-border-width: 0 1 0 0;">
                 <children>
-                    <HBox alignment="CENTER_LEFT" spacing="10" style="-fx-padding: 10;">
-                        <FontIcon iconColor="#f5385cc4" iconLiteral="fas-credit-card" iconSize="30" wrappingWidth="13.5" />
-                  <Region prefHeight="0.0" prefWidth="20.0" />
-                        <Hyperlink layoutX="62.0" text="CashMate" textFill="#b92e2e">
+                    <!-- Logo Section -->
+                    <AnchorPane prefHeight="100.0" prefWidth="190.0" style="-fx-background-color: #2d3748;">
+                        <children>
+                            <Hyperlink layoutX="50.0" layoutY="18.0" text="CashMate" textFill="#4fd1c7" underline="false">
+                                <font>
+                                    <Font name="System Bold" size="24.0" />
+                                </font>
+                            </Hyperlink>
+                            <FontIcon iconColor="#4fd1c7" iconLiteral="fas-wallet" iconSize="32" layoutX="15.0" layoutY="52.0" />
+                            <Label layoutX="15.0" layoutY="70.0" text="Professional Trading" textFill="#a0aec0">
+                                <font>
+                                    <Font size="11.0" />
+                                </font>
+                            </Label>
+                        </children>
+                    </AnchorPane>
+
+                    <!-- Navigation Menu -->
+                    <VBox spacing="5" style="-fx-padding: 20 10 10 10;">
+                        <Label text="NAVIGATION" textFill="#a0aec0">
                             <font>
-                                <Font name="System Bold Italic" size="23.0" />
+                                <Font name="System Bold" size="12.0" />
                             </font>
-                        </Hyperlink>
-                    </HBox>
-                    <FontIcon iconLiteral="fas-bars" iconSize="20" style="-fx-translate-x: 190; -fx-translate-y: -30;" wrappingWidth="7.875" />
-                    <Button fx:id="marketbutton" mnemonicParsing="false" onAction="#onClickMarketButton" prefHeight="25.0" prefWidth="162.0" stylesheets="@../css/buttons.css" text="Markets" />
-                    <Label style="-fx-translate-x: 15; -fx-translate-y: -25;" text="📈" textFill="#fcf8f8" />
-                    <Button mnemonicParsing="false" onAction="#onClickPortfolioButton" prefHeight="25.0" prefWidth="162.0" stylesheets="@../css/buttons.css" text="Portfolio" />
-                    <Label style="-fx-translate-x: 15; -fx-translate-y: -25;" text="💼" textFill="#fcfcfc" />
-                    <Button fx:id="transactionbutton" mnemonicParsing="false" prefHeight="25.0" prefWidth="163.0" stylesheets="@../css/buttons.css" text="Transactions" />
-                    <Label style="-fx-translate-x: 15; -fx-translate-y: -25;" text="💱" textFill="#ebebeb" />
-                    <Button fx:id="walletbutton" mnemonicParsing="false" onAction="#onClickWalletButton" prefHeight="25.0" prefWidth="163.0" stylesheets="@../css/buttons.css" text="Wallet" />
-                    <Label style="-fx-translate-x: 16; -fx-translate-y: -25;" text="💳" textFill="#fffefe" />
-                    <VBox VBox.vgrow="ALWAYS" />
-                    <Button fx:id="walletbutton1" mnemonicParsing="false" prefHeight="25.0" prefWidth="163.0" stylesheets="@../css/buttons.css" text="Logout" />
+                        </Label>
+
+                        <Button fx:id="marketbutton" mnemonicParsing="false" onAction="#onClickMarketButton" prefHeight="40.0" prefWidth="170.0" style="-fx-background-color: transparent; -fx-text-fill: #e2e8f0; -fx-background-radius: 8; -fx-border-color: transparent;" text="   Markets" textAlignment="LEFT">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                        </Button>
+                        <FontIcon iconColor="#a0aec0" iconLiteral="fas-chart-line" iconSize="18" style="-fx-translate-x: 25; -fx-translate-y: -30;" />
+
+                        <Button mnemonicParsing="false" onAction="#onClickPortfolioButton" prefHeight="40.0" prefWidth="170.0" style="-fx-background-color: transparent; -fx-text-fill: #e2e8f0; -fx-background-radius: 8; -fx-border-color: transparent;" text="   Portfolio" textAlignment="LEFT">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                        </Button>
+                        <FontIcon iconColor="#a0aec0" iconLiteral="fas-briefcase" iconSize="18" style="-fx-translate-x: 25; -fx-translate-y: -30;" />
+
+                        <Button fx:id="transactionbutton" mnemonicParsing="false" prefHeight="40.0" prefWidth="170.0" style="-fx-background-color: #4fd1c7; -fx-text-fill: #1a202c; -fx-background-radius: 8; -fx-font-weight: bold;" text="   Transactions" textAlignment="LEFT">
+                            <font>
+                                <Font name="System Bold" size="14.0" />
+                            </font>
+                        </Button>
+                        <FontIcon iconColor="#1a202c" iconLiteral="fas-exchange-alt" iconSize="18" style="-fx-translate-x: 25; -fx-translate-y: -30;" />
+
+                        <Button fx:id="walletbutton" mnemonicParsing="false" onAction="#onClickWalletButton" prefHeight="40.0" prefWidth="170.0" style="-fx-background-color: transparent; -fx-text-fill: #e2e8f0; -fx-background-radius: 8; -fx-border-color: transparent;" text="   Wallet" textAlignment="LEFT">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                        </Button>
+                        <FontIcon iconColor="#a0aec0" iconLiteral="fas-credit-card" iconSize="18" style="-fx-translate-x: 25; -fx-translate-y: -30;" />
+                    </VBox>
+
+                    <!-- Account Section -->
+                    <VBox spacing="5" style="-fx-padding: 460 10 10 10;">
+
+                        <Button fx:id="logoutButton" mnemonicParsing="false" prefHeight="40.0" prefWidth="170.0" style="-fx-background-color: #f56565; -fx-text-fill: white; -fx-background-radius: 8;" text="   Logout" textAlignment="LEFT">
+                            <font>
+                                <Font name="System Bold" size="14.0" />
+                            </font>
+                        </Button>
+                        <FontIcon iconColor="white" iconLiteral="fas-sign-out-alt" iconSize="18" style="-fx-translate-x: 25; -fx-translate-y: -30;" />
+                    </VBox>
                 </children>
             </VBox>
-            <!-- Main Content -->
-            <VBox fx:id="mainContent" prefWidth="1124.0" style="-fx-padding: 20; -fx-background-color: black;">
+
+            <!-- Enhanced Main Content -->
+            <VBox fx:id="mainContent" prefWidth="1173.0" style="-fx-padding: 20; -fx-background-color: #0f1419;">
                 <children>
-                    <!-- User Info -->
-                    <HBox alignment="CENTER_LEFT" spacing="20" style="-fx-padding: 10;">
-                        <VBox spacing="5">
-                            <Label fx:id="userNameLabel" style="-fx-font-size: 28; -fx-font-weight: bold;" text="nomansitalib" textFill="WHITE" />
-                            <Label fx:id="accountNumberLabel" style="-fx-font-size: 16;" text="Acc15432" textFill="#cccccc" />
-                            <Label fx:id="balanceLabel" style="-fx-font-size: 16; -fx-font-weight: bold;" text="Balance: $55667.00" textFill="#00cc00" />
-                        </VBox>
+                    <!-- Header Section -->
+                    <AnchorPane prefHeight="100.0" prefWidth="1133.0" style="-fx-background-color: #1a202c; -fx-background-radius: 12; -fx-border-color: #2d3748; -fx-border-width: 1; -fx-border-radius: 12;">
+                        <children>
+                            <Label layoutX="24.0" layoutY="20.0" text="Transaction Management" textFill="#e2e8f0">
+                                <font>
+                                    <Font name="System Bold" size="32.0" />
+                                </font>
+                            </Label>
+                            <Label layoutX="24.0" layoutY="64.0" text="Monitor all your financial activities and wallet operations" textFill="#a0aec0">
+                                <font>
+                                    <Font size="14.0" />
+                                </font>
+                            </Label>
+                        </children>
+                    </AnchorPane>
+
+                    <Region prefHeight="20.0" />
+
+                    <!-- User Info & Quick Actions -->
+                    <HBox spacing="20">
+                        <children>
+                            <!-- User Account Info -->
+                            <AnchorPane prefHeight="120.0" prefWidth="400.0" style="-fx-background-color: #2d3748; -fx-background-radius: 12; -fx-border-color: #4a5568; -fx-border-width: 1; -fx-border-radius: 12;">
+                                <children>
+                                    <FontIcon iconColor="#4fd1c7" iconLiteral="fas-user-circle" iconSize="32" layoutX="20.0" layoutY="35.0" />
+                                    <Label fx:id="userNameLabel" layoutX="65.0" layoutY="15.0" text="nomansitalib" textFill="#e2e8f0">
+                                        <font>
+                                            <Font name="System Bold" size="24.0" />
+                                        </font>
+                                    </Label>
+                                    <Label fx:id="accountNumberLabel" layoutX="65.0" layoutY="48.0" text="Account: Acc15432" textFill="#a0aec0">
+                                        <font>
+                                            <Font size="14.0" />
+                                        </font>
+                                    </Label>
+                                    <Label fx:id="balanceLabel" layoutX="65.0" layoutY="70.0" text="Available Balance: $55,667.00" textFill="#48bb78">
+                                        <font>
+                                            <Font name="System Bold" size="16.0" />
+                                        </font>
+                                    </Label>
+                                    <FontIcon iconColor="#48bb78" iconLiteral="fas-dollar-sign" iconSize="16" layoutX="48.0" layoutY="89.0" />
+                                </children>
+                            </AnchorPane>
+
+                            <!-- Quick Actions Panel -->
+                            <AnchorPane prefHeight="120.0" prefWidth="713.0" style="-fx-background-color: #2d3748; -fx-background-radius: 12; -fx-border-color: #4a5568; -fx-border-width: 1; -fx-border-radius: 12;">
+                                <children>
+                                    <Label layoutX="20.0" layoutY="15.0" text="Quick Actions" textFill="#e2e8f0">
+                                        <font>
+                                            <Font name="System Bold" size="18.0" />
+                                        </font>
+                                    </Label>
+                                    <Label layoutX="20.0" layoutY="40.0" text="Manage your funds instantly" textFill="#a0aec0">
+                                        <font>
+                                            <Font size="12.0" />
+                                        </font>
+                                    </Label>
+
+                                    <!-- Action Buttons -->
+                                    <Button fx:id="depositButton" layoutX="20.0" layoutY="70.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="120.0" style="-fx-background-color: #48bb78; -fx-text-fill: white; -fx-background-radius: 8; -fx-font-weight: bold;" text="  DEPOSIT">
+                                        <font>
+                                            <Font name="System Bold" size="14.0" />
+                                        </font>
+                                    </Button>
+                                    <FontIcon iconColor="white" iconLiteral="fas-plus" iconSize="14" layoutX="35.0" layoutY="94.0" />
+
+                                    <Button fx:id="withdrawButton" layoutX="186.0" layoutY="70.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="120.0" style="-fx-background-color: #f56565; -fx-text-fill: white; -fx-background-radius: 8; -fx-font-weight: bold;" text="  WITHDRAW">
+                                        <font>
+                                            <Font name="System Bold" size="14.0" />
+                                        </font>
+                                    </Button>
+                                    <FontIcon iconColor="white" iconLiteral="fas-minus" iconSize="14" layoutX="191.0" layoutY="94.0" />
+
+                                    <Button fx:id="sendButton" layoutX="342.0" layoutY="70.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="120.0" style="-fx-background-color: #4299e1; -fx-text-fill: white; -fx-background-radius: 8; -fx-font-weight: bold;" text="  SEND">
+                                        <font>
+                                            <Font name="System Bold" size="14.0" />
+                                        </font>
+                                    </Button>
+                                    <FontIcon iconColor="white" iconLiteral="fas-paper-plane" iconSize="14" layoutX="364.0" layoutY="94.0" />
+
+                                    <Button fx:id="tradeButton" layoutX="516.0" layoutY="70.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="120.0" style="-fx-background-color: #ed8936; -fx-text-fill: white; -fx-background-radius: 8; -fx-font-weight: bold;" text="  TRADE">
+                                        <font>
+                                            <Font name="System Bold" size="14.0" />
+                                        </font>
+                                    </Button>
+                                    <FontIcon iconColor="white" iconLiteral="fas-chart-line" iconSize="14" layoutX="529.0" layoutY="92.0" />
+                                </children>
+                            </AnchorPane>
+                        </children>
                     </HBox>
-                    <!-- Transactions Table -->
-                    <Label style="-fx-font-size: 20; -fx-font-weight: bold; -fx-padding: 10 0 10 0;" text="Transaction History" textFill="WHITE" />
-                    <TableView fx:id="transactionsTable" prefHeight="600.0" prefWidth="1084.0" style="-fx-background-color: grey;">
-                        <columns>
-                            <TableColumn fx:id="transactionIdColumn" prefWidth="150.0" text="Transaction ID" />
-                            <TableColumn fx:id="dateColumn" prefWidth="150.0" text="Date" />
-                            <TableColumn fx:id="typeColumn" prefWidth="100.0" text="Type" />
-                            <TableColumn fx:id="assetSymbolColumn" prefWidth="150.0" text="Asset Symbol" />
-                            <TableColumn fx:id="quantityColumn" prefWidth="100.0" text="Quantity" />
-                            <TableColumn fx:id="priceColumn" prefWidth="100.0" text="Price" />
-                            <TableColumn fx:id="totalAmountColumn" prefWidth="150.0" text="Total Amount" />
-                        </columns>
-                    </TableView>
+
+                    <Region prefHeight="20.0" />
+
+                    <!-- Enhanced Transaction History Section -->
+                    <AnchorPane prefHeight="480.0" prefWidth="1133.0" style="-fx-background-color: #1a202c; -fx-background-radius: 12; -fx-border-color: #2d3748; -fx-border-width: 1; -fx-border-radius: 12;">
+                        <children>
+                            <Label layoutX="20.0" layoutY="20.0" text="Transaction History" textFill="#e2e8f0">
+                                <font>
+                                    <Font name="System Bold" size="20.0" />
+                                </font>
+                            </Label>
+                            <FontIcon iconColor="#4fd1c7" iconLiteral="fas-history" iconSize="20" layoutX="222.0" layoutY="42.0" />
+
+                            <Label layoutX="20.0" layoutY="50.0" text="Complete record of all your financial transactions" textFill="#a0aec0">
+                                <font>
+                                    <Font size="12.0" />
+                                </font>
+                            </Label>
+
+                            <!-- Enhanced Transaction Table -->
+                            <TableView fx:id="transactionsTable" layoutX="20.0" layoutY="80.0" prefHeight="380.0" prefWidth="1093.0" style="-fx-background-color: #2d3748; -fx-background-radius: 8; -fx-border-color: #4a5568; -fx-border-width: 1; -fx-border-radius: 8;">
+                                <columns>
+                                    <TableColumn fx:id="transactionIdColumn" prefWidth="140.0" text="Transaction ID" />
+                                    <TableColumn fx:id="dateColumn" prefWidth="120.0" text="Date &amp; Time" />
+                                    <TableColumn fx:id="typeColumn" prefWidth="110.0" text="Type" />
+                                    <TableColumn fx:id="statusColumn" prefWidth="100.0" text="Status" />
+                                    <TableColumn fx:id="assetSymbolColumn" prefWidth="100.0" text="Asset" />
+                                    <TableColumn fx:id="quantityColumn" prefWidth="120.0" text="Quantity" />
+                                    <TableColumn fx:id="priceColumn" prefWidth="120.0" text="Unit Price" />
+                                    <TableColumn fx:id="totalAmountColumn" prefWidth="130.0" text="Total Amount" />
+                                    <TableColumn fx:id="feeColumn" prefWidth="100.0" text="Fee" />
+                                    <TableColumn fx:id="fromToColumn" prefWidth="152.0" text="From/To Address" />
+                                </columns>
+                            </TableView>
+                        </children>
+                    </AnchorPane>
                 </children>
             </VBox>
         </HBox>
