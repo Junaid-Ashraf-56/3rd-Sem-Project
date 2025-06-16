@@ -26,7 +26,6 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
@@ -53,7 +52,9 @@ public class WalletController implements Initializable {
     @FXML private VBox walletBalance;
     @FXML private VBox walletCoins;
 
-
+    @FXML private Label BTClabel;
+    @FXML private Label ETHlabel;
+    @FXML private Label XRPlabel;
 
     private final ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
 
@@ -73,11 +74,18 @@ public class WalletController implements Initializable {
         List<String> coins = List.of("bitcoin", "ethereum", "ripple");
         executor.scheduleAtFixedRate(() -> {
             Map<String, XYChart.Series<String, Number>> dataMap = ChartService.getLiveSeries(coins);
+            double btcPrice = ChartService.getLivePrice("bitcoin");
+            double ethPrice = ChartService.getLivePrice("ethereum");
+            double xrpPrice = ChartService.getLivePrice("ripple");
 
             Platform.runLater(() -> {
                 btcChart.getData().setAll(dataMap.get("bitcoin"));
                 ethChart.getData().setAll(dataMap.get("ethereum"));
                 XRPChart.getData().setAll(dataMap.get("ripple"));
+
+                BTClabel.setText("$ " + String.format("%.2f", btcPrice));
+                ETHlabel.setText("$ " + String.format("%.2f", ethPrice));
+                XRPlabel.setText("$ " + String.format("%.4f", xrpPrice));
             });
 
         }, 0, 30, TimeUnit.SECONDS);

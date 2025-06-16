@@ -98,6 +98,11 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
+            <Label fx:id="BTClabel" layoutX="172.0" layoutY="2.0" prefHeight="18.0" prefWidth="103.0" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
 
@@ -119,6 +124,11 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
+            <Label fx:id="ETHlabel" layoutX="147.0" layoutY="4.0" prefHeight="18.0" prefWidth="103.0" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
 
@@ -138,6 +148,11 @@
             <Label layoutX="11.0" layoutY="3.0" text="XRP" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="XRPlabel" layoutX="151.0" layoutY="2.0" prefHeight="18.0" prefWidth="103.0" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
                </font>
             </Label>
          </children>
