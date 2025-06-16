@@ -109,6 +109,9 @@ public class LoginController {
                 user.setAccountNumber("ADMIN123"); // Test account number for admin
             } else {
                 user = UserDAO.Login(email, password);
+                if (user != null) {
+                    Session.setCurrentUser(user);
+                }
             }
 
             if (user != null && user.getRole() == role) {
