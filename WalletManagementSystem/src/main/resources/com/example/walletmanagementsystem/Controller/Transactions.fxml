@@ -27,11 +27,6 @@
                                 </font>
                             </Hyperlink>
                             <FontIcon iconColor="#4fd1c7" iconLiteral="fas-wallet" iconSize="32" layoutX="15.0" layoutY="52.0" />
-                            <Label layoutX="15.0" layoutY="70.0" text="Professional Trading" textFill="#a0aec0">
-                                <font>
-                                    <Font size="11.0" />
-                                </font>
-                            </Label>
                         </children>
                     </AnchorPane>
 
@@ -101,6 +96,11 @@
                                     <Font size="14.0" />
                                 </font>
                             </Label>
+                     <Hyperlink fx:id="UserName" layoutX="968.0" layoutY="26.0" onAction="#onUsernameClick" prefHeight="32.0" prefWidth="150.0" text="Welcome, User" textFill="#4fd1c7" underline="false">
+                        <font>
+                           <Font name="System Bold" size="18.0" />
+                        </font>
+                     </Hyperlink>
                         </children>
                     </AnchorPane>
 
@@ -112,7 +112,7 @@
                             <!-- User Account Info -->
                             <AnchorPane prefHeight="120.0" prefWidth="400.0" style="-fx-background-color: #2d3748; -fx-background-radius: 12; -fx-border-color: #4a5568; -fx-border-width: 1; -fx-border-radius: 12;">
                                 <children>
-                                    <FontIcon iconColor="#4fd1c7" iconLiteral="fas-user-circle" iconSize="32" layoutX="20.0" layoutY="35.0" />
+                                    <FontIcon iconColor="#4fd1c7" iconLiteral="fas-user-circle" iconSize="32" layoutX="15.0" layoutY="45.0" />
                                     <Label fx:id="userNameLabel" layoutX="65.0" layoutY="15.0" text="nomansitalib" textFill="#e2e8f0">
                                         <font>
                                             <Font name="System Bold" size="24.0" />
@@ -198,7 +198,7 @@
                             </Label>
 
                             <!-- Enhanced Transaction Table -->
-                            <TableView fx:id="transactionsTable" layoutX="20.0" layoutY="80.0" prefHeight="380.0" prefWidth="1093.0" style="-fx-background-color: #2d3748; -fx-background-radius: 8; -fx-border-color: #4a5568; -fx-border-width: 1; -fx-border-radius: 8;">
+                            <TableView fx:id="transactionsTable" layoutX="3.0" layoutY="80.0" prefHeight="380.0" prefWidth="1134.0" style="-fx-background-color: #2d3748; -fx-background-radius: 8; -fx-border-color: #4a5568; -fx-border-width: 1; -fx-border-radius: 8;">
                                 <columns>
                                     <TableColumn fx:id="transactionIdColumn" prefWidth="140.0" text="Transaction ID" />
                                     <TableColumn fx:id="dateColumn" prefWidth="120.0" text="Date &amp; Time" />
@@ -209,7 +209,7 @@
                                     <TableColumn fx:id="priceColumn" prefWidth="120.0" text="Unit Price" />
                                     <TableColumn fx:id="totalAmountColumn" prefWidth="130.0" text="Total Amount" />
                                     <TableColumn fx:id="feeColumn" prefWidth="100.0" text="Fee" />
-                                    <TableColumn fx:id="fromToColumn" prefWidth="152.0" text="From/To Address" />
+                                    <TableColumn fx:id="fromToColumn" prefWidth="105.0" text="From" />
                                 </columns>
                             </TableView>
                         </children>
