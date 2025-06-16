@@ -69,12 +69,12 @@
             <AnchorPane layoutX="-2.0" layoutY="256.0" prefHeight="462.0" prefWidth="1160.0" style="-fx-background-color: Grey;" visible="false" />
             <AnchorPane layoutX="207.0" layoutY="208.0" prefHeight="539.0" prefWidth="952.0" style="-fx-background-color: Grey; -fx-background-radius: 5;">
                <children>
-                  <Button layoutX="685.0" layoutY="496.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="110.0" stylesheets="@../css/buttons.css" text="Buy">
+                  <Button layoutX="685.0" layoutY="496.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="110.0" styleClass="buybuttons" stylesheets="@../css/buttons.css" text="Buy">
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font>
                   </Button>
-                  <Button layoutX="822.0" layoutY="496.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="110.0" stylesheets="@../css/buttons.css" text="Sell">
+                  <Button layoutX="822.0" layoutY="496.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="110.0" styleClass="sellbuttons" stylesheets="@../css/buttons.css" text="Sell">
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font>
