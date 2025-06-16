@@ -19,7 +19,7 @@
    <children>
       <TextField fx:id="LoginEmail" layoutX="228.0" layoutY="275.0" prefHeight="46.0" prefWidth="323.0" promptText="Email" style="-fx-border-radius: 25px; -fx-background-radius: 25px;" styleClass="signuplabels" stylesheets="@../css/buttons.css" />
       <PasswordField fx:id="LoginPassword" layoutX="229.0" layoutY="340.0" prefHeight="46.0" prefWidth="323.0" promptText="Password" style="-fx-background-radius: 25px; -fx-border-radius: 25px;" styleClass="signupbutton" stylesheets="@../css/buttons.css" />
-      <FontIcon iconColor="WHITE" iconLiteral="fas-lock" iconSize="13" layoutX="522.0" layoutY="301.0" />
+      <FontIcon fx:id="togglePasswordIcon" iconColor="WHITE" iconLiteral="fas-eye" iconSize="16" layoutX="517.0" layoutY="369.0" onMouseClicked="#togglePasswordVisibility" />
       <Button fx:id="Login" layoutX="305.0" layoutY="493.0" mnemonicParsing="false" onAction="#handleLogin" prefHeight="33.0" prefWidth="146.0" styleClass="signupbutton" stylesheets="@../css/buttons.css" text="Login" />
       <Text layoutX="209.0" layoutY="574.0" strokeType="OUTSIDE" strokeWidth="0.0" text="don't have an account?">
          <font>
@@ -39,7 +39,6 @@
             </FXCollections>
          </items>
       </ComboBox>
-      <FontIcon iconColor="WHITE" iconLiteral="fas-envelope" layoutX="520.0" layoutY="369.0" />
       <Label layoutX="340.0" layoutY="173.0" styleClass="login-label" stylesheets="@../css/login.css" text="Login" textFill="WHITE">
          <font>
             <Font name="System Bold" size="38.0" />
@@ -49,7 +48,7 @@
          <children>
             <ImageView fitHeight="520.0" fitWidth="523.0" layoutX="2.0" layoutY="183.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../../../../../../Downloads/logo-Photoroom.png" />
+                  <Image url="@../images/intro logo.png" />
                </image>
             </ImageView>
             <Label layoutX="153.0" layoutY="560.0" prefHeight="55.0" prefWidth="254.0" styleClass="login-label" stylesheets="@../css/login.css" text="Simple way to " textFill="WHITE">

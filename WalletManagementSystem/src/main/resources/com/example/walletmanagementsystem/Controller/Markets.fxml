@@ -23,14 +23,14 @@
                         <Font name="System Bold" size="48.0" />
                      </font>
                   </Label>
-                  <Hyperlink fx:id="UserName" layoutX="989.0" layoutY="52.0" onAction="#onUsernameClick" prefHeight="33.0" prefWidth="133.0" textFill="WHITE">
+                  <Hyperlink fx:id="UserName" layoutX="989.0" layoutY="52.0" onAction="#onUsernameClick" prefHeight="33.0" prefWidth="133.0" text="Username" textFill="WHITE">
                      <font>
-                        <Font name="Calibri" size="18.0" />
+                        <Font name="Calibri" size="25.0" />
                      </font>
                   </Hyperlink>
                </children>
             </AnchorPane>
-            <AnchorPane layoutX="207.0" layoutY="162.0" prefHeight="69.0" prefWidth="952.0" style="-fx-background-color: Grey; -fx-background-radius: 5;">
+            <AnchorPane layoutX="207.0" layoutY="135.0" prefHeight="69.0" prefWidth="952.0" style="-fx-background-color: Grey; -fx-background-radius: 5;">
                <children>
                   <Label layoutX="12.0" layoutY="10.0">
                      <font>
@@ -67,19 +67,19 @@
                </children>
             </AnchorPane>
             <AnchorPane layoutX="-2.0" layoutY="256.0" prefHeight="462.0" prefWidth="1160.0" style="-fx-background-color: Grey;" visible="false" />
-            <AnchorPane layoutX="207.0" layoutY="241.0" prefHeight="539.0" prefWidth="952.0" style="-fx-background-color: Grey; -fx-background-radius: 5;">
+            <AnchorPane layoutX="207.0" layoutY="208.0" prefHeight="539.0" prefWidth="952.0" style="-fx-background-color: Grey; -fx-background-radius: 5;">
                <children>
-                  <Button layoutX="685.0" layoutY="496.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="110.0" stylesheets="@../css/buttons.css" text="Buy">
+                  <Button layoutX="685.0" layoutY="496.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="110.0" styleClass="buybuttons" stylesheets="@../css/buttons.css" text="Buy">
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font>
                   </Button>
-                  <Button layoutX="822.0" layoutY="496.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="110.0" stylesheets="@../css/buttons.css" text="Sell">
+                  <Button layoutX="822.0" layoutY="496.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="110.0" styleClass="sellbuttons" stylesheets="@../css/buttons.css" text="Sell">
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font>
                   </Button>
-                  <LineChart fx:id="MarketChart" layoutX="14.0" layoutY="14.0" prefHeight="477.0" prefWidth="914.0" stylesheets="@../css/anchorpane.css">
+                  <LineChart fx:id="MarketChart" layoutX="14.0" layoutY="13.0" prefHeight="477.0" prefWidth="914.0" stylesheets="@../css/anchorpane.css">
                      <xAxis>
                         <CategoryAxis side="BOTTOM" fx:id="xAxis" />
                      </xAxis>
@@ -100,7 +100,7 @@
                   <Label layoutX="9.0" layoutY="84.0" text="💼" textFill="#fcfcfc" />
                   <Label layoutX="9.0" layoutY="116.0" text="💱" textFill="#ebebeb" />
                   <Label layoutX="10.0" layoutY="146.0" text="💳" textFill="#fffefe" />
-                  <Button fx:id="walletbutton1" layoutX="-1.0" layoutY="568.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="163.0" stylesheets="@../css/buttons.css" text="Logout" />
+                  <Button fx:id="walletbutton1" layoutX="-1.0" layoutY="559.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="163.0" stylesheets="@../css/buttons.css" text="Logout" />
                </children>
             </AnchorPane>
             <Hyperlink layoutX="69.0" layoutY="67.0" text="CashMate" textFill="#b92e2e">

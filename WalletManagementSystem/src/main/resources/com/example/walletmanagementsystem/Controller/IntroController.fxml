@@ -5,6 +5,8 @@
 <?import javafx.scene.text.Font?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
 <VBox alignment="CENTER" prefHeight="800.0" prefWidth="1363.0" style="-fx-background-color: #1e1e1e;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.walletmanagementsystem.Controller.IntroController">
    <children>
       <FontIcon fx:id="creditCardIcon" iconColor="#651717c4" iconLiteral="fas-credit-card" iconSize="60" wrappingWidth="36.5" />
@@ -12,6 +14,10 @@
          <font>
             <Font name="System Bold Italic" size="53.0" />
          </font>
+         <ImageView fitHeight="110.0" fitWidth="113.0" pickOnBounds="true">
+            <image>
+               <Image url="@../images/intro logo.png" />
+            </image></ImageView>
       </Label>
    </children>
 </VBox>

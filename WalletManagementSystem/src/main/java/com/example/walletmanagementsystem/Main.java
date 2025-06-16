@@ -11,7 +11,6 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/walletmanagementsystem/Controller/login.fxml"));
         Parent root = loader.load();
-
         primaryStage.setTitle("Login Form");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();

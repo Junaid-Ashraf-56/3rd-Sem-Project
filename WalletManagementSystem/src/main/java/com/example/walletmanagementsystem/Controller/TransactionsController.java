@@ -33,7 +33,6 @@ public class TransactionsController implements Initializable {
             walletbutton.setStyle("-fx-background-color: #333; -fx-text-fill: white;");
 
             marketbutton.setStyle("-fx-background-color: #333; -fx-text-fill: white;");
-            transactionButton.setStyle("-fx-background-color: #f90; -fx-text-fill: white;");
         });
     }
 
