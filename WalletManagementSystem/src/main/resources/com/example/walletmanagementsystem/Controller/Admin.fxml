@@ -1,0 +1,447 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.walletmanagementsystem.Controller.AdminController">
+    <top>
+        <!-- Header Section -->
+        <HBox alignment="CENTER_LEFT" spacing="20.0" style="-fx-background-color: #2c3e50; -fx-padding: 15;">
+            <children>
+                <Label text="Admin Dashboard" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="24.0" />
+                    </font>
+                </Label>
+                <Region HBox.hgrow="ALWAYS" />
+                <Label fx:id="adminNameLabel" text="Welcome, Admin" textFill="WHITE">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Label>
+                <Button fx:id="logoutButton" mnemonicParsing="false"
+                        style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-background-radius: 5;"
+                        text="Logout" />
+            </children>
+        </HBox>
+    </top>
+
+    <center>
+        <!-- Main Content with Tabs -->
+        <TabPane fx:id="mainTabPane" tabClosingPolicy="UNAVAILABLE">
+
+            <!-- User Management Tab -->
+            <Tab text="User Management">
+                <content>
+                    <BorderPane>
+                        <top>
+                            <!-- Search and Filter Section -->
+                            <VBox spacing="10.0" style="-fx-padding: 15; -fx-background-color: #ecf0f1;">
+                                <children>
+                                    <HBox alignment="CENTER_LEFT" spacing="15.0">
+                                        <children>
+                                            <Label text="Search Users:" />
+                                            <TextField fx:id="searchUserField" prefWidth="200.0" promptText="Enter username or email" />
+                                            <Button fx:id="searchButton" mnemonicParsing="false"
+                                                    style="-fx-background-color: #3498db; -fx-text-fill: white;" text="Search" />
+                                            <Button fx:id="refreshUsersButton" mnemonicParsing="false"
+                                                    style="-fx-background-color: #27ae60; -fx-text-fill: white;" text="Refresh" />
+                                            <Region HBox.hgrow="ALWAYS" />
+                                            <Button fx:id="addUserButton" mnemonicParsing="false"
+                                                    style="-fx-background-color: #f39c12; -fx-text-fill: white;" text="Add New User" />
+                                        </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER_LEFT" spacing="15.0">
+                                        <children>
+                                            <Label text="Filter by Role:" />
+                                            <ComboBox fx:id="roleFilterCombo" prefWidth="150.0" />
+                                            <Label text="Filter by Status:" />
+                                            <ComboBox fx:id="statusFilterCombo" prefWidth="150.0" />
+                                            <Button fx:id="applyFiltersButton" mnemonicParsing="false"
+                                                    style="-fx-background-color: #9b59b6; -fx-text-fill: white;" text="Apply Filters" />
+                                        </children>
+                                    </HBox>
+                                </children>
+                            </VBox>
+                        </top>
+
+                        <center>
+                            <!-- Users Table -->
+                            <TableView fx:id="usersTable" prefHeight="400.0">
+                                <columns>
+                                    <TableColumn fx:id="userIdColumn" prefWidth="80.0" text="ID" />
+                                    <TableColumn fx:id="usernameColumn" prefWidth="120.0" text="Username" />
+                                    <TableColumn fx:id="emailColumn" prefWidth="180.0" text="Email" />
+                                    <TableColumn fx:id="fullNameColumn" prefWidth="150.0" text="Full Name" />
+                                    <TableColumn fx:id="roleColumn" prefWidth="100.0" text="Role" />
+                                    <TableColumn fx:id="statusColumn" prefWidth="100.0" text="Status" />
+                                    <TableColumn fx:id="lastLoginColumn" prefWidth="130.0" text="Last Login" />
+                                    <TableColumn fx:id="createdDateColumn" prefWidth="130.0" text="Created Date" />
+                                </columns>
+                            </TableView>
+                        </center>
+
+                        <bottom>
+                            <!-- User Actions -->
+                            <HBox alignment="CENTER" spacing="15.0" style="-fx-padding: 15; -fx-background-color: #bdc3c7;">
+                                <children>
+                                    <Button fx:id="editUserButton" mnemonicParsing="false"
+                                            style="-fx-background-color: #3498db; -fx-text-fill: white;" text="Edit Selected User" />
+                                    <Button fx:id="deactivateUserButton" mnemonicParsing="false"
+                                            style="-fx-background-color: #e67e22; -fx-text-fill: white;" text="Deactivate User" />
+                                    <Button fx:id="deleteUserButton" mnemonicParsing="false"
+                                            style="-fx-background-color: #e74c3c; -fx-text-fill: white;" text="Delete User" />
+                                    <Button fx:id="resetPasswordButton" mnemonicParsing="false"
+                                            style="-fx-background-color: #9b59b6; -fx-text-fill: white;" text="Reset Password" />
+                                </children>
+                            </HBox>
+                        </bottom>
+                    </BorderPane>
+                </content>
+            </Tab>
+
+            <!-- Reports Tab -->
+            <Tab text="Reports">
+                <content>
+                    <BorderPane>
+                        <top>
+                            <!-- Report Generation Controls -->
+                            <VBox spacing="15.0" style="-fx-padding: 20; -fx-background-color: #ecf0f1;">
+                                <children>
+                                    <Label text="Generate Reports">
+                                        <font>
+                                            <Font name="System Bold" size="18.0" />
+                                        </font>
+                                    </Label>
+
+                                    <HBox alignment="CENTER_LEFT" spacing="20.0">
+                                        <children>
+                                            <VBox spacing="5.0">
+                                                <children>
+                                                    <Label text="Report Type:" />
+                                                    <ComboBox fx:id="reportTypeCombo" prefWidth="200.0" />
+                                                </children>
+                                            </VBox>
+
+                                            <VBox spacing="5.0">
+                                                <children>
+                                                    <Label text="Date Range:" />
+                                                    <HBox spacing="10.0">
+                                                        <children>
+                                                            <DatePicker fx:id="startDatePicker" prefWidth="130.0" />
+                                                            <Label text="to" />
+                                                            <DatePicker fx:id="endDatePicker" prefWidth="130.0" />
+                                                        </children>
+                                                    </HBox>
+                                                </children>
+                                            </VBox>
+
+                                            <VBox spacing="5.0">
+                                                <children>
+                                                    <Label text="Format:" />
+                                                    <ComboBox fx:id="reportFormatCombo" prefWidth="120.0" />
+                                                </children>
+                                            </VBox>
+                                        </children>
+                                    </HBox>
+
+                                    <HBox alignment="CENTER_LEFT" spacing="15.0">
+                                        <children>
+                                            <Button fx:id="generateReportButton" mnemonicParsing="false"
+                                                    style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-font-size: 14;" text="Generate Report" />
+                                            <Button fx:id="previewReportButton" mnemonicParsing="false"
+                                                    style="-fx-background-color: #3498db; -fx-text-fill: white;" text="Preview" />
+                                            <Button fx:id="scheduleReportButton" mnemonicParsing="false"
+                                                    style="-fx-background-color: #f39c12; -fx-text-fill: white;" text="Schedule Report" />
+                                        </children>
+                                    </HBox>
+                                </children>
+                            </VBox>
+                        </top>
+
+                        <center>
+                            <!-- Report History and Preview -->
+                            <SplitPane dividerPositions="0.6" orientation="VERTICAL">
+                                <items>
+                                    <!-- Report Preview Area -->
+                                    <VBox>
+                                        <children>
+                                            <Label text="Report Preview" style="-fx-padding: 10; -fx-font-weight: bold;" />
+                                            <TextArea fx:id="reportPreviewArea" editable="false" prefHeight="200.0"
+                                                      style="-fx-font-family: monospace;" wrapText="true" />
+                                        </children>
+                                    </VBox>
+
+                                    <!-- Generated Reports History -->
+                                    <VBox>
+                                        <children>
+                                            <Label text="Recent Reports" style="-fx-padding: 10; -fx-font-weight: bold;" />
+                                            <TableView fx:id="reportsHistoryTable" prefHeight="150.0">
+                                                <columns>
+                                                    <TableColumn fx:id="reportNameColumn" prefWidth="200.0" text="Report Name" />
+                                                    <TableColumn fx:id="reportDateColumn" prefWidth="130.0" text="Generated Date" />
+                                                    <TableColumn fx:id="reportSizeColumn" prefWidth="100.0" text="File Size" />
+                                                    <TableColumn fx:id="reportStatusColumn" prefWidth="100.0" text="Status" />
+                                                    <TableColumn fx:id="reportActionsColumn" prefWidth="150.0" text="Actions" />
+                                                </columns>
+                                            </TableView>
+                                        </children>
+                                    </VBox>
+                                </items>
+                            </SplitPane>
+                        </center>
+                    </BorderPane>
+                </content>
+            </Tab>
+
+            <!-- System Analytics Tab -->
+            <Tab text="Analytics">
+                <content>
+                    <ScrollPane fitToHeight="true" fitToWidth="true">
+                        <content>
+                            <VBox spacing="20.0" style="-fx-padding: 20;">
+                                <children>
+                                    <!-- Analytics Overview Cards -->
+                                    <GridPane hgap="20.0" vgap="20.0">
+                                        <columnConstraints>
+                                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                        </columnConstraints>
+                                        <rowConstraints>
+                                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        </rowConstraints>
+                                        <children>
+                                            <!-- Total Users Card -->
+                                            <VBox alignment="CENTER" spacing="10.0" style="-fx-background-color: #3498db; -fx-background-radius: 10; -fx-padding: 20;" GridPane.columnIndex="0">
+                                                <children>
+                                                    <Label fx:id="totalUsersLabel" text="0" textFill="WHITE">
+                                                        <font>
+                                                            <Font name="System Bold" size="24.0" />
+                                                        </font>
+                                                    </Label>
+                                                    <Label text="Total Users" textFill="WHITE" />
+                                                </children>
+                                            </VBox>
+
+                                            <!-- Active Users Card -->
+                                            <VBox alignment="CENTER" spacing="10.0" style="-fx-background-color: #27ae60; -fx-background-radius: 10; -fx-padding: 20;" GridPane.columnIndex="1">
+                                                <children>
+                                                    <Label fx:id="activeUsersLabel" text="0" textFill="WHITE">
+                                                        <font>
+                                                            <Font name="System Bold" size="24.0" />
+                                                        </font>
+                                                    </Label>
+                                                    <Label text="Active Users" textFill="WHITE" />
+                                                </children>
+                                            </VBox>
+
+                                            <!-- New Users This Month Card -->
+                                            <VBox alignment="CENTER" spacing="10.0" style="-fx-background-color: #f39c12; -fx-background-radius: 10; -fx-padding: 20;" GridPane.columnIndex="2">
+                                                <children>
+                                                    <Label fx:id="newUsersLabel" text="0" textFill="WHITE">
+                                                        <font>
+                                                            <Font name="System Bold" size="24.0" />
+                                                        </font>
+                                                    </Label>
+                                                    <Label text="New This Month" textFill="WHITE" />
+                                                </children>
+                                            </VBox>
+
+                                            <!-- System Status Card -->
+                                            <VBox alignment="CENTER" spacing="10.0" style="-fx-background-color: #9b59b6; -fx-background-radius: 10; -fx-padding: 20;" GridPane.columnIndex="3">
+                                                <children>
+                                                    <Label fx:id="systemStatusLabel" text="Online" textFill="WHITE">
+                                                        <font>
+                                                            <Font name="System Bold" size="16.0" />
+                                                        </font>
+                                                    </Label>
+                                                    <Label text="System Status" textFill="WHITE" />
+                                                </children>
+                                            </VBox>
+                                        </children>
+                                    </GridPane>
+
+                                    <!-- Charts and Graphs Area -->
+                                    <HBox spacing="20.0">
+                                        <children>
+                                            <!-- User Activity Chart Placeholder -->
+                                            <VBox prefWidth="400.0" spacing="10.0" style="-fx-border-color: #bdc3c7; -fx-border-radius: 5; -fx-padding: 15;">
+                                                <children>
+                                                    <Label text="User Activity (Last 30 Days)">
+                                                        <font>
+                                                            <Font name="System Bold" size="14.0" />
+                                                        </font>
+                                                    </Label>
+                                                    <Pane fx:id="userActivityChartPane" prefHeight="200.0" style="-fx-background-color: #ecf0f1;" />
+                                                </children>
+                                            </VBox>
+
+                                            <!-- User Roles Distribution -->
+                                            <VBox prefWidth="300.0" spacing="10.0" style="-fx-border-color: #bdc3c7; -fx-border-radius: 5; -fx-padding: 15;">
+                                                <children>
+                                                    <Label text="User Roles Distribution">
+                                                        <font>
+                                                            <Font name="System Bold" size="14.0" />
+                                                        </font>
+                                                    </Label>
+                                                    <Pane fx:id="rolesChartPane" prefHeight="200.0" style="-fx-background-color: #ecf0f1;" />
+                                                </children>
+                                            </VBox>
+                                        </children>
+                                    </HBox>
+                                </children>
+                            </VBox>
+                        </content>
+                    </ScrollPane>
+                </content>
+            </Tab>
+
+            <!-- System Settings Tab -->
+            <Tab text="Settings">
+                <content>
+                    <ScrollPane fitToHeight="true" fitToWidth="true">
+                        <content>
+                            <VBox spacing="25.0" style="-fx-padding: 30;">
+                                <children>
+                                    <!-- System Configuration -->
+                                    <VBox spacing="15.0" style="-fx-border-color: #bdc3c7; -fx-border-radius: 5; -fx-padding: 20;">
+                                        <children>
+                                            <Label text="System Configuration">
+                                                <font>
+                                                    <Font name="System Bold" size="16.0" />
+                                                </font>
+                                            </Label>
+
+                                            <GridPane hgap="20.0" vgap="15.0">
+                                                <columnConstraints>
+                                                    <ColumnConstraints hgrow="NEVER" minWidth="150.0" />
+                                                    <ColumnConstraints hgrow="ALWAYS" />
+                                                </columnConstraints>
+                                                <children>
+                                                    <Label text="System Name:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                                                    <TextField fx:id="systemNameField" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+                                                    <Label text="Max Login Attempts:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                                                    <Spinner fx:id="maxLoginAttemptsSpinner" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+                                                    <Label text="Session Timeout (min):" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                                                    <Spinner fx:id="sessionTimeoutSpinner" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+                                                    <Label text="Backup Frequency:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+                                                    <ComboBox fx:id="backupFrequencyCombo" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                                </children>
+                                            </GridPane>
+                                        </children>
+                                    </VBox>
+
+                                    <!-- Email Configuration -->
+                                    <VBox spacing="15.0" style="-fx-border-color: #bdc3c7; -fx-border-radius: 5; -fx-padding: 20;">
+                                        <children>
+                                            <Label text="Email Configuration">
+                                                <font>
+                                                    <Font name="System Bold" size="16.0" />
+                                                </font>
+                                            </Label>
+
+                                            <GridPane hgap="20.0" vgap="15.0">
+                                                <columnConstraints>
+                                                    <ColumnConstraints hgrow="NEVER" minWidth="150.0" />
+                                                    <ColumnConstraints hgrow="ALWAYS" />
+                                                </columnConstraints>
+                                                <children>
+                                                    <Label text="SMTP Server:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                                                    <TextField fx:id="smtpServerField" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+                                                    <Label text="SMTP Port:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                                                    <TextField fx:id="smtpPortField" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+                                                    <Label text="Email Username:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                                                    <TextField fx:id="emailUsernameField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+                                                    <Label text="Use SSL:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+                                                    <CheckBox fx:id="sslCheckBox" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                                </children>
+                                            </GridPane>
+                                        </children>
+                                    </VBox>
+
+                                    <!-- Action Buttons -->
+                                    <HBox alignment="CENTER" spacing="20.0">
+                                        <children>
+                                            <Button fx:id="saveSettingsButton" mnemonicParsing="false"
+                                                    style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-font-size: 14; -fx-padding: 10 20;" text="Save Settings" />
+                                            <Button fx:id="resetSettingsButton" mnemonicParsing="false"
+                                                    style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-size: 14; -fx-padding: 10 20;" text="Reset to Default" />
+                                            <Button fx:id="testEmailButton" mnemonicParsing="false"
+                                                    style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-size: 14; -fx-padding: 10 20;" text="Test Email" />
+                                        </children>
+                                    </HBox>
+                                </children>
+                            </VBox>
+                        </content>
+                    </ScrollPane>
+                </content>
+            </Tab>
+
+            <!-- Audit Log Tab -->
+            <Tab text="Audit Log">
+                <content>
+                    <BorderPane>
+                        <top>
+                            <!-- Audit Log Filters -->
+                            <VBox spacing="10.0" style="-fx-padding: 15; -fx-background-color: #ecf0f1;">
+                                <children>
+                                    <HBox alignment="CENTER_LEFT" spacing="15.0">
+                                        <children>
+                                            <Label text="Filter Logs:" />
+                                            <ComboBox fx:id="logTypeFilterCombo" prefWidth="150.0" />
+                                            <DatePicker fx:id="logStartDatePicker" prefWidth="130.0" />
+                                            <Label text="to" />
+                                            <DatePicker fx:id="logEndDatePicker" prefWidth="130.0" />
+                                            <Button fx:id="filterLogsButton" mnemonicParsing="false"
+                                                    style="-fx-background-color: #3498db; -fx-text-fill: white;" text="Filter" />
+                                            <Button fx:id="exportLogsButton" mnemonicParsing="false"
+                                                    style="-fx-background-color: #27ae60; -fx-text-fill: white;" text="Export Logs" />
+                                        </children>
+                                    </HBox>
+                                </children>
+                            </VBox>
+                        </top>
+
+                        <center>
+                            <!-- Audit Log Table -->
+                            <TableView fx:id="auditLogTable" prefHeight="400.0">
+                                <columns>
+                                    <TableColumn fx:id="logIdColumn" prefWidth="80.0" text="Log ID" />
+                                    <TableColumn fx:id="logTimestampColumn" prefWidth="150.0" text="Timestamp" />
+                                    <TableColumn fx:id="logUserColumn" prefWidth="120.0" text="User" />
+                                    <TableColumn fx:id="logActionColumn" prefWidth="150.0" text="Action" />
+                                    <TableColumn fx:id="logDetailsColumn" prefWidth="250.0" text="Details" />
+                                    <TableColumn fx:id="logIpAddressColumn" prefWidth="120.0" text="IP Address" />
+                                    <TableColumn fx:id="logStatusColumn" prefWidth="100.0" text="Status" />
+                                </columns>
+                            </TableView>
+                        </center>
+                    </BorderPane>
+                </content>
+            </Tab>
+        </TabPane>
+    </center>
+
+    <bottom>
+        <!-- Status Bar -->
+        <HBox alignment="CENTER_LEFT" spacing="20.0" style="-fx-background-color: #34495e; -fx-padding: 10;">
+            <children>
+                <Label fx:id="statusLabel" text="Ready" textFill="WHITE" />
+                <Region HBox.hgrow="ALWAYS" />
+                <Label fx:id="currentTimeLabel" text="Current Time" textFill="WHITE" />
+                <Separator orientation="VERTICAL" />
+                <Label fx:id="onlineUsersLabel" text="Online Users: 0" textFill="WHITE" />
+            </children>
+        </HBox>
+    </bottom>
+</BorderPane>

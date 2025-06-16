@@ -1,6 +1,9 @@
 package com.example.walletmanagementsystem.Controller;
 
 import com.example.walletmanagementsystem.Main;
+import com.example.walletmanagementsystem.dao.WalletDAO;
+import com.example.walletmanagementsystem.model.Wallet;
+import com.example.walletmanagementsystem.utils.Session;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -26,17 +29,31 @@ public class PortfolioController implements Initializable {
     @FXML private Label emailLabel;
     @FXML private Label accountNumberLabel;
     @FXML private Label balanceLabel;
-
+    @FXML private
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         Platform.runLater(() -> {
             walletbutton.setStyle("-fx-background-color: #f90; -fx-text-fill: white;");
 
             marketbutton.setStyle("-fx-background-color: #333; -fx-text-fill: white;");
+
+
+            userNameLabel.setText(Session.getCurrentUser().getName());
+            emailLabel.setText(Session.getCurrentUser().getEmail());
+            accountNumberLabel.setText(Session.getCurrentUser().getAccountNumber());
         });
+        String accountNumber = Session.getCurrentUser().getAccountNumber();
+        showBalance(accountNumber);
     }
 
-
+    public void showBalance(String accountNumber) {
+        Wallet wallet = WalletDAO.getWalletByAccountNumber(accountNumber);
+        if (wallet != null) {
+            balanceLabel.setText("Balance: $ " + String.format("%.2f", wallet.getBalance()));
+        } else {
+            balanceLabel.setText("$ 0.0");
+        }
+    }
 
 
 
