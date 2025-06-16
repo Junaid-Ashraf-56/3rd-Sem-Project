@@ -65,6 +65,7 @@ public class MarketController implements Initializable {
         yAxis.setAutoRanging(true);
         MarketChart.setLegendVisible(false);
         MarketChart.setAnimated(false);
+        CoinName.setText("Bitcoin");
 
         Platform.runLater(() -> {
             marketbutton.setStyle("-fx-background-color: #f90; -fx-text-fill: white;");
