@@ -51,7 +51,14 @@ public class Transaction {
     public void setAmount(double amount) {this.amount = amount;}
     public void setPriceAtTime(double priceAtTime) {this.priceAtTime = priceAtTime;}
     public void setDateTime(LocalDate dateTime) {this.dateTime = dateTime;}
-    public void setAccountNumber(String accountNumber) {this.accountNumber = accountNumber;}
+
+    public String getAccountNumber() {
+        return accountNumber;
+    }
+
+    public void setAccountNumber(String accountNumber) {
+        this.accountNumber = accountNumber;
+    }
 
     public int getTransactionId() {return transactionId;}
     public int getUserId() {return userId;}
@@ -61,5 +68,4 @@ public class Transaction {
     public double getAmount() {return amount;}
     public double getPriceAtTime() {return priceAtTime;}
     public LocalDate getDateTime() {return dateTime;}
-    public String getAccountNumber() {return accountNumber;}
 }

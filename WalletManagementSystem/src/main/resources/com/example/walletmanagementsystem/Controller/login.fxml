@@ -8,44 +8,60 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<AnchorPane id="loginform" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.walletmanagementsystem.Controller.LoginController">
+<AnchorPane fx:id="loginform" prefHeight="800.0" prefWidth="740.0" style="-fx-background-color: #2a2a2a;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.walletmanagementsystem.Controller.LoginController">
    <children>
-      <AnchorPane id="loginform" fx:id="loginform" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" style="-fx-background-color: #2a2a2a;" styleClass="loginanchorpane" stylesheets="@../css/anchorpane.css">
+      <TextField fx:id="LoginEmail" layoutX="228.0" layoutY="275.0" prefHeight="46.0" prefWidth="323.0" promptText="Email" style="-fx-border-radius: 25px; -fx-background-radius: 25px;" styleClass="signuplabels" stylesheets="@../css/buttons.css" />
+      <PasswordField fx:id="LoginPassword" layoutX="229.0" layoutY="340.0" prefHeight="46.0" prefWidth="323.0" promptText="Password" style="-fx-background-radius: 25px; -fx-border-radius: 25px;" styleClass="signupbutton" stylesheets="@../css/buttons.css" />
+      <FontIcon iconColor="WHITE" iconLiteral="fas-lock" iconSize="13" layoutX="522.0" layoutY="301.0" />
+      <Button fx:id="Login" layoutX="305.0" layoutY="493.0" mnemonicParsing="false" onAction="#handleLogin" prefHeight="33.0" prefWidth="146.0" styleClass="signupbutton" stylesheets="@../css/buttons.css" text="Login" />
+      <Text layoutX="209.0" layoutY="574.0" strokeType="OUTSIDE" strokeWidth="0.0" text="don't have an account?">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Text>
+      <Hyperlink fx:id="Signup" layoutX="453.0" layoutY="545.0" onAction="#switchToSignup" text="Sign up" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="19.0" />
+         </font>
+      </Hyperlink>
+      <ComboBox fx:id="myComboBox" editable="true" layoutX="229.0" layoutY="407.0" prefHeight="46.0" prefWidth="323.0" promptText="Login as" style="-fx-background-radius: 25px; -fx-background-color: black;" styleClass="login-label" stylesheets="@../css/login.css">
+         <items>
+            <FXCollections fx:factory="observableArrayList">
+               <String fx:value="USER" />
+               <String fx:value="ADMIN" />
+            </FXCollections>
+         </items>
+      </ComboBox>
+      <FontIcon iconColor="WHITE" iconLiteral="fas-envelope" layoutX="520.0" layoutY="369.0" />
+      <Label layoutX="340.0" layoutY="173.0" styleClass="login-label" stylesheets="@../css/login.css" text="Login" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="38.0" />
+         </font>
+      </Label>
+      <AnchorPane layoutX="765.0" layoutY="-2.0" prefHeight="800.0" prefWidth="827.0" style="-fx-background-color: black;">
          <children>
-            <PasswordField layoutX="151.0" layoutY="201.0" prefHeight="26.0" prefWidth="299.0" promptText="Password" styleClass="signupbutton" stylesheets="@../css/buttons.css" />
-            <TextField layoutX="151.0" layoutY="159.0" prefHeight="26.0" prefWidth="299.0" promptText="Email" styleClass="signuplabels" stylesheets="@../css/buttons.css" />
-            <Label layoutX="245.0" layoutY="78.0" prefHeight="61.0" prefWidth="110.0" text="Login" textFill="WHITE">
+            <ImageView fitHeight="520.0" fitWidth="523.0" layoutX="2.0" layoutY="183.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../../../../../Downloads/logo-Photoroom.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="153.0" layoutY="560.0" prefHeight="55.0" prefWidth="254.0" styleClass="login-label" stylesheets="@../css/login.css" text="Simple way to " textFill="WHITE">
                <font>
-                  <Font name="System Bold" size="30.0" />
+                  <Font name="Georgia" size="38.0" />
                </font>
             </Label>
-            <FontIcon iconColor="WHITE" iconLiteral="fas-lock" layoutX="431.0" layoutY="218.0" />
-            <Button layoutX="225.0" layoutY="282.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="146.0" styleClass="signupbutton" stylesheets="@../css/buttons.css" text="Login" />
-            <Text layoutX="193.0" layoutY="353.0" strokeType="OUTSIDE" strokeWidth="0.0" text="don't have an account?">
+            <Label layoutX="226.0" layoutY="621.0" prefHeight="55.0" prefWidth="606.0" styleClass="login-label" stylesheets="@../css/login.css" text="manage your money!" textFill="WHITE">
                <font>
-                  <Font name="System Bold" size="12.0" />
+                  <Font name="Georgia" size="38.0" />
                </font>
-            </Text>
-            <Hyperlink fx:id="Signup" layoutX="331.0" layoutY="337.0" onAction="#switchToSignup" text="Sign up" textFill="WHITE">
-               <font>
-                  <Font name="System Bold Italic" size="12.0" />
-               </font>
-            </Hyperlink>
-            <ComboBox fx:id="myComboBox" layoutX="153.0" layoutY="244.0" prefHeight="25.0" prefWidth="299.0" promptText="Login as !" styleClass="signuplabels" stylesheets="@../css/buttons.css" xmlns:fx="http://javafx.com/fxml">
-               <items>
-                  <FXCollections fx:factory="observableArrayList">
-                     <String fx:value="USER" />
-                     <String fx:value="ADMIN" />
-                  </FXCollections>
-               </items>
-            </ComboBox>
-            <FontIcon layoutX="436.0" layoutY="177.0" />
-            <FontIcon iconColor="WHITE" iconLiteral="fas-envelope" layoutX="431.0" layoutY="176.0" />
+            </Label>
          </children>
       </AnchorPane>
    </children>

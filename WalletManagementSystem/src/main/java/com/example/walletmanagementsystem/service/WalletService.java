@@ -1,7 +1,5 @@
 package com.example.walletmanagementsystem.service;
 
-
-
 import com.example.walletmanagementsystem.dao.TransactionDAO;
 import com.example.walletmanagementsystem.dao.WalletDAO;
 import com.example.walletmanagementsystem.model.Transaction;
@@ -13,100 +11,89 @@ import java.time.LocalDateTime;
 
 public class WalletService {
 
-
-    public StringBuilder generateAccountNumber(){
-        StringBuilder accountNumber = new StringBuilder("ACC");
-        for (int i = 0; i < 10; i++) {
-            int digit = (int)(Math.random() * 10);
-            accountNumber.append(digit);
-        }
-        return accountNumber;
-    }
-    //Add funds
-    public boolean addFunds(int userId ,double amount){
-        if (amount<=0){
+    // Add funds
+    public boolean addFunds(String accountNumber, double amount) {
+        if (amount <= 0) {
             return false;
         }
-        Wallet wallet = WalletDAO.getWalletById(userId);
-        if (wallet==null){
+        Wallet wallet = WalletDAO.getWalletByAccountNumber(accountNumber);
+        if (wallet == null) {
             return false;
         }
-        double newBalance = wallet.getBalance()+amount;
+        double newBalance = wallet.getBalance() + amount;
         wallet.setBalance(newBalance);
 
-        boolean updated = WalletDAO.updateWalletBalance(userId,newBalance);
+        boolean updated = WalletDAO.updateWalletBalance(accountNumber, newBalance);
         if (updated) {
             Transaction tx = new Transaction();
-            tx.setUserId(userId);
+            tx.setAccountNumber(accountNumber);
             tx.setType(TransactionType.ADD_FUNDS);
             tx.setAmount(amount);
             tx.setAssetSymbol("USD");
             tx.setPriceAtTime(1.0);
             tx.setQuantity(amount);
             tx.setDateTime(LocalDate.from(LocalDateTime.now()));
-//            TransactionDAO.insertTransaction(tx);
+            // TransactionDAO.insertTransaction(tx);
         }
 
         return updated;
     }
 
-    //Withdraw funds
-    public boolean withdrawFunds(int userId , double amount ,double initialAmount){
-        if (amount<=0&&initialAmount<amount){
+    // Withdraw funds
+    public boolean withdrawFunds(String accountNumber, double amount) {
+        if (amount <= 0) {
             return false;
         }
-        Wallet wallet =WalletDAO.getWalletById(userId);
-        if (wallet==null){
+        Wallet wallet = WalletDAO.getWalletByAccountNumber(accountNumber);
+        if (wallet == null || wallet.getBalance() < amount) {
             return false;
         }
-        double newBalance = wallet.getBalance()-amount;
+        double newBalance = wallet.getBalance() - amount;
         wallet.setBalance(newBalance);
 
-        boolean updated = WalletDAO.updateWalletBalance(userId,newBalance);
+        boolean updated = WalletDAO.updateWalletBalance(accountNumber, newBalance);
 
         if (updated) {
             Transaction tx = new Transaction();
-            tx.setUserId(userId);
+            tx.setAccountNumber(accountNumber);
             tx.setType(TransactionType.WITHDRAW);
             tx.setAmount(amount);
             tx.setAssetSymbol("USD");
             tx.setPriceAtTime(1.0);
             tx.setQuantity(amount);
             tx.setDateTime(LocalDate.from(LocalDateTime.now()));
-           // TransactionDAO.insertTransaction(tx);
+            // TransactionDAO.insertTransaction(tx);
         }
 
         return updated;
-
     }
 
-    // ✅ Get current balance
-    public double getBalance(int userId) {
-        Wallet wallet = WalletDAO.getWalletById(userId);
+    // Get current balance
+    public double getBalance(String accountNumber) {
+        Wallet wallet = WalletDAO.getWalletByAccountNumber(accountNumber);
         return (wallet != null) ? wallet.getBalance() : 0.0;
     }
 
+    // Transfer money from one account to another
+    public boolean transferFunds(String fromAccountNumber, String toAccountNumber, double amount) {
+        Wallet fromWallet = WalletDAO.getWalletByAccountNumber(fromAccountNumber);
+        Wallet toWallet = WalletDAO.getWalletByAccountNumber(toAccountNumber);
 
-    //Transfer money from one account to another
-    public boolean transferFunds(int fromUserId,int toUserId,double amount){
-        Wallet fromWallet  = WalletDAO.getWalletById(fromUserId);
-        Wallet toWallet = WalletDAO.getWalletById(toUserId);
-
-        if (fromWallet==null||toWallet==null){
+        if (fromWallet == null || toWallet == null || amount <= 0) {
             return false;
         }
-        if (fromWallet.getBalance()<amount){
+        if (fromWallet.getBalance() < amount) {
             return false;
         }
-        fromWallet.setBalance(fromWallet.getBalance()-amount);
-        toWallet.setBalance(toWallet.getBalance()+amount);
+        fromWallet.setBalance(fromWallet.getBalance() - amount);
+        toWallet.setBalance(toWallet.getBalance() + amount);
 
-        boolean updateFrom = WalletDAO.updateWalletBalance(fromUserId,fromWallet.getBalance());
-        boolean updateTo = WalletDAO.updateWalletBalance(toUserId,toWallet.getBalance());
+        boolean updateFrom = WalletDAO.updateWalletBalance(fromAccountNumber, fromWallet.getBalance());
+        boolean updateTo = WalletDAO.updateWalletBalance(toAccountNumber, toWallet.getBalance());
 
-        if (updateFrom&&updateTo){
-            TransactionDAO.recordTransaction(fromUserId, -amount, "Transfer to user " + toUserId);
-            TransactionDAO.recordTransaction(toUserId, amount, "Received from user " + fromUserId);
+        if (updateFrom && updateTo) {
+            TransactionDAO.recordTransaction(fromAccountNumber, -amount, "Transfer to account " + toAccountNumber);
+            TransactionDAO.recordTransaction(toAccountNumber, amount, "Received from account " + fromAccountNumber);
             return true;
         }
 

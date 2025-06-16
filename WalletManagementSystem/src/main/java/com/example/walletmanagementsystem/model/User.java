@@ -7,6 +7,7 @@ public class User {
     private String name;
     private String email;
     private String password;
+    private String accountNumber;
     private Role role;
     private Wallet wallet;
     private Portfolio portfolio;
@@ -22,6 +23,18 @@ public class User {
         this.name = name;
         this.email = email;
         this.password = password;
+        this.role = role;
+        this.wallet = wallet;
+        this.portfolio = portfolio;
+        this.isFrozen = isFrozen;
+    }
+
+    public User(int userId, String name, String email, String password, String accountNumber, Role role, Wallet wallet, Portfolio portfolio, boolean isFrozen) {
+        this.userId = userId;
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.accountNumber = accountNumber;
         this.role = role;
         this.wallet = wallet;
         this.portfolio = portfolio;
@@ -44,6 +57,14 @@ public class User {
     public void setRole(Role role) {this.role = role;}
     public void setWallet(Wallet wallet) {this.wallet = wallet;}
     public void setPortfolio(Portfolio portfolio) {this.portfolio = portfolio;}
+
+    public String getAccountNumber() {
+        return accountNumber;
+    }
+
+    public void setAccountNumber(String accountNumber) {
+        this.accountNumber = accountNumber;
+    }
 
     public int getUserId() {return userId;}
     public String getName() {return this.name;}

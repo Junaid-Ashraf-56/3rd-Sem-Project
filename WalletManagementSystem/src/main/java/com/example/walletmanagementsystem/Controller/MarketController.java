@@ -31,7 +31,9 @@ public class MarketController implements Initializable {
     @FXML private CategoryAxis xAxis;
     @FXML private NumberAxis yAxis;
 
-
+    @FXML private Button walletbutton;
+    @FXML private Button marketbutton;
+    @FXML private Button transactionbutton;
     @FXML private Button BitcoinButton;
     @FXML private Button EthereumButton;
     @FXML private Button XRPButton;
@@ -42,6 +44,7 @@ public class MarketController implements Initializable {
     @FXML private Button HyperliquidButton;
     @FXML private Button CardanoButton;
     @FXML private Button SuiButton;
+
 
 
     private final ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
@@ -57,6 +60,11 @@ public class MarketController implements Initializable {
         MarketChart.setLegendVisible(false);
         MarketChart.setAnimated(false);
 
+        Platform.runLater(() -> {
+            marketbutton.setStyle("-fx-background-color: #f90; -fx-text-fill: white;");
+            walletbutton.setStyle("-fx-background-color: #333; -fx-text-fill: white;");
+            transactionbutton.setStyle("-fx-background-color: #333; -fx-text-fill: white;");
+        });
         startGraphUpdater();
     }
 
@@ -89,7 +97,7 @@ public class MarketController implements Initializable {
                 // Show selected coin
                 updateChart();
             });
-        }, 0, 10, TimeUnit.SECONDS);
+        }, 0, 30, TimeUnit.SECONDS);
     }
 
     @FXML public void onBitcoinClick() {
@@ -154,7 +162,7 @@ public class MarketController implements Initializable {
     }
 
     @FXML
-    protected void onClickwalletButton(ActionEvent event) throws IOException {
+    protected void onClickWalletButton(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/walletmanagementsystem/Controller/Wallet.fxml"));
         Parent root = loader.load();
 
@@ -168,7 +176,36 @@ public class MarketController implements Initializable {
         Stage currentStage = (Stage) ((Button) event.getSource()).getScene().getWindow();
         currentStage.close();
     }
+    @FXML
+    protected void onClickPortfolioButton(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/walletmanagementsystem/Controller/Portfolio.fxml"));
+        Parent root = loader.load();
 
+        Stage stage = new Stage();
+        Scene scene = new Scene(root, 414.0, 383.0);
+        stage.setTitle("Wallet!");
+        stage.setScene(scene);
+        stage.setResizable(true);
+        stage.setMaximized(true);
+        stage.show();
+        Stage currentStage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+        currentStage.close();
+    }
 
+    @FXML
+    protected void onClickTransactionButton(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/walletmanagementsystem/Controller/Transactions.fxml"));
+        Parent root = loader.load();
+
+        Stage stage = new Stage();
+        Scene scene = new Scene(root, 414.0, 383.0);
+        stage.setTitle("Wallet!");
+        stage.setScene(scene);
+        stage.setResizable(true);
+        stage.setMaximized(true);
+        stage.show();
+        Stage currentStage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+        currentStage.close();
+    }
 
 }

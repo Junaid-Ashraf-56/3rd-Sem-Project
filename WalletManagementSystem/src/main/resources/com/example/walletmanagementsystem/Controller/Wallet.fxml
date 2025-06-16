@@ -24,14 +24,12 @@
       </HBox>
       <VBox prefHeight="801.0" prefWidth="250.0">
          <children>
-            <AnchorPane prefHeight="801.0" prefWidth="239.0">
+            <AnchorPane prefHeight="801.0" prefWidth="230.0" style="-fx-background-color: black;">
                <children>
                   <Button fx:id="marketbutton" layoutY="67.0" mnemonicParsing="false" onAction="#onClickMarketButton" prefHeight="25.0" prefWidth="162.0" stylesheets="@../css/buttons.css" text="Markets" />
-                  <Button layoutY="98.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="161.0" stylesheets="@../css/buttons.css" text="Trading" />
-                  <Button layoutY="129.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="162.0" stylesheets="@../css/buttons.css" text="Portfolio" />
-                  <Button layoutY="160.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="163.0" stylesheets="@../css/buttons.css" text="Transactions" />
-                  <Button fx:id="walletbutton" layoutY="191.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="163.0" stylesheets="@../css/buttons.css" text="Wallet" />
-                  <FontIcon iconLiteral="fas-bars" iconSize="20" layoutX="201.0" layoutY="37.0" wrappingWidth="7.875" />
+                  <Button fx:id="portfoliobutton" layoutY="98.0" mnemonicParsing="false" onAction="#onClickPortfolioButton" prefHeight="25.0" prefWidth="162.0" stylesheets="@../css/buttons.css" text="Portfolio" />
+                  <Button fx:id="transactionbutton" layoutY="129.0" mnemonicParsing="false" onAction="#onClickTransactionButton" prefHeight="25.0" prefWidth="163.0" stylesheets="@../css/buttons.css" text="Transactions" />
+                  <Button fx:id="walletbutton" layoutY="160.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="163.0" stylesheets="@../css/buttons.css" text="Wallet" />
                   <FontIcon iconColor="#f5385cc4" iconLiteral="fas-credit-card" iconSize="30" layoutX="12.0" layoutY="41.0" wrappingWidth="13.5" />
                   <Hyperlink layoutX="62.0" layoutY="9.0" text="CashMate" textFill="#b92e2e">
                      <font>
@@ -39,15 +37,15 @@
                      </font>
                   </Hyperlink>
                   <Label layoutX="15.0" layoutY="70.0" text="📈" textFill="#fcf8f8" />
-                  <Label layoutX="16.0" layoutY="102.0" text="📈" textFill="#fcf8f8" />
-                  <Label layoutX="15.0" layoutY="133.0" text="💼" textFill="#fcfcfc" />
-                  <Label layoutX="15.0" layoutY="164.0" text="💱" textFill="#ebebeb" />
-                  <Label layoutX="16.0" layoutY="195.0" text="💳" textFill="#fffefe" />
+                  <Label layoutX="15.0" layoutY="101.0" text="💼" textFill="#fcfcfc" />
+                  <Label layoutX="15.0" layoutY="133.0" text="💱" textFill="#ebebeb" />
+                  <Label layoutX="16.0" layoutY="163.0" text="💳" textFill="#fffefe" />
+                  <Button fx:id="walletbutton1" layoutY="658.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="163.0" stylesheets="@../css/buttons.css" text="Logout" />
                </children>
             </AnchorPane>
          </children>
       </VBox>
-      <TextField layoutX="464.0" layoutY="24.0" prefHeight="25.0" prefWidth="402.0" promptText="Search" styleClass="coinanchorpane" stylesheets="@../css/anchorpane.css">
+      <TextField layoutX="464.0" layoutY="24.0" prefHeight="25.0" prefWidth="402.0" promptText="Search" style="-fx-background-color: #b92e2e;" styleClass="searchbar" stylesheets="@../css/buttons.css">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
@@ -66,14 +64,14 @@
             <Image url="@../images/pak.png" />
          </image>
       </ImageView>
-      <Label layoutX="251.0" layoutY="49.0" text="Wallet" textFill="WHITE">
+      <Label layoutX="258.0" layoutY="49.0" text="Wallet" textFill="WHITE">
          <font>
             <Font name="System Bold" size="32.0" />
          </font>
       </Label>
 
       <!-- Card 1 with LineChart -->
-      <AnchorPane layoutX="250.0" layoutY="97.0" prefHeight="280.0" prefWidth="239.0" styleClass="coinanchorpane" stylesheets="@../css/anchorpane.css">
+      <AnchorPane layoutX="257.0" layoutY="97.0" prefHeight="280.0" prefWidth="239.0" styleClass="coinanchorpane" stylesheets="@../css/anchorpane.css">
          <children>
             <Label layoutX="23.0" layoutY="11.0" text="Balance " textFill="WHITE">
                <font>
@@ -85,7 +83,7 @@
       <!-- Card 3 with LineChart -->
       <AnchorPane layoutX="507.0" layoutY="95.0" prefHeight="280.0" prefWidth="281.0" styleClass="coinanchorpane" stylesheets="@../css/anchorpane.css">
          <children>
-            <LineChart fx:id="btcChart" animated="false" layoutX="10.0" layoutY="10.0" legendVisible="false" prefHeight="207.0" prefWidth="260.0">
+            <LineChart fx:id="btcChart" animated="false" layoutX="10.0" layoutY="23.0" legendVisible="false" prefHeight="207.0" prefWidth="260.0">
                <xAxis>
                   <CategoryAxis fx:id="btcXAxis" />
                </xAxis>
@@ -95,13 +93,18 @@
             </LineChart>
             <Button layoutX="26.0" layoutY="240.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="59.0" styleClass="buybuttons" stylesheets="@../css/buttons.css" text="Buy" />
             <Button layoutX="143.0" layoutY="240.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="59.0" styleClass="sellbuttons" stylesheets="@../css/buttons.css" text="Sell" />
+            <Label layoutX="17.0" layoutY="2.0" text="Bitcoin" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
 
       <!-- Card 4 with LineChart -->
       <AnchorPane layoutX="803.0" layoutY="98.0" prefHeight="280.0" prefWidth="263.0" styleClass="coinanchorpane" stylesheets="@../css/anchorpane.css">
          <children>
-            <LineChart fx:id="ethChart" animated="false" layoutX="10.0" layoutY="10.0" legendVisible="false" prefHeight="207.0" prefWidth="239.0">
+            <LineChart fx:id="ethChart" animated="false" layoutX="10.0" layoutY="21.0" legendVisible="false" prefHeight="207.0" prefWidth="239.0">
                <xAxis>
                   <CategoryAxis fx:id="ethXAxis" />
                </xAxis>
@@ -111,13 +114,18 @@
             </LineChart>
             <Button layoutX="31.0" layoutY="240.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="59.0" styleClass="buybuttons" stylesheets="@../css/buttons.css" text="Buy" />
             <Button layoutX="148.0" layoutY="240.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="59.0" styleClass="sellbuttons" stylesheets="@../css/buttons.css" text="Sell" />
+            <Label layoutX="13.0" layoutY="5.0" text="Etherium" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
 
       <!-- Card 5 with LineChart -->
       <AnchorPane layoutX="1081.0" layoutY="99.0" prefHeight="280.0" prefWidth="260.0" styleClass="coinanchorpane" stylesheets="@../css/anchorpane.css">
          <children>
-            <LineChart fx:id="XRPChart" animated="false" layoutX="10.0" layoutY="10.0" legendVisible="false" prefHeight="207.0" prefWidth="239.0">
+            <LineChart fx:id="XRPChart" animated="false" layoutX="10.0" layoutY="19.0" legendVisible="false" prefHeight="207.0" prefWidth="239.0">
                <xAxis>
                   <CategoryAxis fx:id="XRPXAxis" />
                </xAxis>
@@ -127,11 +135,16 @@
             </LineChart>
             <Button layoutX="24.0" layoutY="240.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="59.0" styleClass="buybuttons" stylesheets="@../css/buttons.css" text="Buy" />
             <Button layoutX="166.0" layoutY="240.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="59.0" styleClass="sellbuttons" stylesheets="@../css/buttons.css" text="Sell" />
+            <Label layoutX="11.0" layoutY="3.0" text="XRP" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
 
       <!-- Wallet Section -->
-      <AnchorPane layoutX="250.0" layoutY="408.0" prefHeight="316.0" prefWidth="1086.0" style="-fx-background-color: white;" styleClass="coinanchorpane" stylesheets="@../css/anchorpane.css">
+      <AnchorPane layoutX="260.0" layoutY="411.0" prefHeight="316.0" prefWidth="1086.0" style="-fx-background-color: white;" styleClass="coinanchorpane" stylesheets="@../css/anchorpane.css">
          <children>
             <Label layoutX="27.0" layoutY="17.0" text="My Wallet">
                <font>
