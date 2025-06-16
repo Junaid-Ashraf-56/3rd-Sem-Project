@@ -20,4 +20,8 @@ public class Session {
     public static void clearSession() {
         currentUser = null;
     }
+
+    public static String getUsername() {
+        return currentUser != null ? currentUser.getName() : "Guest";
+    }
 }

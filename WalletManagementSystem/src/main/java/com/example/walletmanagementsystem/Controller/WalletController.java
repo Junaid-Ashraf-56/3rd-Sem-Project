@@ -20,6 +20,7 @@ import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -57,12 +58,17 @@ public class WalletController implements Initializable {
     @FXML private Label ETHlabel;
     @FXML private Label XRPlabel;
 
+    @FXML private Hyperlink UserName;
+
     private final ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         Platform.runLater(() -> walletbutton.requestFocus());
-
+        Platform.runLater(() -> {
+            walletbutton.requestFocus();
+            UserName.setText(Session.getUsername()); // Will show username from logged-in user
+        });
         int userId = Session.getUserId();
 
         //        showBalance(userId);
@@ -120,6 +126,12 @@ public class WalletController implements Initializable {
             }
         }
     }
+
+    @FXML
+    public void onUsernameClick(ActionEvent event) {
+        System.out.println("User profile or settings screen can go here");
+    }
+
 
     @FXML
     protected void onClickMarketButton(ActionEvent event) throws IOException {

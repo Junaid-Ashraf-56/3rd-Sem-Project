@@ -52,13 +52,13 @@
       </TextField>
       <FontIcon iconColor="#fffbfb" iconLiteral="fas-search" layoutX="840.0" layoutY="40.0" selectionFill="#f8efef" text="" />
       <Label layoutX="1204.0" layoutY="16.0" prefHeight="36.0" prefWidth="154.0" style="-fx-background-color: black;" stylesheets="@../css/buttons.css" />
-      <Hyperlink layoutX="1253.0" layoutY="22.0" text="Noman Talib" textFill="WHITE">
+      <Hyperlink fx:id="UserName" layoutX="1220.0" layoutY="22.0" onAction="#onUsernameClick" prefHeight="23.0" prefWidth="114.0" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="12.0" />
          </font>
       </Hyperlink>
-      <FontIcon iconColor="#f8f8f8" iconLiteral="fas-bell" layoutX="1216.0" layoutY="39.0" />
-      <FontIcon iconColor="WHITE" iconLiteral="fas-envelope" layoutX="1236.0" layoutY="39.0" />
+      <FontIcon iconColor="#f8f8f8" iconLiteral="fas-bell" layoutX="1176.0" layoutY="40.0" />
+      <FontIcon iconColor="WHITE" iconLiteral="fas-envelope" layoutX="1198.0" layoutY="40.0" />
       <ImageView fitHeight="17.0" fitWidth="21.0" layoutX="1335.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/pak.png" />

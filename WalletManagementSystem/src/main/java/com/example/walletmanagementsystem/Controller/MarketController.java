@@ -2,6 +2,7 @@ package com.example.walletmanagementsystem.Controller;
 
 import com.example.walletmanagementsystem.service.ChartService;
 
+import com.example.walletmanagementsystem.utils.Session;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,6 +16,7 @@ import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 
 import javafx.scene.control.Button;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
@@ -49,6 +51,7 @@ public class MarketController implements Initializable {
     @FXML private Label CoinPrice;
     @FXML private Label CoinName;
 
+    @FXML private Hyperlink UserName;
 
     private final ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
     public XYChart.Series<String, Number> currentSeries = new XYChart.Series<>();
@@ -67,6 +70,10 @@ public class MarketController implements Initializable {
             marketbutton.setStyle("-fx-background-color: #f90; -fx-text-fill: white;");
             walletbutton.setStyle("-fx-background-color: #333; -fx-text-fill: white;");
             transactionbutton.setStyle("-fx-background-color: #333; -fx-text-fill: white;");
+        });
+        Platform.runLater(() -> {
+            walletbutton.requestFocus();
+            UserName.setText(Session.getUsername());
         });
         startGraphUpdater();
         startPriceUpdater();
@@ -112,6 +119,11 @@ public class MarketController implements Initializable {
         }, 0, 30, TimeUnit.SECONDS); // Update every 10 seconds
     }
 
+
+    @FXML
+    public void onUsernameClick(ActionEvent event) {
+        System.out.println("User profile or settings screen can go here");
+    }
 
     @FXML public void onBitcoinClick() {
         currentCoin = "bitcoin";
