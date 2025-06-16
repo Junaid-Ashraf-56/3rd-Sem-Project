@@ -1,34 +1,34 @@
 /* Root Scene Background */
 #loginform {
-    -fx-background-color: linear-gradient(to bottom right, #1f2235, #12131c);
+    -fx-background-color: linear-gradient(to bottom right, #12131c, #0b0c12);
 }
 
 /* Left Panel - Login Form */
 .left-panel {
-    -fx-background-color: #2C2F48;
-    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 20, 0, 0, 0);
+    -fx-background-color: #1A1B2E;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.6), 20, 0, 0, 0);
 }
 
 /* Right Panel - Branding */
 .right-panel {
-    -fx-background-color: linear-gradient(to bottom right, #4F46E5, #7C3AED);
+    -fx-background-color: linear-gradient(to bottom right, #2A1F4D, #1E1B3A);
 }
 
 /* Brand Elements */
 .brand-icon {
-    -fx-fill: #8B5CF6;
-    -fx-effect: dropshadow(gaussian, rgba(139, 92, 246, 0.4), 10, 0, 0, 2);
+    -fx-fill: #6D28D9;
+    -fx-effect: dropshadow(gaussian, rgba(109, 40, 217, 0.3), 10, 0, 0, 2);
 }
 
 .brand-title {
-    -fx-text-fill: #F9FAFB;
+    -fx-text-fill: #F3F4F6;
     -fx-font-family: "Segoe UI", sans-serif;
     -fx-font-size: 32px;
     -fx-font-weight: bold;
 }
 
 .brand-subtitle {
-    -fx-text-fill: #CBD5E1;
+    -fx-text-fill: #9CA3AF;
     -fx-font-size: 14px;
 }
 
@@ -40,28 +40,28 @@
 }
 
 .welcome-subtitle {
-    -fx-text-fill: #D1D5DB;
+    -fx-text-fill: #A1A1AA;
     -fx-font-size: 16px;
 }
 
 /* Form Field Labels */
 .field-label {
-    -fx-text-fill: #E5E7EB;
+    -fx-text-fill: #D1D5DB;
     -fx-font-size: 14px;
     -fx-font-weight: bold;
 }
 
 /* TextFields */
 .modern-textfield {
-    -fx-background-color: #334155;
-    -fx-border-color: #475569;
+    -fx-background-color: #0F172A;
+    -fx-border-color: #1E293B;
     -fx-border-width: 1.5px;
     -fx-border-radius: 8px;
     -fx-background-radius: 8px;
     -fx-padding: 10;
-    -fx-text-fill: #F8FAFC;
-    -fx-prompt-text-fill: #9CA3AF;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 8, 0, 0, 1);
+    -fx-text-fill: #E2E8F0;
+    -fx-prompt-text-fill: #64748B;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.4), 8, 0, 0, 1);
 }
 
 .modern-textfield:focused {
@@ -71,14 +71,14 @@
 
 /* ComboBox */
 .modern-combobox {
-    -fx-background-color: #334155;
-    -fx-border-color: #475569;
+    -fx-background-color: #0F172A;
+    -fx-border-color: #1E293B;
     -fx-border-width: 1.5px;
     -fx-border-radius: 8px;
     -fx-background-radius: 8px;
     -fx-padding: 10;
-    -fx-text-fill: #F8FAFC;
-    -fx-prompt-text-fill: #9CA3AF;
+    -fx-text-fill: #E2E8F0;
+    -fx-prompt-text-fill: #64748B;
 }
 
 .modern-combobox:focused {
@@ -86,32 +86,32 @@
 }
 
 .modern-combobox:hover {
-    -fx-border-color: #6366F1;
+    -fx-border-color: #4F46E5;
 }
 
 /* Field Icons */
 .field-icon,
 .toggle-icon {
-    -fx-fill: #9CA3AF;
+    -fx-fill: #6B7280;
 }
 
 .toggle-icon:hover {
-    -fx-fill: #E5E7EB;
+    -fx-fill: #D1D5DB;
 }
 
 /* Checkbox */
 .modern-checkbox {
-    -fx-text-fill: #E2E8F0;
+    -fx-text-fill: #E5E7EB;
     -fx-font-size: 14px;
 }
 
 .modern-checkbox .box {
-    -fx-background-color: #1E293B;
-    -fx-border-color: #94A3B8;
+    -fx-background-color: #0F172A;
+    -fx-border-color: #4B5563;
 }
 
 .modern-checkbox:selected .box {
-    -fx-background-color: #6366F1;
+    -fx-background-color: #7C3AED;
 }
 
 .modern-checkbox:selected .mark {
@@ -120,7 +120,7 @@
 
 /* Forgot Link */
 .forgot-link {
-    -fx-text-fill: #7C3AED;
+    -fx-text-fill: #8B5CF6;
     -fx-font-size: 14px;
 }
 
@@ -131,20 +131,20 @@
 
 /* Primary Button */
 .primary-button {
-    -fx-background-color: #6366F1;
+    -fx-background-color: #6D28D9;
     -fx-text-fill: white;
     -fx-font-size: 16px;
     -fx-font-weight: bold;
     -fx-background-radius: 8px;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.4), 12, 0, 0, 4);
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 12, 0, 0, 4);
 }
 
 .primary-button:hover {
-    -fx-background-color: #4F46E5;
+    -fx-background-color: #5B21B6;
 }
 
 .primary-button:pressed {
-    -fx-background-color: #4338CA;
+    -fx-background-color: #4C1D95;
 }
 
 /* Message Labels */
@@ -158,39 +158,39 @@
 
 .message-label.success {
     -fx-text-fill: #22C55E;
-    -fx-background-color: #14532D;
+    -fx-background-color: #052E16;
 }
 
 .message-label.error {
     -fx-text-fill: #EF4444;
-    -fx-background-color: #7F1D1D;
+    -fx-background-color: #450A0A;
 }
 
 .message-label.warning {
-    -fx-text-fill: #F59E0B;
+    -fx-text-fill: #FBBF24;
     -fx-background-color: #78350F;
 }
 
 /* Divider */
 .divider-text {
-    -fx-text-fill: #9CA3AF;
+    -fx-text-fill: #6B7280;
     -fx-font-size: 14px;
 }
 
 /* Social Buttons */
 .social-button {
-    -fx-background-color: #1E293B;
-    -fx-border-color: #334155;
+    -fx-background-color: #0F172A;
+    -fx-border-color: #1E293B;
     -fx-border-width: 1.5px;
     -fx-border-radius: 8px;
     -fx-background-radius: 8px;
     -fx-padding: 10;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 6, 0, 0, 1);
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 6, 0, 0, 1);
     -fx-cursor: hand;
 }
 
 .social-button:hover {
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 10, 0, 0, 2);
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.4), 10, 0, 0, 2);
 }
 
 .google-button:hover {
@@ -210,21 +210,21 @@
 }
 
 .apple-button:hover {
-    -fx-border-color: #000000;
+    -fx-border-color: #FFFFFF;
 }
 
 .apple-button .ikonli-font-icon {
-    -fx-fill: #000000;
+    -fx-fill: #FFFFFF;
 }
 
 /* Signup Section */
 .signup-text {
-    -fx-text-fill: #9CA3AF;
+    -fx-text-fill: #6B7280;
     -fx-font-size: 14px;
 }
 
 .signup-link {
-    -fx-text-fill: #7C3AED;
+    -fx-text-fill: #8B5CF6;
     -fx-font-weight: bold;
 }
 
