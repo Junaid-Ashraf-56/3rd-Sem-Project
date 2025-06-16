@@ -28,4 +28,13 @@ public class UserService {
         return user!=null&&user.getRole()==Role.USER;
     }
 
+    public static String generateAccountNumber() {
+        String accountNumber = "ACC ";
+        for (int i = 0; i < 10; i++) {
+            int digit = (int)(Math.random() * 10); // Now includes 0-9
+            accountNumber += digit;
+        }
+        return accountNumber;
+    }
+
 }

@@ -3,6 +3,7 @@ package com.example.walletmanagementsystem.dao;
 import com.example.walletmanagementsystem.config.DBConnection;
 import com.example.walletmanagementsystem.model.Role;
 import com.example.walletmanagementsystem.model.User;
+import com.example.walletmanagementsystem.service.UserService;
 
 
 import java.sql.*;
@@ -17,13 +18,16 @@ public class UserDAO {
 
     //Add a new user
     public static User addUser(String name, String email, String password, Role role) {
-        String sql = "INSERT INTO User(name, email, password, role) VALUES (?, ?, ?, ?)";
+        String accountNumber = UserService.generateAccountNumber();
+
+        String sql = "INSERT INTO Users(name, email, password,accountnumber, role) VALUES (?, ?, ?, ?,?)";
         if (connection != null) {
             try (PreparedStatement stmt = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
                 stmt.setString(1, name);
                 stmt.setString(2, email);
                 stmt.setString(3, password);
-                stmt.setString(4, String.valueOf(role));
+                stmt.setString(4, accountNumber);
+                stmt.setString(5, String.valueOf(role));
 
                 int rows = stmt.executeUpdate();
 
@@ -46,32 +50,35 @@ public class UserDAO {
 
 
    //Get user id by email
-    public static User getUserId(String email){
-    String sql = "SELECT * FROM User WHERE email = ?";
-               User user = null;
+   public static User getUserId(String accountNumber) {
+       String sql = "SELECT * FROM Users WHERE email = ?";
+       User user = null;
 
-    if (connection!=null){
-        try(PreparedStatement stmt = connection.prepareStatement(sql)){
-            stmt.setString(1,email);
-            try(ResultSet rs = stmt.executeQuery()){
-                while (rs.next()){
-                  user = new User();
-                  user.setUserId(rs.getInt("id"));
-                  user.setName(rs.getString("name"));
-                  user.setEmail(rs.getString("email"));
-                  user.setPassword(rs.getString("password"));
-                  user.setRole(Role.valueOf(rs.getString("role")));
-                }
-            }
-        }catch (SQLException e ){
-            e.printStackTrace();
-        }
-    }
-    return user;
-    }
-              //Update user
+       if (connection != null) {
+           try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+               stmt.setString(1, accountNumber);
+               try (ResultSet rs = stmt.executeQuery()) {
+                   if (rs.next()) {
+                       user = new User();
+                       user.setUserId(rs.getInt("id"));
+                       user.setName(rs.getString("name"));
+                       user.setEmail(rs.getString("email"));
+                       user.setPassword(rs.getString("password"));
+                       user.setAccountNumber(rs.getString("accountnumber"));
+                       user.setRole(Role.valueOf(rs.getString("role")));
+                   }
+               }
+           } catch (SQLException e) {
+               e.printStackTrace();
+           }
+       }
+
+       return user;
+   }
+
+    //Update user
     public static boolean updateUser(User user){
-    String sql = "Update User SET name = ?,password = ?,role =? WHERE email = ?";
+    String sql = "Update Users SET name = ?,password = ?,role =? WHERE email = ?";
                boolean update = false;
     if (connection!=null){
         try(PreparedStatement stmt = connection.prepareStatement(sql)){
@@ -92,19 +99,21 @@ public class UserDAO {
 
     //Login User
     public static User Login(String email,String password) {
-            String sql = "SELECT * FROM User WHERE email = ? AND password = ?";
+            String sql = "SELECT * FROM Users WHERE email = ? AND password = ?";
             User user = null;
             if (connection != null) {
                 try (PreparedStatement stmt = connection.prepareStatement(sql)) {
                     stmt.setString(1, email);
                     stmt.setString(2, password);
                     try (ResultSet rs = stmt.executeQuery()) {
-                        user = new User();
-                        user.setUserId(rs.getInt("userId"));
-                        user.setName(rs.getString("name"));
-                        user.setEmail(rs.getString("email"));
-                        user.setPassword(rs.getString("password"));
-                        user.setRole(Role.valueOf(rs.getString("role")));
+                        if (rs.next()) {
+                            user = new User();
+                            user.setUserId(rs.getInt("userId"));
+                            user.setName(rs.getString("name"));
+                            user.setEmail(rs.getString("email"));
+                            user.setPassword(rs.getString("password"));
+                            user.setRole(Role.valueOf(rs.getString("role")));
+                        }
                     }
                 } catch (SQLException e) {
                     e.printStackTrace();
@@ -117,7 +126,7 @@ public class UserDAO {
 
     //Freeze User
     public static boolean freezeUserByEmail(String email) {
-        String sql = "UPDATE User SET is_frozen = ? WHERE email = ?";
+        String sql = "UPDATE Users SET is_frozen = ? WHERE email = ?";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setBoolean(1, true);
             stmt.setString(2, email);
@@ -128,4 +137,19 @@ public class UserDAO {
         }
         return false;
     }
+
+    //Unfreeze account
+    public static boolean unfreezeUserByEmail(String email) {
+        String sql = "UPDATE Users SET is_frozen = ? WHERE email = ?";
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+            stmt.setBoolean(1, false);
+            stmt.setString(2, email);
+            int updated = stmt.executeUpdate();
+            return updated > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
 }
