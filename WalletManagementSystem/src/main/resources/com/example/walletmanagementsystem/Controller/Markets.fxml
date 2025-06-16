@@ -47,12 +47,11 @@
                         <Font name="System Bold" size="28.0" />
                      </font>
                   </Label>
-                  <Label layoutX="793.0" layoutY="45.0" text="+2.34% (24h)" textAlignment="RIGHT" textFill="#48bb78">
+                  <Label fx:id="percentageperhour" layoutX="793.0" layoutY="45.0" text="+2.34% (24h)" textAlignment="RIGHT" textFill="#48bb78">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Label>
-                  <FontIcon iconColor="#48bb78" iconLiteral="fas-arrow-up" iconSize="16" layoutX="775.0" layoutY="60.0" />
                </children>
             </AnchorPane>
 

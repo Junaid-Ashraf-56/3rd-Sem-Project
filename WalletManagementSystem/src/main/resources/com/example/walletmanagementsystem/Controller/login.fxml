@@ -51,7 +51,7 @@
                   <Image url="@../images/intro logo.png" />
                </image>
             </ImageView>
-            <Label layoutX="153.0" layoutY="560.0" prefHeight="55.0" prefWidth="254.0" styleClass="login-label" stylesheets="@../css/login.css" text="Simple way to " textFill="WHITE">
+            <Label layoutX="153.0" layoutY="560.0" prefHeight="55.0" prefWidth="360.0" styleClass="login-label" stylesheets="@../css/login.css" text="Simple way to " textFill="WHITE">
                <font>
                   <Font name="Georgia" size="38.0" />
                </font>

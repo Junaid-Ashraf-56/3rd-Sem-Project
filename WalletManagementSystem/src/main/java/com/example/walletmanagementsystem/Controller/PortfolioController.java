@@ -9,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -17,16 +18,14 @@ import java.util.ResourceBundle;
 
 public class PortfolioController implements Initializable {
 
-    @FXML
-    private Button portfolioButton;
-
-    @FXML
-    private Button transactionButton;
-    @FXML
-    private Button walletbutton;
-
-    @FXML
-    private Button marketbutton;
+    @FXML private Button portfolioButton;
+    @FXML private Button transactionButton;
+    @FXML private Button walletbutton;
+    @FXML private Button marketbutton;
+    @FXML private Label userNameLabel;
+    @FXML private Label emailLabel;
+    @FXML private Label accountNumberLabel;
+    @FXML private Label balanceLabel;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -36,6 +35,11 @@ public class PortfolioController implements Initializable {
             marketbutton.setStyle("-fx-background-color: #333; -fx-text-fill: white;");
         });
     }
+
+
+
+
+
     @FXML
     protected void onClickWalletButton(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/walletmanagementsystem/Controller/Wallet.fxml"));

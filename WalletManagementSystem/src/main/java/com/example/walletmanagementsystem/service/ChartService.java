@@ -2,6 +2,7 @@ package com.example.walletmanagementsystem.service;
 
 import javafx.scene.chart.XYChart;
 
+import java.time.Duration;
 import java.time.LocalTime;
 import java.util.*;
 
@@ -47,5 +48,7 @@ public class ChartService
         Map<String, Double> prices = ApiService.getMultiplePrices(singleCoinList);
         return prices.getOrDefault(coinId, 0.0);
     }
+
+
 
 }
