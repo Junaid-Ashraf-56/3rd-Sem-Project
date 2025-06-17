@@ -8,59 +8,76 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<StackPane id="signupform" prefHeight="500.0" prefWidth="600.0" styleClass="loginanchorpane" stylesheets="@../css/buttons.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.walletmanagementsystem.Controller.SignupController">
-
+<AnchorPane fx:id="loginform" prefHeight="800.0" prefWidth="1363.0" stylesheets="@../css/login.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.walletmanagementsystem.Controller.LoginController">
    <children>
-
-      <AnchorPane id="signupform" fx:id="signupform" prefHeight="500.0" prefWidth="600.0" style="-fx-background-color: #2a2a2a;" styleClass="loginanchorpane" stylesheets="@../css/buttons.css">
-         <children>
-
-            <TextField fx:id="SignupEmail" layoutX="151.0" layoutY="174.0" prefHeight="26.0" prefWidth="299.0" promptText="Email" styleClass="signuplabels" stylesheets="@../css/buttons.css" />
-
-            <PasswordField fx:id="SignupPassword" layoutX="151.0" layoutY="212.0" prefHeight="26.0" prefWidth="299.0" promptText="Password" styleClass="signuplabels" stylesheets="@../css/buttons.css" />
-
-            <TextField fx:id="UserName" layoutX="151.0" layoutY="136.0" prefHeight="26.0" prefWidth="299.0" promptText="Username" styleClass="signuplabels" stylesheets="@../css/buttons.css" />
-
-            <FontIcon fill="WHITE" iconLiteral="fas-envelope" layoutX="430.0" layoutY="191.0" text="" />
-            <FontIcon iconColor="WHITE" iconLiteral="fas-user" layoutX="430.0" layoutY="153.0" />
-            <FontIcon fill="WHITE" iconLiteral="fas-lock" layoutX="430.0" layoutY="228.0" />
-
-            <Label layoutX="245.0" layoutY="41.0" prefHeight="61.0" prefWidth="153.0" text="Sign up" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="30.0" />
-               </font>
-            </Label>
-
-            <Button fx:id="Sigup" layoutX="227.0" layoutY="316.0" mnemonicParsing="false" onAction="#handleSignup" prefHeight="26.0" prefWidth="146.0" styleClass="signupbutton" stylesheets="@../css/buttons.css" text="Signup" />
-
-            <Text layoutX="200.0" layoutY="379.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Already have an account?">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Text>
-
-            <Hyperlink fx:id="loginLink" layoutX="347.0" layoutY="363.0" onAction="#switchToLogin" text="Login" textFill="WHITE">
-               <font>
-                  <Font name="System Bold Italic" size="12.0" />
-               </font>
-            </Hyperlink>
-            <ComboBox fx:id="myComboBox" layoutX="151.0" layoutY="250.0" prefHeight="25.0" prefWidth="299.0" promptText="Login as" styleClass="signuplabels" stylesheets="@../css/buttons.css">
-               <items>
-                  <FXCollections fx:factory="observableArrayList">
-                     <String fx:value="USER" />
-                     <String fx:value="ADMIN" />
-                  </FXCollections>
-               </items>
-            </ComboBox>
-
-         </children>
-      </AnchorPane>
-
+      <ImageView fitHeight="816.0" fitWidth="1375.0" layoutX="-2.0" layoutY="-15.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/walletbg.jpg" />
+         </image>
+      </ImageView>
+      <Label layoutX="551.0" layoutY="120.0" text="CashMate" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="52.0" />
+         </font>
+      </Label>
+      <FontIcon iconColor="WHITE" iconLiteral="fas-wallet" iconSize="70" layoutX="648.0" layoutY="99.0" wrappingWidth="38.0" />
+      <Label layoutX="572.0" layoutY="197.0" text="Secure . Simple . Smart">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="624.0" layoutY="240.0" text="Welcome!">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="589.0" layoutY="288.0" text="Please Sign up to your acoount" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <Label layoutX="558.0" layoutY="401.0" style="-fx-text-fill: white;" text="Email Address" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <TextField fx:id="LoginEmail" layoutX="555.0" layoutY="424.0" prefHeight="26.0" prefWidth="241.0" promptText="Enter your Email" style="-fx-background-radius: 30px; -fx-border-radius: 30px;" styleClass=".text-field" stylesheets="@../css/login.css" />
+      <Label layoutX="557.0" layoutY="455.0" style="-fx-text-fill: white;" text="Enter your password">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <PasswordField fx:id="LoginPassword" layoutX="553.0" layoutY="478.0" prefHeight="26.0" prefWidth="241.0" promptText="Enter your  password" style="-fx-border-radius: 30px; -fx-background-radius: 30px;" />
+      <Label layoutX="557.0" layoutY="514.0" style="-fx-text-fill: white;" text="Login As">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="myComboBox" editable="true" layoutX="556.0" layoutY="538.0" prefHeight="26.0" prefWidth="241.0" promptText="Select your Role!" style="-fx-background-color: black;" styleClass="combo-box" stylesheets="@../css/buttons.css">
+         <items>
+            <FXCollections fx:factory="observableArrayList">
+               <String fx:value="USER" />
+               <String fx:value="ADMIN" />
+            </FXCollections>
+         </items>
+      </ComboBox>
+      <Button fx:id="signup" layoutX="557.0" layoutY="591.0" mnemonicParsing="false" onAction="#handleLogin" prefHeight="30.0" prefWidth="241.0" text="Signup">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+      <Label layoutX="575.0" layoutY="644.0" text="Already have an account!" />
+      <Hyperlink fx:id="login" layoutX="745.0" layoutY="640.0" onAction="#switchToSignup" styleClass="signuplink" stylesheets="@../css/buttons.css" text="Login" />
+      <TextField fx:id="LoginEmail1" layoutX="553.0" layoutY="365.0" prefHeight="26.0" prefWidth="241.0" promptText="Enter your username" style="-fx-background-radius: 30px; -fx-border-radius: 30px;" styleClass=".text-field" stylesheets="@../css/login.css" />
+      <Label layoutX="562.0" layoutY="340.0" style="-fx-text-fill: white;" text="Username" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
    </children>
-</StackPane>
+</AnchorPane>
