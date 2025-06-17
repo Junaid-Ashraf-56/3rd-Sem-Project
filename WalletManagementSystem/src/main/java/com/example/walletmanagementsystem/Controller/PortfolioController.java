@@ -1,6 +1,7 @@
 package com.example.walletmanagementsystem.Controller;
 
 import com.example.walletmanagementsystem.Main;
+import com.example.walletmanagementsystem.dao.UserDAO;
 import com.example.walletmanagementsystem.dao.WalletDAO;
 import com.example.walletmanagementsystem.model.Wallet;
 import com.example.walletmanagementsystem.utils.Session;
@@ -11,13 +12,17 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import static com.example.walletmanagementsystem.utils.AlertUtil.showAlert;
 
 public class PortfolioController implements Initializable {
 
@@ -29,6 +34,10 @@ public class PortfolioController implements Initializable {
     @FXML private Label emailLabel;
     @FXML private Label accountNumberLabel;
     @FXML private Label balanceLabel;
+    @FXML private PasswordField oldPasswordField;
+    @FXML private PasswordField newPasswordField;
+    @FXML private PasswordField confirmPasswordField;
+    @FXML private Button updatePasswordButton;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -55,7 +64,40 @@ public class PortfolioController implements Initializable {
         }
     }
 
+    @FXML
+    private void handleUpdatePasswordButton(ActionEvent event) {
+        String currentPass = oldPasswordField.getText();
+        String newPass = newPasswordField.getText();
+        String confirmPass = confirmPasswordField.getText();
 
+        if (currentPass.isEmpty() || newPass.isEmpty() || confirmPass.isEmpty()) {
+            showAlert(Alert.AlertType.ERROR, "Error","All fields are required.");
+            return;
+        }
+
+        if (!newPass.equals(confirmPass)) {
+            showAlert(Alert.AlertType.ERROR, "Error","New passwords do not match.");
+            return;
+        }
+
+        String accountNumber = Session.getCurrentUser().getAccountNumber();
+        boolean isCorrect = UserDAO.verifyPassword(accountNumber, currentPass);
+
+        if (!isCorrect) {
+            showAlert(Alert.AlertType.ERROR, "Error","Current password is incorrect.");
+            return;
+        }
+
+        boolean updated = UserDAO.updatePassword(accountNumber, newPass);
+        if (updated) {
+            showAlert(Alert.AlertType.INFORMATION, "Error","Password updated successfully.");
+            oldPasswordField.clear();
+            newPasswordField.clear();
+            confirmPasswordField.clear();
+        } else {
+            showAlert(Alert.AlertType.ERROR, "Error","Failed to update password.");
+        }
+    }
 
     @FXML
     protected void onClickWalletButton(ActionEvent event) throws IOException {

@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
@@ -41,7 +42,6 @@
                   <Button fx:id="portfoliobutton" mnemonicParsing="false" onAction="#onClickPortfolioButton" prefHeight="25.0" prefWidth="162.0" stylesheets="@../css/buttons.css" text="Portfolio" />
                   <Button fx:id="transactionbutton" mnemonicParsing="false" onAction="#onClickTransactionButton" prefHeight="25.0" prefWidth="163.0" stylesheets="@../css/buttons.css" text="Transactions" />
                   <Button fx:id="walletbutton" mnemonicParsing="false" onAction="#onClickWalletButton" prefHeight="25.0" prefWidth="163.0" stylesheets="@../css/buttons.css" text="Wallet" />
-                  <FontIcon iconColor="WHITE" iconLiteral="fas-chart-line" iconSize="18" />
                     </VBox>
 
                     <!-- Account Section -->
@@ -124,33 +124,35 @@
                                     </Label>
 
                                     <!-- Action Buttons -->
-                                    <Button fx:id="depositButton" layoutX="20.0" layoutY="70.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="120.0" style="-fx-background-color: #48bb78; -fx-text-fill: white; -fx-background-radius: 8; -fx-font-weight: bold;" text="  DEPOSIT">
+                                    <Button fx:id="depositButton" layoutX="20.0" layoutY="70.0" mnemonicParsing="false" onAction="#handleDeposit" prefHeight="35.0" prefWidth="120.0" style="-fx-background-color: #48bb78; -fx-text-fill: white; -fx-background-radius: 8; -fx-font-weight: bold;" text="  DEPOSIT">
                                         <font>
                                             <Font name="System Bold" size="14.0" />
                                         </font>
                                     </Button>
                                     <FontIcon iconColor="white" iconLiteral="fas-plus" iconSize="14" layoutX="35.0" layoutY="94.0" />
 
-                                    <Button fx:id="withdrawButton" layoutX="186.0" layoutY="70.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="120.0" style="-fx-background-color: #f56565; -fx-text-fill: white; -fx-background-radius: 8; -fx-font-weight: bold;" text="  WITHDRAW">
+                                    <Button fx:id="withdrawButton" layoutX="186.0" layoutY="70.0" mnemonicParsing="false" onAction="#handleWithdraw" prefHeight="35.0" prefWidth="120.0" style="-fx-background-color: #f56565; -fx-text-fill: white; -fx-background-radius: 8; -fx-font-weight: bold;" text="  WITHDRAW">
                                         <font>
                                             <Font name="System Bold" size="14.0" />
                                         </font>
                                     </Button>
                                     <FontIcon iconColor="white" iconLiteral="fas-minus" iconSize="14" layoutX="191.0" layoutY="94.0" />
 
-                                    <Button fx:id="sendButton" layoutX="342.0" layoutY="70.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="120.0" style="-fx-background-color: #4299e1; -fx-text-fill: white; -fx-background-radius: 8; -fx-font-weight: bold;" text="  SEND">
+                                    <Button fx:id="sendButton" layoutX="342.0" layoutY="70.0" mnemonicParsing="false" onAction="#handleTransfer" prefHeight="35.0" prefWidth="120.0" style="-fx-background-color: #4299e1; -fx-text-fill: white; -fx-background-radius: 8; -fx-font-weight: bold;" text="  SEND">
                                         <font>
                                             <Font name="System Bold" size="14.0" />
                                         </font>
                                     </Button>
                                     <FontIcon iconColor="white" iconLiteral="fas-paper-plane" iconSize="14" layoutX="364.0" layoutY="94.0" />
 
-                                    <Button fx:id="tradeButton" layoutX="516.0" layoutY="70.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="120.0" style="-fx-background-color: #ed8936; -fx-text-fill: white; -fx-background-radius: 8; -fx-font-weight: bold;" text="  TRADE">
+                                    <Button fx:id="tradeButton" layoutX="516.0" layoutY="70.0" mnemonicParsing="false" onAction="#onClickMarketButton" prefHeight="35.0" prefWidth="120.0" style="-fx-background-color: #ed8936; -fx-text-fill: white; -fx-background-radius: 8; -fx-font-weight: bold;" text="  TRADE">
                                         <font>
                                             <Font name="System Bold" size="14.0" />
                                         </font>
                                     </Button>
                                     <FontIcon iconColor="white" iconLiteral="fas-chart-line" iconSize="14" layoutX="529.0" layoutY="92.0" />
+                           <TextField fx:id="amountField" layoutX="209.0" layoutY="15.0" prefHeight="26.0" prefWidth="184.0" />
+                           <TextField fx:id="receiverAccountField" layoutX="418.0" layoutY="15.0" prefHeight="26.0" prefWidth="184.0" />
                                 </children>
                             </AnchorPane>
                         </children>
@@ -159,7 +161,7 @@
                     <Region prefHeight="20.0" />
 
                     <!-- Enhanced Transaction History Section -->
-                    <AnchorPane prefHeight="480.0" prefWidth="1133.0" style="-fx-background-color: #1a202c; -fx-background-radius: 12; -fx-border-color: #2d3748; -fx-border-width: 1; -fx-border-radius: 12;">
+                    <AnchorPane prefHeight="82.0" prefWidth="1139.0" style="-fx-background-color: #1a202c; -fx-background-radius: 12; -fx-border-color: #2d3748; -fx-border-width: 1; -fx-border-radius: 12;">
                         <children>
                             <Label layoutX="20.0" layoutY="20.0" text="Transaction History" textFill="#e2e8f0">
                                 <font>
@@ -193,10 +195,6 @@
                     </AnchorPane>
                 </children>
             </VBox>
-         <Button fx:id="marketbutton1" mnemonicParsing="false" onAction="#onClickMarketButton" prefHeight="25.0" prefWidth="162.0" stylesheets="@../css/buttons.css" text="Markets" />
-         <Button fx:id="portfoliobutton" mnemonicParsing="false" onAction="#onClickPortfolioButton" prefHeight="25.0" prefWidth="162.0" stylesheets="@../css/buttons.css" text="Portfolio" />
-         <Button fx:id="transactionbutton1" mnemonicParsing="false" onAction="#onClickTransactionButton" prefHeight="25.0" prefWidth="163.0" stylesheets="@../css/buttons.css" text="Transactions" />
-         <Button fx:id="walletbutton1" mnemonicParsing="false" prefHeight="25.0" prefWidth="163.0" stylesheets="@../css/buttons.css" text="Wallet" />
         </HBox>
     </children>
 </VBox>

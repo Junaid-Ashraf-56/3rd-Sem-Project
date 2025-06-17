@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,9 +18,9 @@ public class TransactionDAO {
     private static final Connection connection = DBConnection.getConnection();
 
     // Insert new transaction
-    public boolean insertNewTransaction(Transaction transaction) {
+    public static boolean insertNewTransaction(Transaction transaction) {
         boolean isInserted = false;
-        String sql = "INSERT INTO Transaction (account_number, type, asset_symbol, quantity, amount, price_at_time, date_time) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO transactions (account_number, type, asset_symbol, quantity, amount, price_at_time, date_time) VALUES (?, ?, ?, ?, ?, ?, ?)";
         if (connection != null) {
             try (PreparedStatement stmt = connection.prepareStatement(sql)) {
                 stmt.setString(1, transaction.getAccountNumber());
@@ -39,7 +40,7 @@ public class TransactionDAO {
 
     // Get transactions by account number
     public static List<Transaction> getTransactionsByAccountNumber(String accountNumber) {
-        String sql = "SELECT * FROM Transaction WHERE account_number = ?";
+        String sql = "SELECT * FROM transactions WHERE account_number = ?";
         List<Transaction> transactions = new ArrayList<>();
         if (connection != null) {
             try (PreparedStatement stmt = connection.prepareStatement(sql)) {
@@ -65,18 +66,23 @@ public class TransactionDAO {
     }
 
     // Record transaction
-    public static boolean recordTransaction(String accountNumber, double amount, String description) {
-        String sql = "INSERT INTO Transaction (account_number, amount, description, date_time) VALUES (?, ?, ?, CURRENT_TIMESTAMP)";
-        if (connection != null) {
-            try (PreparedStatement stmt = connection.prepareStatement(sql)) {
-                stmt.setString(1, accountNumber);
-                stmt.setDouble(2, amount);
-                stmt.setString(3, description);
-                return stmt.executeUpdate() > 0;
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+    public static void recordTransaction(String accountNumber, double amount, String description) {
+        String sql = "INSERT INTO transactions (account_number, amount, asset_symbol, quantity, type, price_at_time, date_time) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        try (PreparedStatement stmt = DBConnection.getConnection().prepareStatement(sql)) {
+            stmt.setString(1, accountNumber);
+            stmt.setDouble(2, amount);
+            stmt.setString(3, "USD");
+            stmt.setDouble(4, Math.abs(amount));
+            stmt.setString(5, amount >= 0 ? "TRANSFER_IN" : "TRANSFER_OUT");
+            stmt.setDouble(6, 1.0);
+            stmt.setTimestamp(7, Timestamp.valueOf(LocalDateTime.now()));
+
+            stmt.executeUpdate();
+            System.out.println("Transaction recorded for " + accountNumber + ": " + amount);
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-        return false;
     }
+
+
 }
