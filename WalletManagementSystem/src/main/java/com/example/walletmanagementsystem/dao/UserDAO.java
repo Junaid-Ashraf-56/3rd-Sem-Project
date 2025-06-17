@@ -18,42 +18,49 @@ public class UserDAO {
 
 
     //Add a new user
-    public static User addUser(String name, String email, String password, Role role) {
+    public static User addUser(String name, String email, String password, Role role) throws SQLException {
         String accountNumber = UserService.generateAccountNumber();
-        String sql = "INSERT INTO Users(name, email, password, accountnumber, role) VALUES (?, ?, ?, ?, ?)";
+        String userSql = "INSERT INTO Users(name, email, password, accountnumber, role) VALUES (?, ?, ?, ?, ?)";
+        User user = null;
 
-        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
 
-            stmt.setString(1, name);
-            stmt.setString(2, email);
-            stmt.setString(3, password);
-            stmt.setString(4, accountNumber);
-            stmt.setString(5, role.toString());
+            try (PreparedStatement stmt = connection.prepareStatement(userSql, Statement.RETURN_GENERATED_KEYS)) {
+                connection.setAutoCommit(false);
+                stmt.setString(1, name);
+                stmt.setString(2, email);
+                stmt.setString(3, password); // Consider hashing password
+                stmt.setString(4, accountNumber);
+                stmt.setString(5, role.toString());
 
-            int rows = stmt.executeUpdate();
+                int rows = stmt.executeUpdate();
 
-            if (rows > 0) {
-                try (ResultSet rs = stmt.getGeneratedKeys()) {
-                    if (rs.next()) {
-                        int id = rs.getInt(1);
-
-                        // ✅ Automatically create wallet for this user
-                        Wallet wallet = WalletDAO.insertNewWallet(accountNumber, id);
-
-                        // ✅ Return user object with wallet info
-                        User user = new User(id, name, email, password, role);
-                        user.setAccountNumber(accountNumber);
-                        user.setWallet(wallet); // Optional if User has wallet field
-                        return user;
+                if (rows > 0) {
+                    try (ResultSet rs = stmt.getGeneratedKeys()) {
+                        if (rs.next()) {
+                            int userId = rs.getInt(1);
+                            // Create wallet
+                            Wallet wallet = WalletDAO.insertNewWallet(accountNumber, userId,connection);
+                            if (wallet != null) {
+                                connection.commit(); // Commit transaction
+                                user = new User(userId, name, email, password, role);
+                                user.setAccountNumber(accountNumber);
+                                user.setWallet(wallet);
+                            } else {
+                                connection.rollback(); // Rollback if wallet creation fails
+                                return null;
+                            }
+                        }
                     }
                 }
+            } catch (SQLException e) {
+                connection.rollback(); // Rollback on error
+                e.printStackTrace();
+                return null;
+            } finally {
+                connection.setAutoCommit(true); // Restore auto-commit
             }
 
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        return null;
+        return user;
     }
 
 

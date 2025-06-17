@@ -15,6 +15,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Objects;
 
 import static com.example.walletmanagementsystem.utils.AlertUtil.showAlert;
@@ -43,7 +44,7 @@ public class SignupController {
     }
 
     @FXML
-    public void handleSignup(){
+    public void handleSignup() throws SQLException {
         String userName = UserName.getText();
         String email = SignupEmail.getText();
         String password = SignupPassword.getText();

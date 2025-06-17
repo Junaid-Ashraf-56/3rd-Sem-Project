@@ -57,12 +57,11 @@ public class WalletDAO {
 
 
     // Insert new wallet
-    public static Wallet insertNewWallet(String accountNumber, int userId) {
+    public static Wallet insertNewWallet(String accountNumber, int userId, Connection conn) {
         String sql = "INSERT INTO wallet (accountnumber, balance, userid) VALUES (?, ?, ?)";
         Wallet wallet = null;
 
-        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
-
+        try (PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             stmt.setString(1, accountNumber);
             stmt.setDouble(2, 0.0);
             stmt.setInt(3, userId);
@@ -78,11 +77,10 @@ public class WalletDAO {
                         wallet.setUserId(userId);
                         wallet.setAccountNumber(accountNumber);
                         wallet.setBalance(0.0);
-                        wallet.setWallet(new ArrayList<>()); // Assuming for transaction list
+                        wallet.setWallet(new ArrayList<>());
                     }
                 }
             }
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
