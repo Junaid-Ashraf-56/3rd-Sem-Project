@@ -26,8 +26,6 @@ public class LoginController {
     @FXML private ComboBox<String> myComboBox;
     @FXML private Hyperlink Signup;
     @FXML private Button Login;
-    @FXML private AnchorPane Iloginform;
-    @FXML private PasswordField ILoginPassword;
     @FXML private FontIcon togglePasswordIcon;
     private TextField passwordTextField;
     private boolean isPasswordVisible = false;
@@ -137,7 +135,7 @@ public class LoginController {
     @FXML
     void switchToSignup(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/walletmanagementsystem/Controller/signup.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/walletmanagementsystem/Controller/Signup.fxml"));
             Parent root = loader.load();
             Stage stage = (Stage) Signup.getScene().getWindow();
             stage.setScene(new Scene(root));

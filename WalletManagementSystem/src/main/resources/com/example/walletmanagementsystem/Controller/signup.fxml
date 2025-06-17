@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<AnchorPane fx:id="loginform" prefHeight="800.0" prefWidth="1363.0" stylesheets="@../css/login.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.walletmanagementsystem.Controller.LoginController">
+<AnchorPane fx:id="loginform" prefHeight="800.0" prefWidth="1363.0" stylesheets="@../css/login.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.walletmanagementsystem.Controller.SignupController">
    <children>
       <ImageView fitHeight="816.0" fitWidth="1375.0" layoutX="-2.0" layoutY="-15.0" pickOnBounds="true">
          <image>
@@ -66,13 +66,13 @@
             </FXCollections>
          </items>
       </ComboBox>
-      <Button fx:id="signup" layoutX="557.0" layoutY="591.0" mnemonicParsing="false" onAction="#handleLogin" prefHeight="30.0" prefWidth="241.0" text="Signup">
+      <Button fx:id="signup" layoutX="557.0" layoutY="591.0" mnemonicParsing="false" onAction="#handleSignup" prefHeight="30.0" prefWidth="241.0" text="Signup">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
       <Label layoutX="575.0" layoutY="644.0" text="Already have an account!" />
-      <Hyperlink fx:id="login" layoutX="745.0" layoutY="640.0" onAction="#switchToSignup" styleClass="signuplink" stylesheets="@../css/buttons.css" text="Login" />
+      <Hyperlink fx:id="Login" layoutX="745.0" layoutY="640.0" onAction="#switchToLogin" styleClass="signuplink" stylesheets="@../css/buttons.css" text="Login" />
       <TextField fx:id="LoginEmail1" layoutX="553.0" layoutY="365.0" prefHeight="26.0" prefWidth="241.0" promptText="Enter your username" style="-fx-background-radius: 30px; -fx-border-radius: 30px;" styleClass=".text-field" stylesheets="@../css/login.css" />
       <Label layoutX="562.0" layoutY="340.0" style="-fx-text-fill: white;" text="Username" textFill="WHITE">
          <font>

@@ -15,6 +15,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Objects;
 
 import static com.example.walletmanagementsystem.utils.AlertUtil.showAlert;
 
@@ -27,12 +28,11 @@ public class SignupController {
     @FXML private TextField SignupEmail;
     @FXML private PasswordField SignupPassword;
     @FXML private TextField UserName;
-    @FXML private Button Sigup;
 
     @FXML
     public void switchToLogin(ActionEvent actionEvent) {
         try {
-            Parent loginRoot = FXMLLoader.load(getClass().getResource("/com/example/walletmanagementsystem/Controller/login.fxml"));
+            Parent loginRoot = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/example/walletmanagementsystem/Controller/login.fxml")));
             Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             Scene scene = new Scene(loginRoot);
             stage.setScene(scene);

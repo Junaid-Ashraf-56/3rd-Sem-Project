@@ -8,6 +8,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
@@ -159,34 +160,7 @@
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-
-                  <Button fx:id="marketbutton" layoutX="10.0" layoutY="150.0" prefHeight="40.0" prefWidth="170.0" style="-fx-background-color: #4fd1c7; -fx-text-fill: #1a202c; -fx-background-radius: 8; -fx-font-weight: bold;" text="   Markets" textAlignment="LEFT">
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font>
-                  </Button>
                   <FontIcon iconColor="#1a202c" iconLiteral="fas-chart-line" iconSize="18" layoutX="25.0" layoutY="170.0" />
-
-                  <Button layoutX="10.0" layoutY="200.0" onAction="#onClickPortfolioButton" prefHeight="40.0" prefWidth="170.0" style="-fx-background-color: transparent; -fx-text-fill: #e2e8f0; -fx-background-radius: 8; -fx-border-color: transparent;" text="   Portfolio">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Button>
-                  <FontIcon iconColor="#a0aec0" iconLiteral="fas-briefcase" iconSize="18" layoutX="25.0" layoutY="220.0" />
-
-                  <Button fx:id="transactionbutton" layoutX="10.0" layoutY="250.0" onAction="#onClickTransactionButton" prefHeight="40.0" prefWidth="170.0" style="-fx-background-color: transparent; -fx-text-fill: #e2e8f0; -fx-background-radius: 8; -fx-border-color: transparent;" text="   Transactions">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Button>
-                  <FontIcon iconColor="#a0aec0" iconLiteral="fas-exchange-alt" iconSize="18" layoutX="25.0" layoutY="270.0" />
-
-                  <Button fx:id="walletbutton" layoutX="10.0" layoutY="300.0" onAction="#onClickWalletButton" prefHeight="40.0" prefWidth="170.0" style="-fx-background-color: transparent; -fx-text-fill: #e2e8f0; -fx-background-radius: 8; -fx-border-color: transparent;" text="   Wallet">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Button>
-                  <FontIcon iconColor="#a0aec0" iconLiteral="fas-credit-card" iconSize="18" layoutX="25.0" layoutY="320.0" />
 
                   <Button fx:id="logoutButton" layoutX="10.0" layoutY="720.0" prefHeight="40.0" prefWidth="170.0" style="-fx-background-color: #f56565; -fx-text-fill: white; -fx-background-radius: 8;" text="   Logout">
                      <font>
@@ -194,6 +168,14 @@
                      </font>
                   </Button>
                   <FontIcon iconColor="white" iconLiteral="fas-sign-out-alt" iconSize="18" layoutX="25.0" layoutY="740.0" />
+                  <VBox layoutX="-1.0" layoutY="134.0" prefWidth="176.0" spacing="5" style="-fx-padding: 20 10 10 10;">
+                     <children>
+                        <Button fx:id="marketbutton1" mnemonicParsing="false"  prefHeight="25.0" prefWidth="162.0" stylesheets="@../css/buttons.css" text="Markets" />
+                        <Button fx:id="portfoliobutton" mnemonicParsing="false" onAction="#onClickPortfolioButton" prefHeight="25.0" prefWidth="162.0" stylesheets="@../css/buttons.css" text="Portfolio" />
+                        <Button fx:id="transactionbutton1" mnemonicParsing="false" onAction="#onClickTransactionButton" prefHeight="25.0" prefWidth="163.0" stylesheets="@../css/buttons.css" text="Transactions" />
+                        <Button fx:id="walletbutton1" mnemonicParsing="false" onAction="#onClickWalletButton" prefHeight="25.0" prefWidth="163.0" stylesheets="@../css/buttons.css" text="Wallet" />
+                     </children>
+                  </VBox>
                </children>
             </AnchorPane>
 

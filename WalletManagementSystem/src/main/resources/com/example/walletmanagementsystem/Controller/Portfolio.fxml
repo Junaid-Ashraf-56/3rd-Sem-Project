@@ -40,34 +40,14 @@
                                 <Font name="System Bold" size="12.0" />
                             </font>
                         </Label>
-
-                        <Button fx:id="marketbutton" mnemonicParsing="false" onAction="#onClickMarketButton" prefHeight="40.0" prefWidth="170.0" style="-fx-background-color: transparent; -fx-text-fill: #e2e8f0; -fx-background-radius: 8; -fx-border-color: transparent;" text="   Markets" textAlignment="LEFT">
-                            <font>
-                                <Font size="14.0" />
-                            </font>
-                        </Button>
-                        <FontIcon iconColor="#a0aec0" iconLiteral="fas-chart-line" iconSize="18" style="-fx-translate-x: 25; -fx-translate-y: -30;" />
-
-                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="170.0" style="-fx-background-color: #4fd1c7; -fx-text-fill: #1a202c; -fx-background-radius: 8; -fx-font-weight: bold;" text="   Portfolio" textAlignment="LEFT">
-                            <font>
-                                <Font name="System Bold" size="14.0" />
-                            </font>
-                        </Button>
-                        <FontIcon iconColor="#1a202c" iconLiteral="fas-briefcase" iconSize="18" style="-fx-translate-x: 25; -fx-translate-y: -30;" />
-
-                        <Button fx:id="transactionbutton" mnemonicParsing="false" onAction="#onClickTransactionButton" prefHeight="40.0" prefWidth="170.0" style="-fx-background-color: transparent; -fx-text-fill: #e2e8f0; -fx-background-radius: 8; -fx-border-color: transparent;" text="   Transactions" textAlignment="LEFT">
-                            <font>
-                                <Font size="14.0" />
-                            </font>
-                        </Button>
-                        <FontIcon iconColor="#a0aec0" iconLiteral="fas-exchange-alt" iconSize="18" style="-fx-translate-x: 25; -fx-translate-y: -30;" />
-
-                        <Button fx:id="walletbutton" mnemonicParsing="false" onAction="#onClickWalletButton" prefHeight="40.0" prefWidth="170.0" style="-fx-background-color: transparent; -fx-text-fill: #e2e8f0; -fx-background-radius: 8; -fx-border-color: transparent;" text="   Wallet" textAlignment="LEFT">
-                            <font>
-                                <Font size="14.0" />
-                            </font>
-                        </Button>
-                        <FontIcon iconColor="#a0aec0" iconLiteral="fas-credit-card" iconSize="18" style="-fx-translate-x: 25; -fx-translate-y: -30;" />
+                  <VBox prefHeight="132.0" prefWidth="169.0" spacing="5" style="-fx-padding: 20 10 10 10;">
+                     <children>
+                        <Button fx:id="marketbutton" mnemonicParsing="false" onAction="#onClickMarketButton" prefHeight="25.0" prefWidth="162.0" stylesheets="@../css/buttons.css" text="Markets" />
+                        <Button fx:id="portfoliobutton" mnemonicParsing="false" onAction="#onClickPortfolioButton" prefHeight="25.0" prefWidth="162.0" stylesheets="@../css/buttons.css" text="Portfolio" />
+                        <Button fx:id="transactionbutton" mnemonicParsing="false" onAction="#onClickTransactionButton" prefHeight="25.0" prefWidth="163.0" stylesheets="@../css/buttons.css" text="Transactions" />
+                        <Button fx:id="walletbutton" mnemonicParsing="false" onAction="#onClickWalletButton" prefHeight="25.0" prefWidth="163.0" stylesheets="@../css/buttons.css" text="Wallet" />
+                     </children>
+                  </VBox>
                     </VBox>
 
                     <!-- Account Section -->
