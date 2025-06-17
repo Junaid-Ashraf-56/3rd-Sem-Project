@@ -73,4 +73,7 @@
      -fx-text-fill: white;
      -fx-font-weight: bold;
  }
-
+.signuplink{
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
