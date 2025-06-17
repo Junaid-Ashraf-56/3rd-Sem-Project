@@ -14,9 +14,9 @@
 <?import javafx.scene.text.Font?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<AnchorPane fx:id="loginform" prefHeight="800.0" prefWidth="1363.0" stylesheets="@../css/login.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.walletmanagementsystem.Controller.LoginController">
+<AnchorPane fx:id="loginform" prefHeight="2000.0" stylesheets="@../css/login.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.walletmanagementsystem.Controller.LoginController">
    <children>
-      <ImageView fitHeight="816.0" fitWidth="1375.0" layoutX="-2.0" layoutY="-15.0" pickOnBounds="true">
+      <ImageView fitHeight="1328.0" fitWidth="1363.0" layoutX="-2.0" layoutY="-161.0" pickOnBounds="true">
          <image>
             <Image url="@../images/walletbg.jpg" />
          </image>

@@ -54,6 +54,21 @@ public class PortfolioController implements Initializable {
         String accountNumber = Session.getCurrentUser().getAccountNumber();
         showBalance(accountNumber);
     }
+    @FXML
+    public void onClickLogoutButton(java.awt.event.ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/walletmanagementsystem/Login.fxml"));
+            Parent loginRoot = loader.load();
+
+            Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(loginRoot));
+            stage.setTitle("Login");
+            stage.show();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     public void showBalance(String accountNumber) {
         Wallet wallet = WalletDAO.getWalletByAccountNumber(accountNumber);
@@ -158,4 +173,6 @@ public class PortfolioController implements Initializable {
         // Optional: Action if portfolio button is clicked again
         System.out.println("Already in Portfolio section.");
     }
+
+
 }

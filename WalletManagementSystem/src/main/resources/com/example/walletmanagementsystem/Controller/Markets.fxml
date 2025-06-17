@@ -135,7 +135,7 @@
             </AnchorPane>
 
             <!-- Enhanced Navigation Sidebar -->
-            <AnchorPane layoutX="1.0" layoutY="14.0" prefHeight="787.0" prefWidth="190.0" style="-fx-background-color: #1a202c; -fx-border-color: #2d3748; -fx-border-width: 0 1 0 0;">
+            <AnchorPane layoutX="1.0" layoutY="14.0" onDragDetected="#onClickLogoutButton" prefHeight="787.0" prefWidth="190.0" style="-fx-background-color: #1a202c; -fx-border-color: #2d3748; -fx-border-width: 0 1 0 0;">
                <children>
                   <!-- Logo Section -->
                   <AnchorPane layoutX="0.0" layoutY="0.0" prefHeight="100.0" prefWidth="190.0" style="-fx-background-color: #2d3748;">
@@ -162,7 +162,7 @@
                   </Label>
                   <FontIcon iconColor="#1a202c" iconLiteral="fas-chart-line" iconSize="18" layoutX="25.0" layoutY="170.0" />
 
-                  <Button fx:id="logoutButton" layoutX="10.0" layoutY="720.0" prefHeight="40.0" prefWidth="170.0" style="-fx-background-color: #f56565; -fx-text-fill: white; -fx-background-radius: 8;" text="   Logout">
+                  <Button fx:id="logoutButton" layoutX="10.0" layoutY="720.0" onAction="#onClickLogoutButton" prefHeight="40.0" prefWidth="170.0" style="-fx-background-color: #f56565; -fx-text-fill: white; -fx-background-radius: 8;" text="   Logout">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>

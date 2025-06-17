@@ -273,6 +273,21 @@ public class MarketController implements Initializable {
             xAxis.setAutoRanging(true);
         }
     }
+    @FXML
+    public void onClickLogoutButton(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/walletmanagementsystem/Login.fxml"));
+            Parent loginRoot = loader.load();
+
+            Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(loginRoot));
+            stage.setTitle("Login");
+            stage.show();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     @FXML
     protected void onClickWalletButton(ActionEvent event) throws IOException {

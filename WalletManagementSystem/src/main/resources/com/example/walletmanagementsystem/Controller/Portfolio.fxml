@@ -53,7 +53,7 @@
                     <!-- Account Section -->
                     <VBox spacing="5" style="-fx-padding: 460 10 10 10;">
 
-                        <Button fx:id="logoutButton" mnemonicParsing="false" prefHeight="40.0" prefWidth="170.0" style="-fx-background-color: #f56565; -fx-text-fill: white; -fx-background-radius: 8;" text="   Logout" textAlignment="LEFT">
+                        <Button fx:id="logoutButton" mnemonicParsing="false"  prefHeight="40.0" prefWidth="170.0" style="-fx-background-color: #f56565; -fx-text-fill: white; -fx-background-radius: 8;" text="   Logout" textAlignment="LEFT">
                             <font>
                                 <Font name="System Bold" size="14.0" />
                             </font>
@@ -194,11 +194,6 @@
                                     </AnchorPane>
                                 </children>
                             </HBox>
-                              <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="21.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true">
-                                  <image>
-                                      <Image url="@../images/Profile.png" />
-                                  </image>
-                              </ImageView>
                         </children>
                     </AnchorPane>
 

@@ -40,14 +40,14 @@
                         </Label>
                   <Button fx:id="marketbutton" mnemonicParsing="false" onAction="#onClickMarketButton" prefHeight="25.0" prefWidth="162.0" stylesheets="@../css/buttons.css" text="Markets" />
                   <Button fx:id="portfoliobutton" mnemonicParsing="false" onAction="#onClickPortfolioButton" prefHeight="25.0" prefWidth="162.0" stylesheets="@../css/buttons.css" text="Portfolio" />
-                  <Button fx:id="transactionbutton" mnemonicParsing="false" onAction="#onClickTransactionButton" prefHeight="25.0" prefWidth="163.0" stylesheets="@../css/buttons.css" text="Transactions" />
+                  <Button fx:id="transactionbutton" mnemonicParsing="false" prefHeight="25.0" prefWidth="163.0" stylesheets="@../css/buttons.css" text="Transactions" />
                   <Button fx:id="walletbutton" mnemonicParsing="false" onAction="#onClickWalletButton" prefHeight="25.0" prefWidth="163.0" stylesheets="@../css/buttons.css" text="Wallet" />
                     </VBox>
 
                     <!-- Account Section -->
                     <VBox spacing="5" style="-fx-padding: 460 10 10 10;">
 
-                        <Button fx:id="logoutButton" mnemonicParsing="false" prefHeight="40.0" prefWidth="170.0" style="-fx-background-color: #f56565; -fx-text-fill: white; -fx-background-radius: 8;" text="   Logout" textAlignment="LEFT">
+                        <Button fx:id="logoutButton" mnemonicParsing="false"   prefHeight="40.0" prefWidth="170.0" style="-fx-background-color: #f56565; -fx-text-fill: white; -fx-background-radius: 8;" text="   Logout" textAlignment="LEFT">
                             <font>
                                 <Font name="System Bold" size="14.0" />
                             </font>

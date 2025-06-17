@@ -125,6 +125,21 @@ public class WalletController implements Initializable {
             }
         }
     }
+    @FXML
+    public void onClickLogoutButton(java.awt.event.ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/walletmanagementsystem/Login.fxml"));
+            Parent loginRoot = loader.load();
+
+            Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(loginRoot));
+            stage.setTitle("Login");
+            stage.show();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     @FXML
     public void onUsernameClick(ActionEvent event) {

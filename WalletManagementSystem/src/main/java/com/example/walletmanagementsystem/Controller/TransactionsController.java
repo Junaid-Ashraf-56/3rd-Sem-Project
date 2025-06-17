@@ -145,6 +145,21 @@ public class TransactionsController implements Initializable {
         Stage currentStage = (Stage) ((Button) event.getSource()).getScene().getWindow();
         currentStage.close();
     }
+    @FXML
+    public void onClickLogoutButton(java.awt.event.ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/walletmanagementsystem/Login.fxml"));
+            Parent loginRoot = loader.load();
+
+            Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(loginRoot));
+            stage.setTitle("Login");
+            stage.show();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     @FXML
     protected void onClickMarketButton(ActionEvent event) throws IOException {

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.LineChart?>
 <?import javafx.scene.chart.NumberAxis?>
@@ -8,349 +7,164 @@
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Priority?>
-<?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="600.0" minWidth="1000.0" prefHeight="800.0" prefWidth="1363.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.walletmanagementsystem.Controller.WalletController">
-
-   <!-- Left Sidebar -->
-   <left>
-      <VBox prefWidth="250.0" style="-fx-background-color: black;">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1363.0" style="-fx-background-color: #2d3748;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.walletmanagementsystem.Controller.WalletController">
+   <children>
+      <HBox layoutX="394.0" layoutY="22.0" prefHeight="36.0" prefWidth="600.0">
          <children>
-            <!-- Logo Section -->
-            <HBox alignment="CENTER_LEFT" spacing="10.0">
+            <AnchorPane prefHeight="36.0" prefWidth="605.0" />
+         </children>
+      </HBox>
+      <VBox prefHeight="801.0" prefWidth="250.0">
+         <children>
+            <AnchorPane prefHeight="801.0" prefWidth="230.0" style="-fx-background-color: #2d3748;">
                <children>
-                  <FontIcon iconColor="#f5385cc4" iconLiteral="fas-credit-card" iconSize="30" />
-                  <Hyperlink text="CashMate" textFill="#b92e2e">
+                  <Button fx:id="marketbutton" layoutY="67.0" mnemonicParsing="false" onAction="#onClickMarketButton" prefHeight="25.0" prefWidth="162.0" stylesheets="@../css/buttons.css" text="Markets" />
+                  <Button fx:id="portfoliobutton" layoutY="98.0" mnemonicParsing="false" onAction="#onClickPortfolioButton" prefHeight="25.0" prefWidth="162.0" stylesheets="@../css/buttons.css" text="Portfolio" />
+                  <Button fx:id="transactionbutton" layoutY="129.0" mnemonicParsing="false" onAction="#onClickTransactionButton" prefHeight="25.0" prefWidth="163.0" stylesheets="@../css/buttons.css" text="Transactions" />
+                  <Button fx:id="walletbutton" layoutY="160.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="163.0" stylesheets="@../css/buttons.css" text="Wallet" />
+                  <FontIcon iconColor="#f5385cc4" iconLiteral="fas-credit-card" iconSize="30" layoutX="12.0" layoutY="41.0" wrappingWidth="13.5" />
+                  <Hyperlink layoutX="62.0" layoutY="9.0" text="CashMate" textFill="#b92e2e">
                      <font>
                         <Font name="System Bold Italic" size="23.0" />
                      </font>
                   </Hyperlink>
-               </children>
-               <padding>
-                  <Insets bottom="20.0" left="15.0" right="15.0" top="15.0" />
-               </padding>
-            </HBox>
-
-            <!-- Navigation Buttons -->
-            <VBox spacing="5.0">
-               <children>
-                  <HBox alignment="CENTER_LEFT" spacing="10.0">
-                     <children>
-                        <Label text="📈" textFill="#fcf8f8" />
-                        <Button fx:id="marketbutton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onClickMarketButton" stylesheets="@../css/buttons.css" text="Markets" HBox.hgrow="ALWAYS" />
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER_LEFT" spacing="10.0">
-                     <children>
-                        <Label text="💼" textFill="#fcfcfc" />
-                        <Button fx:id="portfoliobutton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onClickPortfolioButton" stylesheets="@../css/buttons.css" text="Portfolio" HBox.hgrow="ALWAYS" />
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER_LEFT" spacing="10.0">
-                     <children>
-                        <Label text="💱" textFill="#ebebeb" />
-                        <Button fx:id="transactionbutton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onClickTransactionButton" stylesheets="@../css/buttons.css" text="Transactions" HBox.hgrow="ALWAYS" />
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER_LEFT" spacing="10.0">
-                     <children>
-                        <Label text="💳" textFill="#fffefe" />
-                        <Button fx:id="walletbutton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" stylesheets="@../css/buttons.css" text="Wallet" HBox.hgrow="ALWAYS" />
-                     </children>
-                  </HBox>
-               </children>
-               <padding>
-                  <Insets left="15.0" right="15.0" />
-               </padding>
-            </VBox>
-
-            <!-- Spacer to push logout button to bottom -->
-            <Region VBox.vgrow="ALWAYS" />
-
-            <!-- Logout Button -->
-            <Button fx:id="walletbutton1" maxWidth="1.7976931348623157E308" mnemonicParsing="false" stylesheets="@../css/buttons.css" text="Logout">
-               <VBox.margin>
-                  <Insets bottom="20.0" left="15.0" right="15.0" />
-               </VBox.margin>
-            </Button>
-         </children>
-      </VBox>
-   </left>
-
-   <!-- Main Content Area -->
-   <center>
-      <VBox spacing="20.0">
-         <children>
-            <!-- Top Header -->
-            <HBox alignment="CENTER_LEFT" spacing="20.0">
-               <children>
-                  <Label text="Wallet" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold" size="32.0" />
-                     </font>
-                  </Label>
-
-                  <!-- Spacer -->
-                  <Region HBox.hgrow="ALWAYS" />
-
-                  <!-- Search Bar -->
-                  <HBox alignment="CENTER" spacing="10.0">
-                     <children>
-                        <TextField prefWidth="300.0" promptText="Search" style="-fx-background-color: #b92e2e;" styleClass="searchbar" stylesheets="@../css/buttons.css">
-                           <font>
-                              <Font name="System Bold" size="12.0" />
-                           </font>
-                        </TextField>
-                        <FontIcon iconColor="#fffbfb" iconLiteral="fas-search" />
-                     </children>
-                  </HBox>
-
-                  <!-- User Info -->
-                  <HBox alignment="CENTER" spacing="10.0">
-                     <children>
-                        <FontIcon iconColor="#f8f8f8" iconLiteral="fas-bell" />
-                        <FontIcon iconColor="WHITE" iconLiteral="fas-envelope" />
-                        <Hyperlink fx:id="UserName" onAction="#onUsernameClick" textFill="WHITE">
-                           <font>
-                              <Font name="System Bold Italic" size="12.0" />
-                           </font>
-                        </Hyperlink>
-                        <ImageView fitHeight="17.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/pak.png" />
-                           </image>
-                        </ImageView>
-                     </children>
-                  </HBox>
-               </children>
-            </HBox>
-
-            <!-- Cards Section -->
-            <HBox spacing="20.0">
-               <children>
-                  <!-- Balance Card -->
-                  <AnchorPane prefHeight="280.0" styleClass="coinanchorpane" stylesheets="@../css/anchorpane.css" HBox.hgrow="ALWAYS">
-                     <children>
-                        <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                           <children>
-                              <HBox alignment="CENTER_LEFT" spacing="10.0">
-                                 <children>
-                                    <Label text="Wallet" textFill="WHITE">
-                                       <font>
-                                          <Font name="System Bold" size="12.0" />
-                                       </font>
-                                    </Label>
-                                    <Region HBox.hgrow="ALWAYS" />
-                                    <Label text="Balance" textFill="WHITE">
-                                       <font>
-                                          <Font name="System Bold" size="13.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                                 <padding>
-                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                 </padding>
-                              </HBox>
-                              <VBox alignment="CENTER" VBox.vgrow="ALWAYS">
-                                 <children>
-                                    <Label fx:id="walletBalance" textFill="#fffdfd">
-                                       <font>
-                                          <Font name="System Bold" size="25.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                              </VBox>
-                              <HBox alignment="CENTER" spacing="20.0">
-                                 <children>
-                                    <Button mnemonicParsing="false" styleClass="buybuttons" stylesheets="@../css/buttons.css" text="Deposit" />
-                                    <Button mnemonicParsing="false" styleClass="sellbuttons" stylesheets="@../css/buttons.css" text="Withdraw" />
-                                 </children>
-                                 <padding>
-                                    <Insets bottom="15.0" top="10.0" />
-                                 </padding>
-                              </HBox>
-                           </children>
-                        </VBox>
-                     </children>
-                  </AnchorPane>
-
-                  <!-- Bitcoin Card -->
-                  <AnchorPane prefHeight="280.0" styleClass="coinanchorpane" stylesheets="@../css/anchorpane.css" HBox.hgrow="ALWAYS">
-                     <children>
-                        <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                           <children>
-                              <HBox alignment="CENTER_LEFT" spacing="10.0">
-                                 <children>
-                                    <Label text="Bitcoin" textFill="WHITE">
-                                       <font>
-                                          <Font name="System Bold" size="12.0" />
-                                       </font>
-                                    </Label>
-                                    <Region HBox.hgrow="ALWAYS" />
-                                    <Label fx:id="BTClabel" textFill="WHITE">
-                                       <font>
-                                          <Font name="System Bold" size="13.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                                 <padding>
-                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                 </padding>
-                              </HBox>
-                              <LineChart fx:id="btcChart" animated="false" legendVisible="false" VBox.vgrow="ALWAYS">
-                                 <xAxis>
-                                    <CategoryAxis fx:id="btcXAxis" />
-                                 </xAxis>
-                                 <yAxis>
-                                    <NumberAxis fx:id="btcYAxis" />
-                                 </yAxis>
-                                 <VBox.margin>
-                                    <Insets left="10.0" right="10.0" />
-                                 </VBox.margin>
-                              </LineChart>
-                              <HBox alignment="CENTER" spacing="20.0">
-                                 <children>
-                                    <Button mnemonicParsing="false" styleClass="buybuttons" stylesheets="@../css/buttons.css" text="Buy" />
-                                    <Button mnemonicParsing="false" styleClass="sellbuttons" stylesheets="@../css/buttons.css" text="Sell" />
-                                 </children>
-                                 <padding>
-                                    <Insets bottom="15.0" top="10.0" />
-                                 </padding>
-                              </HBox>
-                           </children>
-                        </VBox>
-                     </children>
-                  </AnchorPane>
-
-                  <!-- Ethereum Card -->
-                  <AnchorPane prefHeight="280.0" styleClass="coinanchorpane" stylesheets="@../css/anchorpane.css" HBox.hgrow="ALWAYS">
-                     <children>
-                        <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                           <children>
-                              <HBox alignment="CENTER_LEFT" spacing="10.0">
-                                 <children>
-                                    <Label text="Ethereum" textFill="WHITE">
-                                       <font>
-                                          <Font name="System Bold" size="12.0" />
-                                       </font>
-                                    </Label>
-                                    <Region HBox.hgrow="ALWAYS" />
-                                    <Label fx:id="ETHlabel" textFill="WHITE">
-                                       <font>
-                                          <Font name="System Bold" size="13.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                                 <padding>
-                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                 </padding>
-                              </HBox>
-                              <LineChart fx:id="ethChart" animated="false" legendVisible="false" VBox.vgrow="ALWAYS">
-                                 <xAxis>
-                                    <CategoryAxis fx:id="ethXAxis" />
-                                 </xAxis>
-                                 <yAxis>
-                                    <NumberAxis fx:id="ethYAxis" />
-                                 </yAxis>
-                                 <VBox.margin>
-                                    <Insets left="10.0" right="10.0" />
-                                 </VBox.margin>
-                              </LineChart>
-                              <HBox alignment="CENTER" spacing="20.0">
-                                 <children>
-                                    <Button mnemonicParsing="false" styleClass="buybuttons" stylesheets="@../css/buttons.css" text="Buy" />
-                                    <Button mnemonicParsing="false" styleClass="sellbuttons" stylesheets="@../css/buttons.css" text="Sell" />
-                                 </children>
-                                 <padding>
-                                    <Insets bottom="15.0" top="10.0" />
-                                 </padding>
-                              </HBox>
-                           </children>
-                        </VBox>
-                     </children>
-                  </AnchorPane>
-
-                  <!-- XRP Card -->
-                  <AnchorPane prefHeight="280.0" styleClass="coinanchorpane" stylesheets="@../css/anchorpane.css" HBox.hgrow="ALWAYS">
-                     <children>
-                        <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                           <children>
-                              <HBox alignment="CENTER_LEFT" spacing="10.0">
-                                 <children>
-                                    <Label text="XRP" textFill="WHITE">
-                                       <font>
-                                          <Font name="System Bold" size="12.0" />
-                                       </font>
-                                    </Label>
-                                    <Region HBox.hgrow="ALWAYS" />
-                                    <Label fx:id="XRPlabel" textFill="WHITE">
-                                       <font>
-                                          <Font name="System Bold" size="13.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                                 <padding>
-                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                 </padding>
-                              </HBox>
-                              <LineChart fx:id="XRPChart" animated="false" legendVisible="false" VBox.vgrow="ALWAYS">
-                                 <xAxis>
-                                    <CategoryAxis fx:id="XRPXAxis" />
-                                 </xAxis>
-                                 <yAxis>
-                                    <NumberAxis fx:id="XRPYAxis" />
-                                 </yAxis>
-                                 <VBox.margin>
-                                    <Insets left="10.0" right="10.0" />
-                                 </VBox.margin>
-                              </LineChart>
-                              <HBox alignment="CENTER" spacing="20.0">
-                                 <children>
-                                    <Button mnemonicParsing="false" styleClass="buybuttons" stylesheets="@../css/buttons.css" text="Buy" />
-                                    <Button mnemonicParsing="false" styleClass="sellbuttons" stylesheets="@../css/buttons.css" text="Sell" />
-                                 </children>
-                                 <padding>
-                                    <Insets bottom="15.0" top="10.0" />
-                                 </padding>
-                              </HBox>
-                           </children>
-                        </VBox>
-                     </children>
-                  </AnchorPane>
-               </children>
-            </HBox>
-
-            <!-- Wallet Section -->
-            <AnchorPane minHeight="300.0" style="-fx-background-color: white;" styleClass="coinanchorpane" stylesheets="@../css/anchorpane.css" VBox.vgrow="ALWAYS">
-               <children>
-                  <VBox AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
-                     <children>
-                        <Label text="My Wallet">
-                           <font>
-                              <Font name="System Bold" size="20.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets bottom="15.0" left="10.0" />
-                           </VBox.margin>
-                        </Label>
-                        <VBox fx:id="walletCoins" VBox.vgrow="ALWAYS" />
-                     </children>
-                  </VBox>
+                  <Label layoutX="15.0" layoutY="70.0" text="📈" textFill="#fcf8f8" />
+                  <Label layoutX="15.0" layoutY="101.0" text="💼" textFill="#fcfcfc" />
+                  <Label layoutX="15.0" layoutY="133.0" text="💱" textFill="#ebebeb" />
+                  <Label layoutX="16.0" layoutY="163.0" text="💳" textFill="#fffefe" />
+                  <Button fx:id="walletbutton1" layoutY="658.0" mnemonicParsing="false"  prefHeight="25.0" prefWidth="163.0" stylesheets="@../css/buttons.css" text="Logout" />
                </children>
             </AnchorPane>
          </children>
-         <padding>
-            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-         </padding>
       </VBox>
-   </center>
-</BorderPane>
+      <TextField layoutX="464.0" layoutY="24.0" prefHeight="25.0" prefWidth="402.0" promptText="Search" style="-fx-background-color: #b92e2e;" styleClass="searchbar" stylesheets="@../css/buttons.css">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </TextField>
+      <FontIcon iconColor="#fffbfb" iconLiteral="fas-search" layoutX="840.0" layoutY="40.0" selectionFill="#f8efef" text="" />
+      <Label layoutX="1204.0" layoutY="16.0" prefHeight="36.0" prefWidth="154.0" style="-fx-background-color: black;" stylesheets="@../css/buttons.css" textFill="#e1e1e1" />
+      <Hyperlink fx:id="UserName" layoutX="1232.0" layoutY="23.0" onAction="#onUsernameClick" prefHeight="23.0" prefWidth="114.0" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font>
+      </Hyperlink>
+      <Label layoutX="258.0" layoutY="49.0" text="Wallet" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="32.0" />
+         </font>
+      </Label>
+
+      <!-- Card 1 with LineChart -->
+      <AnchorPane layoutX="257.0" layoutY="97.0" prefHeight="280.0" prefWidth="239.0" styleClass="coinanchorpane" stylesheets="@../css/anchorpane.css">
+         <children>
+            <Label layoutX="23.0" layoutY="11.0" text="Balance " textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="30.0" />
+               </font>
+            </Label>
+            <Label fx:id="walletBalance" layoutX="15.0" layoutY="77.0" prefHeight="66.0" prefWidth="197.0" textFill="#fffdfd">
+               <font>
+                  <Font name="System Bold" size="25.0" />
+               </font>
+            </Label>
+            <Label layoutX="40.0" layoutY="200.0" text="Label" />
+         </children></AnchorPane>
+
+      <!-- Card 3 with LineChart -->
+      <AnchorPane layoutX="507.0" layoutY="95.0" prefHeight="280.0" prefWidth="281.0" styleClass="coinanchorpane" stylesheets="@../css/anchorpane.css">
+         <children>
+            <LineChart fx:id="btcChart" animated="false" layoutX="10.0" layoutY="23.0" legendVisible="false" prefHeight="207.0" prefWidth="260.0">
+               <xAxis>
+                  <CategoryAxis fx:id="btcXAxis" />
+               </xAxis>
+               <yAxis>
+                  <NumberAxis fx:id="btcYAxis" />
+               </yAxis>
+            </LineChart>
+            <Button layoutX="26.0" layoutY="240.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="59.0" styleClass="buybuttons" stylesheets="@../css/buttons.css" text="Buy" />
+            <Button layoutX="143.0" layoutY="240.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="59.0" styleClass="sellbuttons" stylesheets="@../css/buttons.css" text="Sell" />
+            <Label layoutX="17.0" layoutY="2.0" text="Bitcoin" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="BTClabel" layoutX="172.0" layoutY="2.0" prefHeight="18.0" prefWidth="103.0" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+
+      <!-- Card 4 with LineChart -->
+      <AnchorPane layoutX="803.0" layoutY="98.0" prefHeight="280.0" prefWidth="263.0" styleClass="coinanchorpane" stylesheets="@../css/anchorpane.css">
+         <children>
+            <LineChart fx:id="ethChart" animated="false" layoutX="10.0" layoutY="21.0" legendVisible="false" prefHeight="207.0" prefWidth="239.0">
+               <xAxis>
+                  <CategoryAxis fx:id="ethXAxis" />
+               </xAxis>
+               <yAxis>
+                  <NumberAxis fx:id="ethYAxis" />
+               </yAxis>
+            </LineChart>
+            <Button layoutX="31.0" layoutY="240.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="59.0" styleClass="buybuttons" stylesheets="@../css/buttons.css" text="Buy" />
+            <Button layoutX="148.0" layoutY="240.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="59.0" styleClass="sellbuttons" stylesheets="@../css/buttons.css" text="Sell" />
+            <Label layoutX="13.0" layoutY="5.0" text="Etherium" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="ETHlabel" layoutX="147.0" layoutY="4.0" prefHeight="18.0" prefWidth="103.0" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+
+      <!-- Card 5 with LineChart -->
+      <AnchorPane layoutX="1081.0" layoutY="99.0" prefHeight="280.0" prefWidth="260.0" styleClass="coinanchorpane" stylesheets="@../css/anchorpane.css">
+         <children>
+            <LineChart fx:id="XRPChart" animated="false" layoutX="10.0" layoutY="19.0" legendVisible="false" prefHeight="207.0" prefWidth="239.0">
+               <xAxis>
+                  <CategoryAxis fx:id="XRPXAxis" />
+               </xAxis>
+               <yAxis>
+                  <NumberAxis fx:id="XRPYAxis" />
+               </yAxis>
+            </LineChart>
+            <Button layoutX="24.0" layoutY="240.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="59.0" styleClass="buybuttons" stylesheets="@../css/buttons.css" text="Buy" />
+            <Button layoutX="166.0" layoutY="240.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="59.0" styleClass="sellbuttons" stylesheets="@../css/buttons.css" text="Sell" />
+            <Label layoutX="11.0" layoutY="3.0" text="XRP" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="XRPlabel" layoutX="151.0" layoutY="2.0" prefHeight="18.0" prefWidth="103.0" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+
+      <!-- Wallet Section -->
+      <AnchorPane layoutX="260.0" layoutY="411.0" prefHeight="316.0" prefWidth="1086.0" style="-fx-background-color: white;" styleClass="coinanchorpane" stylesheets="@../css/anchorpane.css">
+         <children>
+            <Label layoutX="27.0" layoutY="17.0" text="My Wallet">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <VBox fx:id="walletCoins" layoutX="17.0" layoutY="46.0" prefHeight="251.0" prefWidth="1052.0" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
