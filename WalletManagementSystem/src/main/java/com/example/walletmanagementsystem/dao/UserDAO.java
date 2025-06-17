@@ -19,10 +19,10 @@ public class UserDAO {
     //Add a new user
     public static User addUser(String name, String email, String password, Role role) {
         String accountNumber = UserService.generateAccountNumber();
+        String sql = "INSERT INTO Users(name, email, password, accountnumber, role) VALUES (?, ?, ?, ?, ?)";
 
-        String sql = "INSERT INTO Users(name, email, password,accountnumber, role) VALUES (?, ?, ?, ?,?)";
         if (connection != null) {
-            try (PreparedStatement stmt = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+            try (PreparedStatement stmt = connection.prepareStatement(sql)) {
                 stmt.setString(1, name);
                 stmt.setString(2, email);
                 stmt.setString(3, password);
@@ -35,7 +35,14 @@ public class UserDAO {
                     try (ResultSet rs = stmt.getGeneratedKeys()) {
                         if (rs.next()) {
                             int id = rs.getInt(1);
-                            return new User(id,name, email, password, role);
+
+                            // ✅ Automatically create wallet for this user
+                            WalletDAO.insertNewWallet(accountNumber, id);
+
+                            // ✅ Return user object with account number
+                            User user = new User(id, name, email, password, role);
+                            user.setAccountNumber(accountNumber);
+                            return user;
                         }
                     }
                 }
@@ -49,7 +56,8 @@ public class UserDAO {
 
 
 
-   //Get user id by email
+
+    //Get user id by email
    public static User getUserId(String accountNumber) {
        String sql = "SELECT * FROM Users WHERE email = ?";
        User user = null;
@@ -125,10 +133,10 @@ public class UserDAO {
 
     }
 //Verify and update password
-    public static boolean verifyPassword(int userId, String inputPassword) {
-        String query = "SELECT password FROM users WHERE user_id = ?";
+    public static boolean verifyPassword(String accountNumber, String inputPassword) {
+        String query = "SELECT password FROM users WHERE accountnumber = ?";
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
-            stmt.setInt(1, userId);
+            stmt.setString(1, accountNumber);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
                 String storedPassword = rs.getString("password");
@@ -140,11 +148,11 @@ public class UserDAO {
         return false;
     }
 
-    public static boolean updatePassword(int userId, String newPassword) {
-        String query = "UPDATE users SET password = ? WHERE user_id = ?";
+    public static boolean updatePassword(String accountNumber, String newPassword) {
+        String query = "UPDATE users SET password = ? WHERE accountnumber = ?";
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
             stmt.setString(1, newPassword); // Hash here if needed
-            stmt.setInt(2, userId);
+            stmt.setString(2, accountNumber);
             return stmt.executeUpdate() > 0;
         } catch (SQLException e) {
             e.printStackTrace();

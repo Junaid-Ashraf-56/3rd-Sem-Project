@@ -240,7 +240,7 @@
                                         </font>
                                     </PasswordField>
 
-                                    <Button fx:id="updatePasswordButton" mnemonicParsing="false" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: #4fd1c7; -fx-text-fill: #1a202c; -fx-background-radius: 8; -fx-font-weight: bold;" text="  Update Password">
+                                    <Button fx:id="updatePasswordButton" mnemonicParsing="false" onAction="#handleUpdatePasswordButton" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: #4fd1c7; -fx-text-fill: #1a202c; -fx-background-radius: 8; -fx-font-weight: bold;" text="  Update Password">
                                         <font>
                                             <Font name="System Bold" size="14.0" />
                                         </font>

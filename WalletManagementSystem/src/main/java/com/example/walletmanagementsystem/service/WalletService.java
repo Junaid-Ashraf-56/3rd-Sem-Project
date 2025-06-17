@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 public class WalletService {
 
     // Add funds
-    public boolean addFunds(String accountNumber, double amount) {
+    public static boolean addFunds(String accountNumber, double amount) {
         if (amount <= 0) {
             return false;
         }
@@ -33,14 +33,14 @@ public class WalletService {
             tx.setPriceAtTime(1.0);
             tx.setQuantity(amount);
             tx.setDateTime(LocalDate.from(LocalDateTime.now()));
-            // TransactionDAO.insertTransaction(tx);
+             TransactionDAO.insertNewTransaction(tx);
         }
 
         return updated;
     }
 
     // Withdraw funds
-    public boolean withdrawFunds(String accountNumber, double amount) {
+    public static boolean withdrawFunds(String accountNumber, double amount) {
         if (amount <= 0) {
             return false;
         }
@@ -62,7 +62,7 @@ public class WalletService {
             tx.setPriceAtTime(1.0);
             tx.setQuantity(amount);
             tx.setDateTime(LocalDate.from(LocalDateTime.now()));
-            // TransactionDAO.insertTransaction(tx);
+             TransactionDAO.insertNewTransaction(tx);
         }
 
         return updated;
@@ -75,7 +75,7 @@ public class WalletService {
     }
 
     // Transfer money from one account to another
-    public boolean transferFunds(String fromAccountNumber, String toAccountNumber, double amount) {
+    public static boolean transferFunds(String fromAccountNumber, String toAccountNumber, double amount) {
         Wallet fromWallet = WalletDAO.getWalletByAccountNumber(fromAccountNumber);
         Wallet toWallet = WalletDAO.getWalletByAccountNumber(toAccountNumber);
 
