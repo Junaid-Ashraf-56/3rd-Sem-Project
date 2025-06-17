@@ -18,23 +18,27 @@ public class WalletDAO {
     public static Wallet getWalletByAccountNumber(String accountNumber) {
         String sql = "SELECT * FROM wallet WHERE accountnumber = ?";
         Wallet wallet = null;
-        if (connection != null) {
-            try (PreparedStatement stmt = connection.prepareStatement(sql)) {
-                stmt.setString(1, accountNumber);
-                ResultSet rs = stmt.executeQuery();
+
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+
+            stmt.setString(1, accountNumber);
+            try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
                     wallet = new Wallet();
-                    wallet.setUserId(rs.getInt("userid")); // Keep if user_id is still needed
-                    wallet.setAccountNumber(rs.getString("accountnumber")); // Changed to match DB column
+                    wallet.setWalletId(rs.getInt("walletid"));
+                    wallet.setAccountNumber(rs.getString("accountnumber"));
                     wallet.setBalance(rs.getDouble("balance"));
-                    wallet.setWallet(new ArrayList<>());
+                    wallet.setUserId(rs.getInt("userid"));
                 }
-            } catch (SQLException e) {
-                e.printStackTrace();
             }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
+
         return wallet;
     }
+
 
     // Update wallet balance
     public static boolean updateWalletBalance(String accountNumber, double newBalance) {
@@ -57,8 +61,7 @@ public class WalletDAO {
         String sql = "INSERT INTO wallet (accountnumber, balance, userid) VALUES (?, ?, ?)";
         Wallet wallet = null;
 
-        try (Connection connection = DBConnection.getConnection();
-             PreparedStatement stmt = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
 
             stmt.setString(1, accountNumber);
             stmt.setDouble(2, 0.0);
@@ -75,7 +78,7 @@ public class WalletDAO {
                         wallet.setUserId(userId);
                         wallet.setAccountNumber(accountNumber);
                         wallet.setBalance(0.0);
-                        wallet.setWallet(new ArrayList<>());
+                        wallet.setWallet(new ArrayList<>()); // Assuming for transaction list
                     }
                 }
             }
@@ -86,6 +89,7 @@ public class WalletDAO {
 
         return wallet;
     }
+
 
 
     // Get transactions by account number

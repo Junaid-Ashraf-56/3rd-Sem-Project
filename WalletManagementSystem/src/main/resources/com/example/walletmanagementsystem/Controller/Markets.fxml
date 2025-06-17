@@ -27,7 +27,7 @@
                         <Font name="System Bold" size="32.0" />
                      </font>
                   </Label>
-                  <Hyperlink fx:id="UserName" layoutX="960.0" layoutY="25.0" onAction="#onUsernameClick" prefHeight="32.0" prefWidth="150.0" text="Welcome, User" textFill="#4fd1c7" underline="false">
+                  <Hyperlink fx:id="UserName" layoutX="960.0" layoutY="25.0" onAction="#onUsernameClick" prefHeight="32.0" prefWidth="150.0" textFill="#4fd1c7" underline="false">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
@@ -170,7 +170,7 @@
                   <FontIcon iconColor="white" iconLiteral="fas-sign-out-alt" iconSize="18" layoutX="25.0" layoutY="740.0" />
                   <VBox layoutX="-1.0" layoutY="134.0" prefWidth="176.0" spacing="5" style="-fx-padding: 20 10 10 10;">
                      <children>
-                        <Button fx:id="marketbutton1" mnemonicParsing="false"  prefHeight="25.0" prefWidth="162.0" stylesheets="@../css/buttons.css" text="Markets" />
+                        <Button fx:id="marketbutton1" mnemonicParsing="false" prefHeight="25.0" prefWidth="162.0" stylesheets="@../css/buttons.css" text="Markets" />
                         <Button fx:id="portfoliobutton" mnemonicParsing="false" onAction="#onClickPortfolioButton" prefHeight="25.0" prefWidth="162.0" stylesheets="@../css/buttons.css" text="Portfolio" />
                         <Button fx:id="transactionbutton1" mnemonicParsing="false" onAction="#onClickTransactionButton" prefHeight="25.0" prefWidth="163.0" stylesheets="@../css/buttons.css" text="Transactions" />
                         <Button fx:id="walletbutton1" mnemonicParsing="false" onAction="#onClickWalletButton" prefHeight="25.0" prefWidth="163.0" stylesheets="@../css/buttons.css" text="Wallet" />

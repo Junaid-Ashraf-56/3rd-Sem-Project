@@ -3,6 +3,7 @@ package com.example.walletmanagementsystem.dao;
 import com.example.walletmanagementsystem.config.DBConnection;
 import com.example.walletmanagementsystem.model.Role;
 import com.example.walletmanagementsystem.model.User;
+import com.example.walletmanagementsystem.model.Wallet;
 import com.example.walletmanagementsystem.service.UserService;
 
 
@@ -21,50 +22,52 @@ public class UserDAO {
         String accountNumber = UserService.generateAccountNumber();
         String sql = "INSERT INTO Users(name, email, password, accountnumber, role) VALUES (?, ?, ?, ?, ?)";
 
-        if (connection != null) {
-            try (PreparedStatement stmt = connection.prepareStatement(sql)) {
-                stmt.setString(1, name);
-                stmt.setString(2, email);
-                stmt.setString(3, password);
-                stmt.setString(4, accountNumber);
-                stmt.setString(5, String.valueOf(role));
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
 
-                int rows = stmt.executeUpdate();
+            stmt.setString(1, name);
+            stmt.setString(2, email);
+            stmt.setString(3, password);
+            stmt.setString(4, accountNumber);
+            stmt.setString(5, role.toString());
 
-                if (rows > 0) {
-                    try (ResultSet rs = stmt.getGeneratedKeys()) {
-                        if (rs.next()) {
-                            int id = rs.getInt(1);
+            int rows = stmt.executeUpdate();
 
-                            // ✅ Automatically create wallet for this user
-                            WalletDAO.insertNewWallet(accountNumber, id);
+            if (rows > 0) {
+                try (ResultSet rs = stmt.getGeneratedKeys()) {
+                    if (rs.next()) {
+                        int id = rs.getInt(1);
 
-                            // ✅ Return user object with account number
-                            User user = new User(id, name, email, password, role);
-                            user.setAccountNumber(accountNumber);
-                            return user;
-                        }
+                        // ✅ Automatically create wallet for this user
+                        Wallet wallet = WalletDAO.insertNewWallet(accountNumber, id);
+
+                        // ✅ Return user object with wallet info
+                        User user = new User(id, name, email, password, role);
+                        user.setAccountNumber(accountNumber);
+                        user.setWallet(wallet); // Optional if User has wallet field
+                        return user;
                     }
                 }
-
-            } catch (SQLException e) {
-                e.printStackTrace();
             }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
+
         return null;
     }
 
 
 
 
+
     //Get user id by email
-   public static User getUserId(String accountNumber) {
+   public static User getUserId(String email) {
        String sql = "SELECT * FROM Users WHERE email = ?";
        User user = null;
 
        if (connection != null) {
            try (PreparedStatement stmt = connection.prepareStatement(sql)) {
-               stmt.setString(1, accountNumber);
+               stmt.setString(1, email);
                try (ResultSet rs = stmt.executeQuery()) {
                    if (rs.next()) {
                        user = new User();
@@ -106,33 +109,35 @@ public class UserDAO {
     }
 
     //Login User
-    public static User Login(String email,String password) {
-            String sql = "SELECT * FROM Users WHERE email = ? AND password = ?";
-            User user = null;
-            if (connection != null) {
-                try (PreparedStatement stmt = connection.prepareStatement(sql)) {
-                    stmt.setString(1, email);
-                    stmt.setString(2, password);
-                    try (ResultSet rs = stmt.executeQuery()) {
-                        if (rs.next()) {
-                            user = new User();
-                            user.setUserId(rs.getInt("userId"));
-                            user.setName(rs.getString("name"));
-                            user.setEmail(rs.getString("email"));
-                            user.setPassword(rs.getString("password"));
-                            user.setAccountNumber(rs.getString("accountnumber"));
-                            user.setRole(Role.valueOf(rs.getString("role")));
-                        }
-                    }
-                } catch (SQLException e) {
-                    e.printStackTrace();
+    public static User Login(String email, String password) {
+        String sql = "SELECT * FROM Users WHERE email = ? AND password = ?";
+        User user = null;
+
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+
+            stmt.setString(1, email);
+            stmt.setString(2, password);
+
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    user = new User();
+                    user.setUserId(rs.getInt("userId"));
+                    user.setName(rs.getString("name"));
+                    user.setEmail(rs.getString("email"));
+                    user.setPassword(rs.getString("password"));
+                    user.setAccountNumber(rs.getString("accountnumber"));
+                    user.setRole(Role.valueOf(rs.getString("role")));
                 }
             }
 
-            return user;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
+        return user;
     }
-//Verify and update password
+
+    //Verify and update password
     public static boolean verifyPassword(String accountNumber, String inputPassword) {
         String query = "SELECT password FROM users WHERE accountnumber = ?";
         try (PreparedStatement stmt = connection.prepareStatement(query)) {

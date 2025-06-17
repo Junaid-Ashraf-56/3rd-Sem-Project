@@ -68,7 +68,7 @@ public class TransactionDAO {
     // Record transaction
     public static void recordTransaction(String accountNumber, double amount, String description) {
         String sql = "INSERT INTO transactions (account_number, amount, asset_symbol, quantity, type, price_at_time, date_time) VALUES (?, ?, ?, ?, ?, ?, ?)";
-        try (PreparedStatement stmt = DBConnection.getConnection().prepareStatement(sql)) {
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setString(1, accountNumber);
             stmt.setDouble(2, amount);
             stmt.setString(3, "USD");

@@ -8,6 +8,7 @@ import com.example.walletmanagementsystem.utils.AlertUtil;
 import com.example.walletmanagementsystem.utils.Session;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -133,19 +134,24 @@ public class LoginController {
 
 
     @FXML
-    void switchToSignup(ActionEvent event) {
+    private void switchToSignup(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/walletmanagementsystem/Controller/Signup.fxml"));
+            // ✅ Make sure the path to Signup.fxml is correct
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/walletmanagementsystem/Controller/signup.fxml"));
+
             Parent root = loader.load();
-            Stage stage = (Stage) Signup.getScene().getWindow();
+
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
-            stage.setTitle("Sign Up");
+            stage.setTitle("Signup Page");
             stage.show();
+
         } catch (IOException e) {
-            e.printStackTrace();
-            AlertUtil.showAlert(Alert.AlertType.ERROR, "Navigation Error", "Failed to load signup page.");
+            e.printStackTrace();  // optional: use logging instead in production
         }
     }
+
+
 
     private void navigateToMarkets(ActionEvent event) {
         try {

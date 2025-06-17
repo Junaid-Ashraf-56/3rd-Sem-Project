@@ -103,11 +103,13 @@ public class TransactionsController implements Initializable {
             if (success) {
                 showAlert(Alert.AlertType.INFORMATION, "Success", "Funds transferred successfully.");
                 showBalance(senderAccount);
-            } else {
-                showAlert(Alert.AlertType.ERROR, "Error", "Transfer failed.\nSender: " + senderAccount + "\nReceiver: " + receiverAccount + "\nAmount: " + amount);
-
             }
+//            else {
+//                showAlert(Alert.AlertType.ERROR, "Error", "Transfer failed.\nSender: " + senderAccount + "\nReceiver: " + receiverAccount + "\nAmount: " + amount);
+//
+//            }
         } catch (NumberFormatException e) {
+            e.printStackTrace();
             showAlert(Alert.AlertType.ERROR, "Error", "Enter a valid number.");
         }
     }
