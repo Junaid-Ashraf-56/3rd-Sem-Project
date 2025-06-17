@@ -115,13 +115,13 @@
                            </font>
                         </Label>
 
-                        <Button layoutX="650.0" layoutY="15.0" prefHeight="35.0" prefWidth="120.0" style="-fx-background-color: #48bb78; -fx-text-fill: white; -fx-background-radius: 8; -fx-font-weight: bold;" text="BUY">
+                        <Button fx:id="BUYCOIN" layoutX="650.0" layoutY="15.0" onAction="#onBuyCoinClick" prefHeight="35.0" prefWidth="120.0" style="-fx-background-color: #48bb78; -fx-text-fill: white; -fx-background-radius: 8; -fx-font-weight: bold;" text="BUY">
                            <font>
                               <Font name="System Bold" size="16.0" />
                            </font>
                         </Button>
 
-                        <Button layoutX="790.0" layoutY="15.0" prefHeight="35.0" prefWidth="120.0" style="-fx-background-color: #f56565; -fx-text-fill: white; -fx-background-radius: 8; -fx-font-weight: bold;" text="SELL">
+                        <Button fx:id="SELLCOIN" layoutX="790.0" layoutY="15.0" onAction="#onSellCoinClick" prefHeight="35.0" prefWidth="120.0" style="-fx-background-color: #f56565; -fx-text-fill: white; -fx-background-radius: 8; -fx-font-weight: bold;" text="SELL">
                            <font>
                               <Font name="System Bold" size="16.0" />
                            </font>

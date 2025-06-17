@@ -2,6 +2,7 @@ package com.example.walletmanagementsystem.Controller;
 
 import com.example.walletmanagementsystem.service.ChartService;
 
+import com.example.walletmanagementsystem.service.TradeService;
 import com.example.walletmanagementsystem.utils.Session;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -52,6 +53,8 @@ public class MarketController implements Initializable {
     @FXML private Label CoinName;
     @FXML private Label percentageperhour;
     @FXML private Hyperlink UserName;
+    @FXML private Button BUYCOIN;
+    @FXML private Button SELLCOIN;
 
     private final ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
     public XYChart.Series<String, Number> currentSeries = new XYChart.Series<>();
@@ -133,6 +136,35 @@ public class MarketController implements Initializable {
         }, 0, 30, TimeUnit.SECONDS);
     }
 
+    @FXML
+    private void onBuyCoinClick() {
+        String coin = currentCoin;
+        double qty = 1.0; // Replace with user input (e.g., from TextField)
+
+        TradeService service = new TradeService();
+        boolean success = service.buyAsset(Session.getCurrentUser().getAccountNumber(), coin, qty);
+
+        if (success) {
+            System.out.println("Buy successful!");
+        } else {
+            System.out.println("Buy failed.");
+        }
+    }
+
+    @FXML
+    private void onSellCoinClick() {
+        String coin = currentCoin;
+        double qty = 1.0; // Replace with user input
+
+        TradeService service = new TradeService();
+        boolean success = service.sellAsset(Session.getCurrentUser().getAccountNumber(), coin, qty);
+
+        if (success) {
+            System.out.println("Sell successful!");
+        } else {
+            System.out.println("Sell failed.");
+        }
+    }
 
 
 

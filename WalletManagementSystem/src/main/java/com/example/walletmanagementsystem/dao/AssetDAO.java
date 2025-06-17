@@ -6,7 +6,6 @@ import com.example.walletmanagementsystem.model.AssetType;
 import com.example.walletmanagementsystem.model.Crypto;
 import com.example.walletmanagementsystem.model.Stock;
 
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -16,25 +15,19 @@ import java.util.List;
 
 public class AssetDAO {
 
-     static  Connection connection = DBConnection.getConnection();
+    static Connection connection = DBConnection.getConnection();
+
     // 1. Insert new asset (from API or admin)
     public static boolean insertAsset(Asset asset) {
-        String sql = "INSERT INTO asset( name, current_price, asset_type, extra_info) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO asset(assetid, name, currentprice, assettype, quantity, assetsymbol) VALUES (?, ?, ?, ?, ?, ?)";
 
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setString(1, asset.getAssetId());
             stmt.setString(2, asset.getName());
             stmt.setDouble(3, asset.getCurrentPrice());
             stmt.setString(4, asset.getAssetType().name());
-
-            // Determine extra info based on type
-            if (asset instanceof Stock) {
-                stmt.setString(5, ((Stock) asset).getExchange());
-            } else if (asset instanceof Crypto) {
-                stmt.setString(5, ((Crypto) asset).getBlockchain());
-            } else {
-                stmt.setString(5, null);
-            }
+            stmt.setDouble(5, asset.getQuantity());
+            stmt.setString(6, asset.getAssetSymbol());
 
             return stmt.executeUpdate() > 0;
 
@@ -45,25 +38,26 @@ public class AssetDAO {
     }
 
     // 2. Get asset by ID
-    public static Asset getAssetById(String assetId) {
-        String sql = "SELECT * FROM asset WHERE asset_id = ?";
+    public static Asset getAssetById(String coin) {
+        String sql = "SELECT * FROM asset WHERE assetid = ?";
         Asset asset = null;
 
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
-            stmt.setString(1, assetId);
+            stmt.setString(1, coin);
             ResultSet rs = stmt.executeQuery();
 
             if (rs.next()) {
-                String id = rs.getString("asset_id");
+                String id = rs.getString("assetid");
                 String name = rs.getString("name");
-                double price = rs.getDouble("current_price");
-                AssetType type = AssetType.valueOf(rs.getString("asset_type"));
-                String extra = rs.getString("extra_info");
+                double price = rs.getDouble("currentprice");
+                AssetType type = AssetType.valueOf(rs.getString("assettype"));
+                double quantity = rs.getDouble("quantity");
+                String symbol = rs.getString("assetsymbol");
 
                 if (type == AssetType.STOCK) {
-                    asset = new Stock(id, name, price, extra);
+                    asset = new Stock(id, name, price, symbol, quantity);
                 } else if (type == AssetType.CRYPTO) {
-                    asset = new Crypto(id, name, price, extra);
+                    asset = new Crypto(id, name, price, symbol, quantity);
                 }
             }
 
@@ -76,7 +70,7 @@ public class AssetDAO {
 
     // 3. Update current price (on price refresh)
     public static boolean updateAssetPrice(String assetId, double newPrice) {
-        String sql = "UPDATE asset SET current_price = ? WHERE asset_id = ?";
+        String sql = "UPDATE asset SET currentprice = ? WHERE assetid = ?";
 
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setDouble(1, newPrice);
@@ -89,24 +83,24 @@ public class AssetDAO {
         return false;
     }
 
-    // 4. Get a list of all available assets
-    public static List<Asset> getAllAssets(int userId) {
+    // 4. Get all available assets
+    public static List<Asset> getAllAssets() {
         List<Asset> assets = new ArrayList<>();
-        String sql = "SELECT * FROM asset WHERE userId = ?";
+        String sql = "SELECT * FROM asset";
 
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
-            stmt.setInt(1, userId);
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
-                String id = rs.getString("asset_id");
+                String id = rs.getString("assetid");
                 String name = rs.getString("name");
-                double price = rs.getDouble("current_price");
-                AssetType type = AssetType.valueOf(rs.getString("asset_type"));
-                String extra = rs.getString("extra_info");
+                double price = rs.getDouble("currentprice");
+                AssetType type = AssetType.valueOf(rs.getString("assettype"));
+                double quantity = rs.getDouble("quantity");
+                String symbol = rs.getString("assetsymbol");
 
                 Asset asset = (type == AssetType.STOCK)
-                        ? new Stock(id, name, price, extra)
-                        : new Crypto(id, name, price, extra);
+                        ? new Stock(id, name, price, symbol, quantity)
+                        : new Crypto(id, name, price, symbol, quantity);
 
                 assets.add(asset);
             }

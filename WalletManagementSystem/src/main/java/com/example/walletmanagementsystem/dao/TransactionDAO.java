@@ -19,6 +19,7 @@ public class TransactionDAO {
 
     // Insert new transaction
     public static boolean insertNewTransaction(Transaction transaction) {
+        System.out.println("this method is runing buy");
         boolean isInserted = false;
         String sql = "INSERT INTO transactions (account_number, type, asset_symbol, quantity, amount, price_at_time, date_time) VALUES (?, ?, ?, ?, ?, ?, ?)";
         if (connection != null) {

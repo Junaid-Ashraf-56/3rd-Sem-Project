@@ -9,6 +9,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -117,6 +118,39 @@ public class PortfolioDAO {
             return assets.get(assetSymbol).getQuantity();
         } else {
             return 0.0;
+        }
+    }
+
+    public static void reduceAsset(String accountNumber, Asset asset, double quantityToReduce) {
+        String selectSQL = "SELECT quantity FROM portfolio WHERE account_number = ? AND asset_symbol = ?";
+        try (PreparedStatement selectStmt = connection.prepareStatement(selectSQL);) {
+            selectStmt.setString(1, accountNumber);
+            selectStmt.setString(2, asset.getSymbol());
+            ResultSet rs = selectStmt.executeQuery();
+
+            if (rs.next()) {
+                double existingQty = rs.getDouble("quantity");
+                double newQty = existingQty - quantityToReduce;
+
+                if (newQty > 0) {
+                    String updateSQL = "UPDATE portfolio SET quantity = ? WHERE account_number = ? AND asset_symbol = ?";
+                    PreparedStatement updateStmt = connection.prepareStatement(updateSQL);
+                    updateStmt.setDouble(1, newQty);
+                    updateStmt.setString(2, accountNumber);
+                    updateStmt.setString(3, asset.getSymbol());
+                    updateStmt.executeUpdate();
+                } else {
+                    // Remove the asset from portfolio if quantity becomes 0 or less
+                    String deleteSQL = "DELETE FROM portfolio WHERE account_number = ? AND asset_symbol = ?";
+                    PreparedStatement deleteStmt = connection.prepareStatement(deleteSQL);
+                    deleteStmt.setString(1, accountNumber);
+                    deleteStmt.setString(2, asset.getSymbol());
+                    deleteStmt.executeUpdate();
+                }
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 }

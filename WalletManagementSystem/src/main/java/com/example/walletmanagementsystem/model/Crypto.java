@@ -8,6 +8,10 @@ public class Crypto extends Asset {
         this.blockchain = blockchain;
     }
 
+    public Crypto(String assetId, String name, double Price, String symbol, double quantity) {
+        super(assetId, name, Price, AssetType.CRYPTO);
+    }
+
     public String getBlockchain() {
         return blockchain;
     }

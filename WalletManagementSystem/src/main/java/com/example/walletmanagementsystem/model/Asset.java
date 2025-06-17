@@ -37,4 +37,8 @@ public abstract class Asset {
     public AssetType getAssetType() {return assetType;}
     public double getQuantity() {return quantity;}
     public String getAssetSymbol() {return assetSymbol;}
+
+    public String getSymbol() {
+        return ".";
+    }
 }

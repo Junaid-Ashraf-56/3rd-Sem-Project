@@ -8,6 +8,10 @@ public class Stock extends Asset {
         this.exchange = exchange;
     }
 
+    public Stock(String assetId, String name, double price, String symbol, double quantity) {
+        super(assetId, name, price, AssetType.STOCK);
+    }
+
     public String getExchange() {
         return exchange;
     }
