@@ -69,12 +69,6 @@ public class MarketController implements Initializable {
         CoinName.setText("Bitcoin");
 
         Platform.runLater(() -> {
-            marketbutton.setStyle("-fx-background-color: #f90; -fx-text-fill: white;");
-            walletbutton.setStyle("-fx-background-color: #333; -fx-text-fill: white;");
-            transactionbutton.setStyle("-fx-background-color: #333; -fx-text-fill: white;");
-        });
-        Platform.runLater(() -> {
-            walletbutton.requestFocus();
             UserName.setText(Session.getUsername());
         });
         startGraphUpdater();

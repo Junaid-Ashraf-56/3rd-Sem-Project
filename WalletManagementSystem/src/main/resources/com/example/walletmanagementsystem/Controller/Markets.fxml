@@ -27,7 +27,7 @@
                         <Font name="System Bold" size="32.0" />
                      </font>
                   </Label>
-                  <Hyperlink fx:id="UserName" layoutX="960.0" layoutY="25.0" onAction="#onUsernameClick" prefHeight="32.0" prefWidth="150.0" textFill="#4fd1c7" underline="false">
+                  <Hyperlink fx:id="UserName" layoutX="960.0" layoutY="25.0" onAction="#onUsernameClick" prefHeight="32.0" prefWidth="150.0" textFill="WHITE" underline="false">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
