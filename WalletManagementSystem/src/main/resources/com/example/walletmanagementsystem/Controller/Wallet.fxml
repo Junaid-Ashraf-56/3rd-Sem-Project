@@ -38,7 +38,7 @@
                   <Label layoutX="15.0" layoutY="101.0" text="💼" textFill="#fcfcfc" />
                   <Label layoutX="15.0" layoutY="133.0" text="💱" textFill="#ebebeb" />
                   <Label layoutX="16.0" layoutY="163.0" text="💳" textFill="#fffefe" />
-                  <Button fx:id="walletbutton1" layoutY="658.0" mnemonicParsing="false"  prefHeight="25.0" prefWidth="163.0" stylesheets="@../css/buttons.css" text="Logout" />
+                  <Button fx:id="walletbutton1" layoutY="658.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="163.0" stylesheets="@../css/buttons.css" text="Logout" />
                </children>
             </AnchorPane>
          </children>
@@ -69,7 +69,7 @@
                   <Font name="System Bold Italic" size="30.0" />
                </font>
             </Label>
-            <Label fx:id="walletBalance" layoutX="15.0" layoutY="77.0" prefHeight="66.0" prefWidth="197.0" textFill="#fffdfd">
+            <Label fx:id="walletBalance" layoutY="77.0" prefHeight="133.0" prefWidth="239.0" textFill="#fffdfd">
                <font>
                   <Font name="System Bold" size="25.0" />
                </font>
