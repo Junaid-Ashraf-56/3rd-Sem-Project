@@ -23,6 +23,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
@@ -58,7 +59,7 @@ public class MarketController implements Initializable {
 
     private final ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
     public XYChart.Series<String, Number> currentSeries = new XYChart.Series<>();
-    private final Map<String, XYChart.Series<String, Number>> priceMap = new java.util.HashMap<>();
+    private final Map<String, XYChart.Series<String, Number>> priceMap = new HashMap<>();
     private String currentCoin = "bitcoin";
     private double previousPrice = -1;
 
@@ -91,14 +92,12 @@ public class MarketController implements Initializable {
                 for (String coin : coins) {
                     XYChart.Series<String, Number> updatedSeries = newData.get(coin);
 
-                    // If coin doesn't exist in priceMap, put it
+
                     priceMap.putIfAbsent(coin, new XYChart.Series<>());
                     XYChart.Series<String, Number> storedSeries = priceMap.get(coin);
 
-                    // Append new data to existing series
                     storedSeries.getData().addAll(updatedSeries.getData());
 
-                    // Limit to 30 data points for better performance
                     if (storedSeries.getData().size() > 30) {
                         storedSeries.getData().remove(0, storedSeries.getData().size() - 30);
                     }
@@ -121,9 +120,9 @@ public class MarketController implements Initializable {
                     String symbol = change >= 0 ? "+" : "-";
                     percentageperhour.setText(String.format("%s%.2f%% (recent)", symbol, Math.abs(change)));
 
-                    // Set color based on positive/negative
+
                     if (change >= 0) {
-                        percentageperhour.setStyle("-fx-text-fill: #00ff00;"); // green
+                        percentageperhour.setStyle("-fx-text-fill: #00ff00;");
                     } else {
                         percentageperhour.setStyle("-fx-text-fill: red;");
                     }
@@ -139,7 +138,7 @@ public class MarketController implements Initializable {
     @FXML
     private void onBuyCoinClick() {
         String coin = currentCoin;
-        double qty = 1.0; // Replace with user input (e.g., from TextField)
+        double qty = 1.0;
 
         TradeService service = new TradeService();
         boolean success = service.buyAsset(Session.getCurrentUser().getAccountNumber(), coin, qty);
@@ -154,7 +153,7 @@ public class MarketController implements Initializable {
     @FXML
     private void onSellCoinClick() {
         String coin = currentCoin;
-        double qty = 1.0; // Replace with user input
+        double qty = 1.0;
 
         TradeService service = new TradeService();
         boolean success = service.sellAsset(Session.getCurrentUser().getAccountNumber(), coin, qty);

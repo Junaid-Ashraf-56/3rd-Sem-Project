@@ -55,7 +55,7 @@ public class PortfolioController implements Initializable {
         showBalance(accountNumber);
     }
     @FXML
-    public void onClickLogoutButton(java.awt.event.ActionEvent event) {
+    public void onClickLogoutButton(ActionEvent event) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/walletmanagementsystem/Login.fxml"));
             Parent loginRoot = loader.load();

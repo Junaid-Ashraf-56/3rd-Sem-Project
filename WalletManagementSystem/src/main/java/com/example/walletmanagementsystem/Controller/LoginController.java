@@ -19,6 +19,8 @@ import org.kordamp.ikonli.javafx.FontIcon;
 
 import java.io.IOException;
 
+import static com.example.walletmanagementsystem.utils.ValidationUtil.isValidEmail;
+
 public class LoginController {
 
     @FXML private AnchorPane loginform;
@@ -95,10 +97,13 @@ public class LoginController {
             AlertUtil.showAlert(Alert.AlertType.ERROR, "Form Error", "Please fill in all fields.");
             return;
         }
-
+        if (!isValidEmail(email)) {
+            AlertUtil.showWarning("Wrong email ", "Please change it");
+            return;
+        }
         try {
             Role role = Role.valueOf(roleValue);
-            User user = null;
+            User user;
 
             // Hardcoded admin login for testing (REMOVE IN PRODUCTION)
             if (email.equals("admin@gmail.com") && password.equals("1234") && role == Role.ADMIN) {

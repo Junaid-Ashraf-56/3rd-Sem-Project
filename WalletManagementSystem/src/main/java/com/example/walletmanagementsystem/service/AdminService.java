@@ -5,10 +5,6 @@ import com.example.walletmanagementsystem.model.User;
 
 public class AdminService {
 
-    //View  user
-    public User getUser(String email){
-        return UserDAO.getUserId(email);
-    }
 
     public boolean freezeAccount(String email){
         User user = UserDAO.getUserId(email);
@@ -25,6 +21,23 @@ public class AdminService {
                 System.out.println("Error occur ");
             }
             return result;
+        }
+    }
+    public boolean unFreezeAccount(String email){
+        User user = UserDAO.getUserId(email);
+        if (user!=null){
+            System.out.println("User not found");
+            return false;
+        }
+        else {
+            boolean result = UserDAO.unfreezeUserByEmail(email);
+            if (result){
+                System.out.println("Account unfreeze");
+            }
+            else {
+                System.out.println("Error Occur");
+            }
+        return result;
         }
     }
 }

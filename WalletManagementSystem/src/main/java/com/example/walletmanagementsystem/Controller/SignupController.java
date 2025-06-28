@@ -19,6 +19,8 @@ import java.sql.SQLException;
 import java.util.Objects;
 
 import static com.example.walletmanagementsystem.utils.AlertUtil.showAlert;
+import static com.example.walletmanagementsystem.utils.ValidationUtil.isStrongPassword;
+import static com.example.walletmanagementsystem.utils.ValidationUtil.isValidEmail;
 
 
 public class SignupController {
@@ -48,26 +50,32 @@ public class SignupController {
         String userName = UserName.getText();
         String email = SignupEmail.getText();
         String password = SignupPassword.getText();
-        final Role role = Role.valueOf("USER");
+        final Role role = Role.USER;
 
-        if (userName.isEmpty()||email.isEmpty()||password.isEmpty()){
+        if (userName.isEmpty() || email.isEmpty() || password.isEmpty()) {
             showAlert(Alert.AlertType.ERROR, "Form Error!", "Please enter all fields");
             return;
         }
-        User userExist = UserDAO.getUserId(email);
-        if (userExist!=null){
-            AlertUtil.showError("Signup Failed", "User already Exist.");
+
+        if (!isValidEmail(email) || !isStrongPassword(password)) {
+            AlertUtil.showWarning("Wrong email or weak Password", "Please change it");
+            return;
         }
-        else {
-            User user = UserDAO.addUser(userName,email,password,role);
-            if (user!=null) {
-                AlertUtil.showInfo("Sign up Success", "Welcome " + user.getName());
-            }
-            else {
-                AlertUtil.showError("Signup Failed", "Could not register user. Try again.");
-            }
+
+        User existingUser = UserDAO.getUserId(email);
+        if (existingUser != null) {
+            AlertUtil.showError("Signup Failed", "User already exists.");
+            return;
+        }
+
+        User user = UserDAO.addUser(userName, email, password, role);
+        if (user != null) {
+            AlertUtil.showInfo("Sign up Success", "Welcome " + user.getName());
+        } else {
+            AlertUtil.showError("Signup Failed", "Could not register user. Try again.");
         }
     }
+
 
     @FXML
     protected void onClickSignUpButton(ActionEvent event) throws IOException {

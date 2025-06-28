@@ -58,7 +58,7 @@ public class IntroController implements Initializable {
         // Navigate to Login.fxml after animation + delay
         Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(2.5), event -> {
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/walletmanagementsystem/Controller/Login.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/walletmanagementsystem/Controller/login.fxml"));
                 Parent root = loader.load();
                 Stage stage = (Stage) (cashmatelabel != null ? cashmatelabel.getScene().getWindow() :
                                 creditCardIcon.getScene().getWindow());

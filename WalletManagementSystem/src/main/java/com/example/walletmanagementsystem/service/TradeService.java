@@ -28,11 +28,11 @@ public class TradeService {
         Wallet wallet = WalletDAO.getWalletByAccountNumber(accountNumber);
         if (wallet == null || wallet.getBalance() < totalCost) return false;
 
-        // Deduct from wallet
+
         wallet.setBalance(wallet.getBalance() - totalCost);
         WalletDAO.updateWalletBalance(accountNumber, wallet.getBalance());
 
-        // Update portfolio (add or increase asset quantity)
+
         PortfolioDAO.upsertAsset(accountNumber, asset, quantity);
 
         // Create and store transaction
@@ -62,15 +62,15 @@ public class TradeService {
 
         double totalRevenue = quantity * asset.getCurrentPrice();
 
-        // Reduce asset quantity
+
         PortfolioDAO.reduceAsset(accountNumber, asset, quantity);
 
-        // Add to wallet
+
         Wallet wallet = WalletDAO.getWalletByAccountNumber(accountNumber);
         wallet.setBalance(wallet.getBalance() + totalRevenue);
         WalletDAO.updateWalletBalance(accountNumber, wallet.getBalance());
 
-        // Create and store transaction
+
         Transaction transaction = new Transaction();
         transaction.setAccountNumber(accountNumber);
         transaction.setType(TransactionType.SELL);  // FIXED: SELL not BUY

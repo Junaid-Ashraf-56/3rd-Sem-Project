@@ -6,7 +6,7 @@ module com.example.walletmanagementsystem {
     requires com.fasterxml.jackson.databind;
     requires java.desktop;
     requires org.kordamp.ikonli.javafx;
-//    requires org.postgresql.jdbc;
+    requires org.postgresql.jdbc;
 
 
     exports com.example.walletmanagementsystem.service;
