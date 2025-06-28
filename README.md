@@ -76,7 +76,7 @@ This project aims to:
 
 **Junaid Ashraf**  
 Software Engineering Student @ COMSATS  
-Java | OOP | JavaFX | PostgreSqL | APIs | DSA-in-Progress  
+Java | OOP | JavaFX | PostgreSQL | APIs | DSA-in-Progress  
 
 Connect with me on [LinkedIn](https://www.linkedin.com/in/junaid-ashraf56/)
 
